@@ -12866,7 +12866,7 @@ section#events {
   section#events .event_content, section#events .event_content p, section#events .event_content a {
     color: white; }
   @media (min-width: 991px) {
-    section#events .event_single_wrap:first {
+    section#events .event_single_wrap.first {
       float: left;
       width: 50%; } }
 
