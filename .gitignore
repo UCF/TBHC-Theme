@@ -35,3 +35,8 @@ npm-debug.log
 # tags and tags.idx (notepad++ faux intelisens file)
 tags
 tags.idx
+
+#vs sln
+*.sln
+*.suo
+*.map
