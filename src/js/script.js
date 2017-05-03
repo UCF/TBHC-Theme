@@ -1609,7 +1609,7 @@ function getProfilesForGrid(inp1, inp2){ // moved out person-profile-grid to new
 		join : jn,
 		org_groups: inp1,
 		dd_org_groups: reqGrp,
-		show_org_groups: shwOrgs !== undefined && shwOrgs ? shwOrgs : false,
+		show_org_groups: shwOrgs != undefined && shwOrgs ? shwOrgs : false,
 		row_size: rowSize
 	};
 	if(regGrp2){
@@ -1695,20 +1695,20 @@ function getSpotsForGrid(inp1, inp2){
 }
 var debounce = function (func, threshold, execAsap) {
     var timeout;
-    return function debounced() {
+    return function debounced () {
         var obj = this, args = arguments;
-        function delayed() {
+        function delayed () {
             if (!execAsap)
                 func.apply(obj, args);
-            timeout = null;
-        }
+            timeout = null; 
+        };
         if (timeout)
             clearTimeout(timeout);
         else if (execAsap)
             func.apply(obj, args);
-        timeout = setTimeout(delayed, threshold || 100);
+        timeout = setTimeout(delayed, threshold || 100); 
     };
-};
+}
 function stickyHeadFix(){
 	var wpAdminBar = $('#wpadminbar'), headWrp = $('#section-nav-xs');
 	headWrp = headWrp.length <= 0 ? $('#header-nav-wrap') : headWrp;

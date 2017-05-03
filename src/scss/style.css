@@ -12640,18 +12640,14 @@ section#interests {
     @media (min-width: 991px) {
       section#interests .interests_title_wrap {
         background-color: black;
-        color: white;
-        margin: 0 auto;
-        max-width: 1200px; } }
+        color: white; } }
   @media (min-width: 991px) {
     section#interests .interests_lg_table {
       display: table;
       table-layout: fixed;
       width: 100%;
       vertical-align: top;
-      position: relative;
-      margin: 0 auto;
-      max-width: 1200px; } }
+      position: relative; } }
   section#interests .interests_lg_table .interest_single_wrap {
     text-align: left;
     word-break: break-word;
@@ -12767,19 +12763,13 @@ section#opportunities {
   word-break: break-word; }
   section#opportunities .opportunities_title_wrap {
     padding-left: 3%; }
-    @media (min-width: 991px) {
-      section#opportunities .opportunities_title_wrap {
-        margin: 0 auto;
-        max-width: 1200px; } }
     section#opportunities .opportunities_title_wrap .opportunities_title {
       display: inline-block; }
   @media (min-width: 991px) {
     section#opportunities .opportunities_lg_table {
       display: table;
       table-layout: fixed;
-      width: 100%;
-      margin: 0 auto;
-      max-width: 1200px; } }
+      width: 100%; } }
   @media (min-width: 991px) {
     section#opportunities .opportunities_lg_table .opportunity_single_wrap {
       display: table-cell; } }
@@ -12830,12 +12820,7 @@ section#opportunities {
       padding-bottom: 100%; } }
 
 section#spotlights {
-  padding: 0 8%;
-  width: 100%; }
-  @media (min-width: 991px) {
-    section#spotlights .spotlights_title_wrap {
-      margin: 0 auto;
-      max-width: 1200px; } }
+  padding: 0 8%; }
   section#spotlights .spotlights_title_wrap .spotlights_title {
     font-size: 3em;
     font-weight: bold; }
@@ -12843,28 +12828,24 @@ section#spotlights {
     color: #aaa;
     font-weight: bold;
     text-transform: uppercase; }
-  @media (min-width: 991px) {
-    section#spotlights .spotlights_lg_table {
-      margin: 0 auto;
-      max-width: 1200px; } }
-  section#spotlights .spotlights_lg_table .spotlight_single {
+  section#spotlights .spotlight_single {
     display: table;
     width: 100%; }
-    section#spotlights .spotlights_lg_table .spotlight_single .spotlight_image_wrap {
+    section#spotlights .spotlight_single .spotlight_image_wrap {
       display: table-cell;
       width: 15%;
       vertical-align: top; }
-      section#spotlights .spotlights_lg_table .spotlight_single .spotlight_image_wrap .spotlight_image {
+      section#spotlights .spotlight_single .spotlight_image_wrap .spotlight_image {
         width: 100%; }
-    section#spotlights .spotlights_lg_table .spotlight_single .spotlight_content_wrap {
+    section#spotlights .spotlight_single .spotlight_content_wrap {
       display: table-cell;
       padding-left: 3%;
       color: #333; }
-      section#spotlights .spotlights_lg_table .spotlight_single .spotlight_content_wrap .spotlight_type {
+      section#spotlights .spotlight_single .spotlight_content_wrap .spotlight_type {
         background-color: #FC0;
         text-transform: uppercase;
         color: #333; }
-      section#spotlights .spotlights_lg_table .spotlight_single .spotlight_content_wrap .spotlight_title {
+      section#spotlights .spotlight_single .spotlight_content_wrap .spotlight_title {
         font-weight: bold;
         padding: 5px 0;
         color: #333; }
