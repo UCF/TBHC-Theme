@@ -593,7 +593,7 @@ function bootstrap_menus() {
 						is_home() 
 					)
 				){
-					/*$argsForPanel = array(
+					$argsForPanel = array(
 						'posts_per_page'	=>	1,
 						'post_type'	=>	'nav_dropdown',
 						'meta_query' => array(
@@ -603,7 +603,7 @@ function bootstrap_menus() {
 							)
 						),
 					);
-					$items = get_posts($argsForPanel);
+					/*$items = get_posts($argsForPanel);
 					$htmlOut = "";
 					if(is_array($items) && !empty($items)){
 						$htmlOut .= apply_filters( 'siteorigin_panels_before_content', '<div class="content-holder">', $panels_data = false, $items[0]->ID );
