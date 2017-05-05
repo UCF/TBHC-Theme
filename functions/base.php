@@ -582,7 +582,7 @@ function bootstrap_menus() {
 			function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
 				
 				// wow this is weird but works, thanks has_children right below here!
-				if ( 
+				/*if ( 
 					(
 						(is_array( $args[0] ) && array_key_exists('nav_dropdowns',$args[0]) && $args[0]['nav_dropdowns']) ||
 						(is_object( $args[0] ) && property_exists($args[0], 'nav_dropdowns') && $args[0]->nav_dropdowns)
@@ -614,7 +614,7 @@ function bootstrap_menus() {
 					}
 					$css = siteorigin_panels_generate_css($items[0]->ID);
 					$args[0]->after = '</strong><div class="menu-item-dropdown">'.$htmlOut.'</div>';
-				}
+				}*/
 				
 				if ( !$element )
 					return;
