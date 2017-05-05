@@ -609,12 +609,11 @@ function bootstrap_menus() {
 						$htmlOut .= apply_filters( 'siteorigin_panels_before_content', '<div class="content-holder">', $panels_data = false, $items[0]->ID );
 						$htmlOut .= siteorigin_panels_render($post_id = $items[0]->ID);
 						$htmlOut .= apply_filters( 'siteorigin_panels_after_content', '</div>', $panels_data = false, $items[0]->ID );
-					}/*else{
+					}else{
 						$htmlOut .= "Please check back later! This panel is under maintenance!";
 					}
 					$css = siteorigin_panels_generate_css($items[0]->ID);
 					$args[0]->after = '</strong><div class="menu-item-dropdown">'.$htmlOut.'</div>';
-					*/
 				}
 				
 				if ( !$element )
