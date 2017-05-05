@@ -119,10 +119,10 @@
 		</div>
 		<nav id="header-nav-wrap" role="navigation" class="screen-only hidden-xs" data-url="<?=admin_url( 'admin-ajax.php' )?>" style="<?=get_theme_option('navbar_bg_color') ? 'background-color:'.get_theme_option('navbar_bg_color').' !important;' : ''?>">
 			<?php 
-				/*wp_nav_menu(array(
+				wp_nav_menu(array(
 					'theme_location' => 'header',
 					'container' => 'false',
-					'menu_class' => 'menu list-unstyled list-inline text-center '.get_header_styles(),
+					'menu_class' => 'menu list-unstyled list-inline text-center '/*.get_header_styles()*/,
 					'menu_id' => 'header-menu',
 					'walker' => new Bootstrap_Walker_Nav_Menu(),
 					'before' => '<strong>',
