@@ -2059,7 +2059,7 @@ function get_nav_panel(){
 	$css = siteorigin_panels_generate_css($items[0]->ID);
 	wp_send_json(array(
 		'html'	=>	$htmlOut,
-		'css'	=>	$css
+		/*'css'	=>	$css*/
 	));
 	die();
 }
