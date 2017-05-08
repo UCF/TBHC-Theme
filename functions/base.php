@@ -612,7 +612,7 @@ function bootstrap_menus() {
 					}else{
 						$htmlOut .= "Please check back later! This panel is under maintenance!";
 					}
-					/*$css = siteorigin_panels_generate_css($items[0]->ID);*/
+					$css = siteorigin_panels_generate_css($items[0]->ID);
 					$args[0]->after = '</strong><div class="menu-item-dropdown">'.$htmlOut.'</div>';
 				}
 				
