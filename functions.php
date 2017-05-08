@@ -646,53 +646,51 @@ function frontpage_spotlights() {
 					Check out more stories
 					<i class="fa fa-external-link"></i>
 				</a>	
-			</div>	
-			<div class="spotlights_lg_table">
-				<? foreach ( $spotlights as $spotlight ){ 
-					$link = get_permalink($spotlight->ID);
-					$ext_link = get_post_meta($spotlight->ID, 'spotlight_url_redirect', TRUE);
-					if($ext_link){
-						$link = $ext_link; 
+			</div>					
+			<? foreach ( $spotlights as $spotlight ){ 
+				$link = get_permalink($spotlight->ID);
+				$ext_link = get_post_meta($spotlight->ID, 'spotlight_url_redirect', TRUE);
+				if($ext_link){
+					$link = $ext_link; 
+				}
+				$cat_term = get_term_by('slug','event-category','event_groups');
+				$child_terms = get_term_children($cat_term->term_id, 'event_groups');
+				$all_terms   = wp_get_post_terms($spotlight->ID, 'event_groups');
+				foreach ( $all_terms as $term ) {
+					if( in_array($term->term_id, $child_terms ) ) {
+						$term_title = $term->name;
+						break;
 					}
-					$cat_term = get_term_by('slug','event-category','event_groups');
-					$child_terms = get_term_children($cat_term->term_id, 'event_groups');
-					$all_terms   = wp_get_post_terms($spotlight->ID, 'event_groups');
-					foreach ( $all_terms as $term ) {
-						if( in_array($term->term_id, $child_terms ) ) {
-							$term_title = $term->name;
-							break;
-						}
-						if(DEBUG){
-							print_r($cat_term);
-							print_r($child_terms);
-							print_r($all_terms);					
-						}					
-					}?>
-					<div class="spotlight_single_wrap">
-						<a class="spotlight_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight->post_title)?>">
-							<div class="spotlight_image_wrap">
-								<? $thumb_id = get_post_thumbnail_id($spotlight->ID);
-									$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
-									$thumb_src = $thumb_src[0];
-									if ($thumb_src) { ?>
-										<img class="spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight->post_title)?>"/>
-									<? } ?>
-							</div>
-							<div class="spotlight_content_wrap">
-								<div class="spotlight_type">
-									<?=$term_title?>
-								</div>	
-								<h3 class="spotlight_title">
-									<?=$spotlight->post_title?>	
-								</h3>
-								<p class="spotlight_content">
-									<?=get_the_excerpt($spotlight->ID)?>	
-								</p>
-							</div>
-						</a>
-					</div>
-				<? } ?>
-			</div>
+					if(DEBUG){
+						print_r($cat_term);
+						print_r($child_terms);
+						print_r($all_terms);					
+					}					
+				}?>
+				<div class="spotlight_single_wrap">
+					<a class="spotlight_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight->post_title)?>">
+						<div class="spotlight_image_wrap">
+							<? $thumb_id = get_post_thumbnail_id($spotlight->ID);
+								$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
+								$thumb_src = $thumb_src[0];
+								if ($thumb_src) { ?>
+									<img class="spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight->post_title)?>"/>
+								<? } ?>
+						</div>
+						<div class="spotlight_content_wrap">
+							<div class="spotlight_type">
+								<?=$term_title?>
+							</div>	
+							<h3 class="spotlight_title">
+								<?=$spotlight->post_title?>	
+							</h3>
+							<p class="spotlight_content">
+								<?=get_the_excerpt($spotlight->ID)?>	
+							</p>
+						</div>
+					</a>
+				</div>
+			<? } ?>
 		</section>
 	<? return ob_get_clean();
 }
