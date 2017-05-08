@@ -34,6 +34,7 @@ var configDefault = {
     },
     config = merge(configDefault, configLocal);
 
+	
 // Run Bower
 gulp.task('bower', function() {
   bower()

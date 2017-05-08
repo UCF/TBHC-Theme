@@ -3,7 +3,6 @@
     width: 100%;
     text-align: center;
     text-transform: uppercase;
-    max-width:$screen-lg;
 
     @media (min-width: $screen-sm-max) {
         background-color: black;
@@ -19,6 +18,8 @@
         @media (min-width: $screen-sm-max) {
             background-color: black;
             color: white;
+            max-width: 1200px;
+            margin: 0 auto;
         }
     }
 
@@ -29,6 +30,8 @@
             width: 100%;
             vertical-align: top;
             position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .interest_single_wrap {
