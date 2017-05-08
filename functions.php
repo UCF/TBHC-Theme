@@ -2064,8 +2064,8 @@ function get_nav_panel(){
 	die();
 }
 
-/*add_action( 'wp_ajax_get_nav_panel', 'get_nav_panel' );
-add_action( 'wp_ajax_nopriv_get_nav_panel', 'get_nav_panel' );*/
+add_action( 'wp_ajax_get_nav_panel', 'get_nav_panel' );
+add_action( 'wp_ajax_nopriv_get_nav_panel', 'get_nav_panel' );
 
 // Breadcrumbs from https://www.thewebtaylor.com/articles/wordpress-creating-breadcrumbs-without-a-plugin, kudos and thnx to https://www.thewebtaylor.com/articles/author/stuart, modified to use spans instead of li
 function custom_breadcrumbs() {
