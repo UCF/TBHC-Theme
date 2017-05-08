@@ -6,7 +6,11 @@
 
     .opportunities_title_wrap {
         padding-left: 3%;
-
+         @media (min-width: $screen-sm-max) {
+             padding-left: 0;    
+             margin: 0 auto;
+            max-width: 1200px;
+          }
         .opportunities_title {
             display: inline-block;
         }
@@ -16,6 +20,8 @@
         @media (min-width: $screen-sm-max) {
             display: table;
             table-layout: fixed;
+            max-width: 1200px;
+            margin: 0 auto;
             width: 100%;
         }
 

@@ -2,6 +2,10 @@
     padding: 0 8%;
 
     .spotlights_title_wrap {
+        @media (min-width: $screen-sm-max) {
+             max-width: 1200px;
+             margin: 0 auto;
+         }
         .spotlights_title {
             font-size: 3em;
             font-weight: bold;
@@ -13,7 +17,11 @@
             text-transform: uppercase;
         }
     }
-
+    .spotlights_lg_table{
+        @media (min-width: $screen-sm-max) {
+             max-width: 1200px;
+             margin: 0 auto;
+ }
     .spotlight_single {
         display: table;
         width: 100%;
@@ -46,3 +54,4 @@
         }
     }
 }
+    }
