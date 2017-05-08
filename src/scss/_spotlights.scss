@@ -8,6 +8,8 @@
          }
         .spotlights_title {
             font-size: 3em;
+        .spotlights_title {
+            font-size: 3em;
             font-weight: bold;
         }
 
@@ -35,21 +37,35 @@
             }
         }
 
-        .spotlight_content_wrap {
-            display: table-cell;
-            padding-left: 3%;
-            color: #333;
 
-            .spotlight_type {
-                background-color: #FC0;
-                text-transform: uppercase;
-                color: #333;
-            }
 
-            .spotlight_title {
-                font-weight: bold;
-                padding: 5px 0;
+
+
+
+
+
+
+
+
+
+
+
+            .spotlight_content_wrap {
+                display: table-cell;
+                padding-left: 3%;
                 color: #333;
+
+                .spotlight_type {
+                    background-color: #FC0;
+                    text-transform: uppercase;
+                    color: #333;
+                }
+
+                .spotlight_title {
+                    font-weight: bold;
+                    padding: 5px 0;
+                    color: #333;
+                }
             }
         }
     }
