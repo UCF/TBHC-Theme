@@ -150,6 +150,7 @@
 				?>
 			</div>
 			<nav id="section-nav-xs" class="navbar navbar-inverse">
+			<div id="nav-xs-center-wrap">
 				<div class="navbar-section">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#section-menu-xs-collapse" aria-expanded="false">
 						<span class="sr-only">Toggle navigation</span>
@@ -170,6 +171,7 @@
 						'nav_dropdowns'	=> false
 						) );
 					?>
+				</div>
 				</div>
 			</nav>		
 		<?}?>
