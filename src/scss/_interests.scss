@@ -120,7 +120,7 @@
                     text-transform: none;
                     width: 100%;
                     height: 100%;
-                    float: none;
+                    display:table-cell;
 
                     @media (min-width: $screen-sm-max) {
                         position: relative;
