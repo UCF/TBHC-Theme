@@ -35,7 +35,10 @@
                     content: '';
                     position: absolute;
                     top: 50%;
+                    border:none;
+                    @media (min-width: $screen-sm-max) {
                     border-bottom: 2px solid;
+                    }
                     width: 600px; /* half of limiter*/
                     margin: 0 20px;
                     right: 100%;
@@ -45,7 +48,10 @@
                     content: '';
                     position: absolute;
                     top: 50%;
+                    border: none;
+                    @media (min-width: $screen-sm-max) {
                     border-bottom: 2px solid;
+                    }
                     width: 600px; /* half of limiter*/
                     margin: 0 20px;
                     left: 100%;
@@ -134,24 +140,6 @@
                             margin: 0;
                             text-align: center;
                         }
-                        /*h2.background {
-                position: relative;
-                z-index: 1;
-                &:before {
-                    border-top: 2px solid #dfdfdf;
-                    content:"";
-                    margin: 0 auto; // this centers the line to the full width specified 
-                    position: absolute; // positioning must be absolute here, and relative positioning must be applied to the parent
-                    top: 50%; left: 0; right: 0; bottom: 0;
-                    width: 95%;
-                    z-index: -1;
-                }
-                span { 
-                    // to hide the lines from behind the text, you have to set the background color the same as the container 
-                    background: #fff; 
-                    padding: 0 15px; 
-                }
-            }*/
                     }
                 }
 
@@ -176,12 +164,11 @@
 
                     .interest_icon {
                         border-radius: 50%;
-                        padding: 5%;
+                        padding: 10%;
                         border: 4px #FC0 solid;
-
+                        color:#000;
                         &:after {
                             content: "";
-                            font-size: 1.5em;
                             color: #000;
                         }
                     }
