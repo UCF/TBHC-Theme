@@ -811,7 +811,7 @@ function frontpage_interests(){
 	ob_start(); ?>
 	<section id="interests">
 		<div class="interests_title_wrap">
-			<h2 class="interests_title">What Are You Interested In?</h2> <!--http://codepen.io/ericrasch/pen/Irlpm-->
+			<h2 class="interests_title"><span>What Are You Interested In?</span></h2> <!--http://codepen.io/ericrasch/pen/Irlpm-->
 		</div>	
 		<div class="interests_lg_table">
 		<? foreach ( $itms as $itm ){ 
