@@ -859,18 +859,20 @@ function frontpage_events(){
 		<div class="events_title_wrap">
 			<h2 class="events_title">Upcoming Events</h2>
 		</div>
-		<? foreach($events as $element){?>
-			<div class="event_single_wrap<? if(array_search($element, $events) === 0){?> first<?}?>">
-				<div class="event_single">
-					<div class="event_datetime"><?=$element["starts"]?></div>
-					<h3 class="event_title"><?=$element["title"]?></h3>
-					<?if (array_search($element, $events) === 0){?>
-						<div class="event_content"><?=$element["description"]?></div>	
-					<?}?>
-				</div>
-			</div>			
-		<?}?>
-		<div class="clearfix"></div>
+		<div class="events_lg_table">
+			<? foreach($events as $element){?>
+				<div class="event_single_wrap<? if(array_search($element, $events) === 0){?> first<?}?>">
+					<div class="event_single">
+						<div class="event_datetime"><?=$element["starts"]?></div>
+						<h3 class="event_title"><?=$element["title"]?></h3>
+						<?if (array_search($element, $events) === 0){?>
+							<div class="event_content"><?=$element["description"]?></div>	
+						<?}?>
+					</div>
+				</div>			
+			<?}?>
+			<div class="clearfix"></div>
+		</div>
 	</section>
 	<? return ob_get_clean();
 }
