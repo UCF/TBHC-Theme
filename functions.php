@@ -681,7 +681,7 @@ function frontpage_spotlights() {
 							<div class="spotlight_content_wrap">
 								<span class="spotlight_type">
 									<?=$term_title?>
-								</div>	
+								</span>	
 								<h3 class="spotlight_title">
 									<?=$spotlight->post_title?>	
 								</h3>
