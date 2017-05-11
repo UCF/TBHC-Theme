@@ -679,7 +679,7 @@ function frontpage_spotlights() {
 									<? } ?>
 							</div>
 							<div class="spotlight_content_wrap">
-								<div class="spotlight_type">
+								<span class="spotlight_type">
 									<?=$term_title?>
 								</div>	
 								<h3 class="spotlight_title">
@@ -861,6 +861,11 @@ function frontpage_events(){
 		</div>
 		<div class="events_lg_table">
 			<? foreach($events as $element){?>
+				<?if (array_search($element, $events) === 0){?>
+					<span class="event_type">Up Next</span>
+				<?}else if(array_search($element, $events) == 1){?>
+					<span class="event_type">Looking Ahead</span>
+				<?}?>
 				<div class="event_single_wrap<? if(array_search($element, $events) === 0){?> first<?}?>">
 					<div class="event_single">
 						<div class="event_datetime"><?=$element["starts"]?></div>
