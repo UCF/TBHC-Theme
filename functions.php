@@ -863,10 +863,10 @@ function frontpage_events(){
 			<div class="events_table_group first">
 				<? foreach($events as $element){?>					
 					<?if (array_search($element, $events) === 0){?>
-						<span class="event_type">Up Next</span>
+						<span class="events_type">Up Next</span>
 					<?}else if(array_search($element, $events) === 1){?>
 						<div class="events_table_group second">	
-							<span class="event_type">Looking Ahead</span>
+							<span class="events_type">Looking Ahead</span>
 					<?}?>					
 					<div class="event_single_wrap">
 						<div class="event_single">

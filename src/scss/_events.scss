@@ -23,15 +23,16 @@
         .events_table_group {
             display: table-cell;
 
+            .events_type {
+                background-color: #FC0;
+                text-transform: uppercase;
+                color: #333;
+                padding-left: 5px;
+                padding-right: 5px;
+                line-height: 1.65;
+            }
+
             .event_single_wrap {
-                .event_type {
-                    background-color: #FC0;
-                    text-transform: uppercase;
-                    color: #333;
-                    padding-left: 5px;
-                    padding-right: 5px;
-                    line-height: 1.65;
-                }
 
                 .event_datetime {
                     color: #FC0;
