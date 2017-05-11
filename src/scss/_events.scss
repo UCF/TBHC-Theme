@@ -1,5 +1,11 @@
 ﻿section#events {
     position: relative;
+    background-color: black;
+
+    @media (min-width: $screen-sm-max) {
+        background-image: url('../img/bldg_front.png');
+        background-size: cover;
+    }
 
     .events_bg_overlay {
         display: none;
