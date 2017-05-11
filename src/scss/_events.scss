@@ -21,7 +21,9 @@
         }
 
         .events_table_group {
-            display: table-cell;
+            @media (min-width: $screen-sm-max) {
+                display: table-cell;
+            }
 
             .events_type {
                 background-color: #FC0;
