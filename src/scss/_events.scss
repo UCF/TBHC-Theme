@@ -1,4 +1,6 @@
 ﻿section#events {
+    position: relative;
+
     .events_bg_overlay {
         display: none;
 
@@ -33,6 +35,7 @@
 
     .events_lg_table {
         padding: 0 3%;
+        width: 100%;
 
         @media (min-width: $screen-sm-max) {
             max-width: $screen-lg;
@@ -44,6 +47,7 @@
         .events_table_group {
             @media (min-width: $screen-sm-max) {
                 display: table-cell;
+                width: 50%;
             }
 
             .events_type {
