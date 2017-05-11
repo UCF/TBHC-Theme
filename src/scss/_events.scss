@@ -1,23 +1,44 @@
 ﻿section#events {
-    padding: 0 3%;
-    background-color: black;
-
-    .events_title {
-        color: white;
-        text-transform: uppercase;
-        font-weight: bold;
+    .events_bg_overlay {
+        display: none;
 
         @media (min-width: $screen-sm-max) {
-            max-width: $screen-lg;
-            margin: 0 auto;
+            display: block;
+            background-color: black;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: .9;
+        }
+    }
+
+    .events_title_wrap {
+        padding: 0 3%;
+
+        @media (min-width: $screen-sm-max) {
+            position: relative;
+        }
+
+        .events_title {
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+
+            @media (min-width: $screen-sm-max) {
+                max-width: $screen-lg;
+                margin: 0 auto;
+            }
         }
     }
 
     .events_lg_table {
+        padding: 0 3%;
+
         @media (min-width: $screen-sm-max) {
             max-width: $screen-lg;
             margin: 0 auto;
             display: table;
+            position: relative;
         }
 
         .events_table_group {

@@ -856,6 +856,7 @@ function frontpage_events(){
 	}
 	ob_start();?>
 	<section id="events">
+	<div class="events_bg_overlay"></div>
 		<div class="events_title_wrap">
 			<h2 class="events_title">Upcoming Events</h2>
 		</div>

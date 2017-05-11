@@ -1710,12 +1710,12 @@ var debounce = function (func, threshold, execAsap) {
     };
 }
 function stickyHeadFix(){
-	var wpAdminBar = $('#wpadminbar'), headWrp = $('#section-nav-xs'), isNotMob = $('#site-nav-xs').css("display") == "none";
-	headWrp = headWrp.length <= 0 ? $('#section-nav-xs') : headWrp;
+	var wpAdminBar = $('#wpadminbar'), headWrp = $('#section-nav-xs');
+	headWrp = headWrp.length <= 0 ? $('#header-nav-wrap') : headWrp;
 	headWrp.off("affixed.bs.affix");
 	headWrp.off("affix-top.bs.affix");
 	headWrp.affix({
-		offset: { top: headWrp.offset().top + (wpAdminBar.length && isNotMob ? 55 - wpAdminBar.height() : 55) } // 55 for the lazy load ucf search bar ugh
+		offset: { top: headWrp.offset().top + (wpAdminBar.length ? 55 - wpAdminBar.height() : 55) } // 55 for the lazy load ucf search bar ugh
 	});
 	var toPrep = $('#cntrPceWrap').length ? $('#cntrPceWrap') : $('.container');
 	headWrp.on('affixed.bs.affix', function(){ 
