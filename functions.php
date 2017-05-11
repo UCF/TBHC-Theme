@@ -860,23 +860,28 @@ function frontpage_events(){
 			<h2 class="events_title">Upcoming Events</h2>
 		</div>
 		<div class="events_lg_table">
-			<? foreach($events as $element){?>
-				<?if (array_search($element, $events) === 0){?>
-					<span class="event_type">Up Next</span>
-				<?}else if(array_search($element, $events) == 1){?>
-					<span class="event_type">Looking Ahead</span>
+			<div class="events_table_group first">
+				<? foreach($events as $element){?>					
+					<?if (array_search($element, $events) === 0){?>
+						<span class="event_type">Up Next</span>
+					<?}else if(array_search($element, $events) === 1){?>
+						<div class="events_table_group second">	
+							<span class="event_type">Looking Ahead</span>
+					<?}?>					
+					<div class="event_single_wrap">
+						<div class="event_single">
+							<div class="event_datetime"><?=$element["starts"]?></div>
+							<h3 class="event_title"><?=$element["title"]?></h3>
+							<?if (array_search($element, $events) === 0){?>
+								<div class="event_content"><?=$element["description"]?></div>	
+							<?}?>
+						</div>
+					</div>	
+					<?if (array_search($element, $events) === 0){?>
+						</div>	
+					<?}?>					
 				<?}?>
-				<div class="event_single_wrap<? if(array_search($element, $events) === 0){?> first<?}?>">
-					<div class="event_single">
-						<div class="event_datetime"><?=$element["starts"]?></div>
-						<h3 class="event_title"><?=$element["title"]?></h3>
-						<?if (array_search($element, $events) === 0){?>
-							<div class="event_content"><?=$element["description"]?></div>	
-						<?}?>
-					</div>
-				</div>			
-			<?}?>
-			<div class="clearfix"></div>
+			</div>
 		</div>
 	</section>
 	<? return ob_get_clean();
