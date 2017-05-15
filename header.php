@@ -84,6 +84,16 @@
 				}				
 			}
 		</style>
+					<?php
+				
+						// orce override?
+		print_r(get_theme_option('home_page_theme'));
+		print_r(get_stylesheet_directory_uri());
+		if(get_theme_option('home_page_theme') == 1){
+			wp_enqueue_style('orce-overrides', get_stylesheet_directory_uri().'/wp-content/themes/TBHC-Theme/static/css/orce-overrides.min.css');
+		}
+
+		?>
 		</head>
 	<body <?php echo body_class(); ?>>
 

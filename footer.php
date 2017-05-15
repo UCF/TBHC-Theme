@@ -89,15 +89,4 @@
 		</div><!-- .container -->
 	</body>
 	<?="\n".footer_()."\n"?>
-			<?php
-				
-						// orce override?
-		print_r(get_theme_option('home_page_theme'));
-		print_r(get_home_url(1));
-		if(get_theme_option('home_page_theme') == 1){
-			wp_enqueue_style('orce-overrides', get_home_url(1).'/wp-content/themes/TBHC-Theme/static/css/orce-overrides.min.css');
-		}
-
-		?>
-
 </html>
