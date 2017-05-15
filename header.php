@@ -29,6 +29,7 @@
 		if ( is_page() || ( is_404() && $post = get_page_by_title( '404' ) ) ) {
 			esi_include( 'page_specific_stylesheet', $post->ID ); // Wrap in ESI to prevent caching of .css file
 		}
+		
 		?>
 		<script type="text/javascript">
 			var PostTypeSearchDataManager = {
@@ -83,6 +84,12 @@
 				}				
 			}
 		</style>
+		<?
+				// orce override?
+		if(get_theme_option('home_page_theme') === 0){
+			wp_enqueue_style('orce_overrides', '../static/css/orce-overrides.min.css');
+		}
+		?>
 		</head>
 	<body <?php echo body_class(); ?>>
 
