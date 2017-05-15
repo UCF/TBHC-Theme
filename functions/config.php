@@ -407,9 +407,9 @@ Config::$theme_settings = array(
 			'description' => 'Choose the theme for the homepage of this site.',
 			'default'     => 'Honors',
 			'choices'     => array(
-				'Honors'  => 0,
-				'ORCE' => 1,
-				'OPA' => 2,
+				'Honors'  => 1,
+				'ORCE' => 0,
+				//'OPA' => 0,
 			),
 			'value'       => $theme_options['home_page_theme'],
 	    )),
