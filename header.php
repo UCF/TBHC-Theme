@@ -52,16 +52,6 @@
 		</script>
 		<script type="text/javascript" src="//malsup.github.io/min/jquery.cycle.all.min.js"></script>
 		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
-		<?php
-				
-						// orce override?
-		print_r(get_theme_option('home_page_theme'));
-		print_r(get_theme_option('home_page_theme') == 1);
-		if(get_theme_option('home_page_theme') == 1){
-			wp_enqueue_style('orce-overrides', 'https://orcetbhccmsdev.smca.ucf.edu/wp-content/themes/TBHC-Theme/static/css/orce-overrides.min.css');
-		}
-
-		?>
 		<!--[if IE]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>			
 		<![endif]-->
