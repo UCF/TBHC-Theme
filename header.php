@@ -30,6 +30,12 @@
 			esi_include( 'page_specific_stylesheet', $post->ID ); // Wrap in ESI to prevent caching of .css file
 		}
 		
+						// orce override?
+		if(get_theme_option('home_page_theme') === 1){
+			wp_enqueue_style('orce_overrides', '../static/css/orce-overrides.min.css');
+		}
+
+		
 		?>
 		<script type="text/javascript">
 			var PostTypeSearchDataManager = {
@@ -84,12 +90,6 @@
 				}				
 			}
 		</style>
-		<?php
-				// orce override?
-		if(get_theme_option('home_page_theme') === 1){
-			wp_enqueue_style('orce_overrides', '../static/css/orce-overrides.min.css');
-		}
-		?>
 		</head>
 	<body <?php echo body_class(); ?>>
 
