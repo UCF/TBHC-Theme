@@ -30,14 +30,6 @@
 			esi_include( 'page_specific_stylesheet', $post->ID ); // Wrap in ESI to prevent caching of .css file
 		}
 		
-						// orce override?
-		print_r(get_theme_option('home_page_theme'));
-		print_r(get_theme_option('home_page_theme') == 1);
-		if(get_theme_option('home_page_theme') == 1){
-			print_r(wp_enqueue_style('orce_overrides', '../static/css/orce-overrides.min.css'));
-		}
-
-		
 		?>
 		<script type="text/javascript">
 			var PostTypeSearchDataManager = {
@@ -60,6 +52,16 @@
 		</script>
 		<script type="text/javascript" src="//malsup.github.io/min/jquery.cycle.all.min.js"></script>
 		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+		<?php
+				
+						// orce override?
+		print_r(get_theme_option('home_page_theme'));
+		print_r(get_theme_option('home_page_theme') == 1);
+		if(get_theme_option('home_page_theme') == 1){
+			print_r(wp_enqueue_style('orce_overrides', 'https://orcetbhccmsdev.smca.ucf.edu/wp-content/themes/TBHC-Theme/static/css/orce-overrides.min.css'));
+		}
+
+		?>
 		<!--[if IE]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>			
 		<![endif]-->
