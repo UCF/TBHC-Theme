@@ -31,7 +31,9 @@
 		}
 		
 						// orce override?
-		if(get_theme_option('home_page_theme') === 1){
+		print_r(get_theme_option('home_page_theme'));
+		print_r(get_theme_option('home_page_theme') == 1);
+		if(get_theme_option('home_page_theme') == 1){
 			wp_enqueue_style('orce_overrides', '../static/css/orce-overrides.min.css');
 		}
 
