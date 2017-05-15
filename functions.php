@@ -679,9 +679,9 @@ function frontpage_spotlights() {
 									<? } ?>
 							</div>
 							<div class="spotlight_content_wrap">
-								<div class="spotlight_type">
+								<span class="spotlight_type">
 									<?=$term_title?>
-								</div>	
+								</span>	
 								<h3 class="spotlight_title">
 									<?=$spotlight->post_title?>	
 								</h3>
@@ -811,7 +811,7 @@ function frontpage_interests(){
 	ob_start(); ?>
 	<section id="interests">
 		<div class="interests_title_wrap">
-			<h2 class="interests_title">What Are You Interested In?</h2> <!--http://codepen.io/ericrasch/pen/Irlpm-->
+			<h2 class="interests_title"><span>What Are You Interested In?</span></h2>
 		</div>	
 		<div class="interests_lg_table">
 		<? foreach ( $itms as $itm ){ 
@@ -856,21 +856,34 @@ function frontpage_events(){
 	}
 	ob_start();?>
 	<section id="events">
+	<div class="events_bg_overlay"></div>
 		<div class="events_title_wrap">
 			<h2 class="events_title">Upcoming Events</h2>
 		</div>
-		<? foreach($events as $element){?>
-			<div class="event_single_wrap<? if(array_search($element, $events) === 0){?> first<?}?>">
-				<div class="event_single">
-					<div class="event_datetime"><?=$element["starts"]?></div>
-					<h3 class="event_title"><?=$element["title"]?></h3>
+		<div class="events_lg_table">
+			<div class="events_table_group first">
+				<? foreach($events as $element){?>					
 					<?if (array_search($element, $events) === 0){?>
-						<div class="event_content"><?=$element["description"]?></div>	
-					<?}?>
-				</div>
-			</div>			
-		<?}?>
-		<div class="clearfix"></div>
+						<span class="events_type">Up Next</span>
+					<?}else if(array_search($element, $events) === 1){?>
+						<div class="events_table_group second">	
+							<span class="events_type">Looking Ahead</span>
+					<?}?>					
+					<div class="event_single_wrap">
+						<div class="event_single">
+							<div class="event_datetime"><?=$element["starts"]?></div>
+							<h3 class="event_title"><?=$element["title"]?></h3>
+							<?if (array_search($element, $events) === 0){?>
+								<div class="event_content"><?=$element["description"]?></div>	
+							<?}?>
+						</div>
+					</div>	
+					<?if (array_search($element, $events) === 0){?>
+						</div>	
+					<?}?>					
+				<?}?>
+			</div>
+		</div>
 	</section>
 	<? return ob_get_clean();
 }

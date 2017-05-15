@@ -106,6 +106,23 @@ gulp.task('css-ie-main', function() {
     .pipe(browserSync.stream());
 });
 
+gulp.task('css-orce', function() {
+  gulp.src(config.scssPath + '/orce-overrides.scss')
+	//.pipe(replace(/@media\s*\((min|max)-width:(?!.*\)\sand)/g, '@include respond-$1('))
+	.pipe(sass().on('error', sass.logError))
+    .pipe(minifyCss({compatibility: 'ie8'}))
+    .pipe(rename('orce-overrides.min.css'))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions', 'ie >= 8'],
+      cascade: false
+    }))
+    .pipe(bless())
+    .pipe(gulp.dest(config.cssPath))
+    .pipe(browserSync.stream());
+});
+
+
+
 // Compile + bless admin scss
 gulp.task('css-admin', function() {
   gulp.src(config.scssPath + '/admin.scss')

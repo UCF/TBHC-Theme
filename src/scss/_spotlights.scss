@@ -3,7 +3,7 @@
 
     .spotlights_title_wrap {
         @media (min-width: $screen-sm-max) {
-            max-width: 1200px;
+            max-width: $screen-lg;
             margin: 0 auto;
         }
 
@@ -21,13 +21,17 @@
 
     .spotlights_lg_table {
         @media (min-width: $screen-sm-max) {
-            max-width: 1200px;
+            max-width: $screen-lg;
             margin: 0 auto;
         }
 
         .spotlight_single {
             display: table;
             width: 100%;
+
+            @media (min-width: $screen-sm-max) {
+                padding: 5px;
+            }
 
             .spotlight_image_wrap {
                 display: table-cell;
@@ -48,6 +52,9 @@
                     background-color: #FC0;
                     text-transform: uppercase;
                     color: #333;
+                    padding-left: 5px;
+                    padding-right:5px;
+                    line-height:1.65;
                 }
 
                 .spotlight_title {

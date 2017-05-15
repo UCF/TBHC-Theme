@@ -401,6 +401,18 @@ Config::$theme_settings = array(
 		)),
 	),
 	'Styles' => array(
+			new RadioField(array(
+			'name'        => 'Home Page Theme',
+			'id'          => THEME_OPTIONS_NAME.'[home_page_theme]',
+			'description' => 'Choose the theme for the homepage of this site.',
+			'default'     => 'Honors',
+			'choices'     => array(
+				'Honors'  => 0,
+				'ORCE' => 1,
+				'OPA' => 2,
+			),
+			'value'       => $theme_options['home_page_theme'],
+	    )),
 		new RadioField(array(
 			'name'        => 'Enable Responsiveness',
 			'id'          => THEME_OPTIONS_NAME.'[bootstrap_enable_responsive]',
