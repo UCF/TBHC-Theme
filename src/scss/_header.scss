@@ -154,8 +154,8 @@
     background-color: #fc0;
     color: #000;
 
-    .navbar-collapse{
-        border:none;
+    .navbar-collapse {
+        border: none;
     }
 
     .navbar-brand {
@@ -193,7 +193,7 @@
         &:focus {
             color: #FFF;
             text-decoration: none;
-            background-color:#efbc00;
+            background-color: #efbc00;
         }
     }
 }
@@ -202,25 +202,30 @@
     clear: both;
     margin-bottom: 0;
     text-transform: uppercase;
-    height:auto;
-    width:100%;
+    height: auto;
+    width: 100%;
     z-index: 1;
-    display:block;
+    display: block;
     border-radius: 0;
-    #nav-xs-center-wrap{
-        max-width:1200px;
-        margin:0 auto;
-    .navbar-brand {
-        float: right;
-        color: white;
-    }
-    @media(min-width: $screen-sm-min) {
-        li>a{
-            line-height: normal;
+
+    #nav-xs-center-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        .collapse.navbar-collapse {
+            @media(min-width: $screen-sm-min) {
+                padding: 0;
+            }
         }
-    }
-    button {
-        border: none;
-    }
+
+        @media(min-width: $screen-sm-min) {
+            li > a {
+                line-height: normal;
+            }
+        }
+
+        button {
+            border: none;
+        }
     }
 }

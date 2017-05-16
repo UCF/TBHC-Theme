@@ -10072,9 +10072,9 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
   #section-nav-xs #nav-xs-center-wrap {
     max-width: 1200px;
     margin: 0 auto; }
-    #section-nav-xs #nav-xs-center-wrap .navbar-brand {
-      float: right;
-      color: white; }
+    @media (min-width: 768px) {
+      #section-nav-xs #nav-xs-center-wrap .collapse.navbar-collapse {
+        padding: 0; } }
     @media (min-width: 768px) {
       #section-nav-xs #nav-xs-center-wrap li > a {
         line-height: normal; } }

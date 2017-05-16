@@ -1524,11 +1524,11 @@ class Interest extends CustomPostType{
 		$edit_item      = 'Edit Interest',
 		$new_item       = 'New Interest',
 		$public         = True,
-		$use_editor     = True,
+		$use_editor     = False,
 		$use_thumbnails = True,
 		$use_order      = True,
 		$use_title      = True,
-		$use_revisions  = True;
+		$use_revisions  = False;
 	public function fields() {
 		$prefix = $this->options('name').'_';
 		return array(
@@ -1536,7 +1536,8 @@ class Interest extends CustomPostType{
 				'name' => 'URL Redirect',
 				'desc' => 'Specify a full url to use as a redirect when the interest is clicked.',
 				'id'   => $prefix.'url_redirect',
-				'type' => 'text'
+				'type' => 'text',
+				'std'	=> '',
 			),
 		);
 	}
