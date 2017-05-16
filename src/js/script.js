@@ -1717,7 +1717,7 @@ function stickyHeadFix(){
 	headWrp.affix({
 		offset: { top: headWrp.offset().top + (wpAdminBar.length ? 55 - wpAdminBar.height() : 55) } // 55 for the lazy load ucf search bar ugh
 	});
-	var toPrep = $('#cntrPceWrap').length ? $('#cntrPceWrap') : $('.container');
+	var toPrep = headWrp.prop("id").indexOf("header") >= 0 ? $('#cntrPceWrap') : $('.container');
 	headWrp.on('affixed.bs.affix', function(){ 
 		$(this).css("top", wpAdminBar.length ? wpAdminBar.height() : "0" + "px"); 
 		toPrep.prepend("<div id='fakeNav' class='hidden-xs' style='height:" + headWrp.height() + "px;display:block;'></div>");
