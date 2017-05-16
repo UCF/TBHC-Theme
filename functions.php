@@ -816,9 +816,13 @@ function frontpage_interests(){
 		<?php
 				
 			// orce override?
-			if(get_theme_option('home_page_theme') == 1){ ?>
+			if(get_theme_option('home_page_theme') === 1){ ?>
 				<style>
-										@media (min-width: 770px) {
+					@media (min-width: 990px) {
+					section#interests{
+						padding: 0 0 100px 0 !important;
+						background-color: white !important;
+					}
 					.interests_title_wrap{
 							background-color: #fff !important;
 							color: #000 !important;
@@ -829,7 +833,7 @@ function frontpage_interests(){
 							position: absolute !important;
 							width: 100% !important;
 							height: 100% !important;
-							opacity: .9 !important;
+							opacity: .8 !important;
 					}
 					.interests_false_wrap{
 							background-image:url('https://testtbhccmsdev.smca.ucf.edu/wp-content/uploads/sites/2/2016/07/DISCOVERY_FINAL-1140x400.png') !important;
@@ -877,7 +881,7 @@ function frontpage_interests(){
 		<?php
 				
 			// orce override?
-			if(get_theme_option('home_page_theme') == 1){ ?>
+			if(get_theme_option('home_page_theme') === 1){ ?>
 				</div>
 			<?}
 
