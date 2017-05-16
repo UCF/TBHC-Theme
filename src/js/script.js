@@ -1626,7 +1626,7 @@ function getProfilesForGrid(inp1, inp2){ // moved out person-profile-grid to new
 		data.show_option_all2 = shwOptAll2;
 	}
 	$.post(ajaxUrl, data, function(res){
-		ele.text(res);
+		ele.replaceWith(res);
 	});
 }
 function getOppsForGrid(inp1, inp2){
