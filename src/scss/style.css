@@ -10280,14 +10280,16 @@ ul li:not(ul li div) {
     margin: 0 auto; } }
 
 @media (min-width: 767px) {
+  body.page-template .container {
+    max-width: none;
+    margin: auto; } }
+
+@media (min-width: 767px) {
   #home {
     display: table-row !important; } }
 @media (min-width: 767px) {
   #home .description {
     margin-top: 10px; } }
-#home .container {
-  max-width: none;
-  margin: auto; }
 
 .home_col_morelink, .events_morelink {
   color: #3e769a; }
