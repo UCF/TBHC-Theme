@@ -1524,7 +1524,7 @@ class Interest extends CustomPostType{
 		$edit_item      = 'Edit Interest',
 		$new_item       = 'New Interest',
 		$public         = True,
-		$use_editor     = False,
+		$use_editor     = True,
 		$use_thumbnails = True,
 		$use_order      = True,
 		$use_title      = True,
