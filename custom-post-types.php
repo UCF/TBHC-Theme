@@ -1533,7 +1533,7 @@ class Interest extends CustomPostType{
 		$prefix = $this->options('name').'_';
 		return array(
 			array(
-				'name' => 'URL Redirect',
+				'name' => __('URL Redirect'),
 				'desc' => 'Specify a full url to use as a redirect when the interest is clicked.',
 				'id'   => $prefix.'url_redirect',
 				'type' => 'text',
