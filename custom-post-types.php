@@ -1528,12 +1528,13 @@ class Interest extends CustomPostType{
 		$use_thumbnails = True,
 		$use_order      = True,
 		$use_title      = True,
-		$use_revisions  = False;
+		$use_revisions  = False,
+		$use_metabox	= True;
 	public function fields() {
 		$prefix = $this->options('name').'_';
 		return array(
 			array(
-				'name' => __('URL Redirect'),
+				'name' => 'URL Redirect',
 				'desc' => 'Specify a full url to use as a redirect when the interest is clicked.',
 				'id'   => $prefix.'url_redirect',
 				'type' => 'text',
