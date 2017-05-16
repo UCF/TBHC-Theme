@@ -820,8 +820,10 @@ function frontpage_interests(){
 				<style>
 					@media (min-width: 990px) {
 					section#interests{
-						padding: 0 0 100px 0 !important;
+						padding: 0 !important;
 						background-color: white !important;
+						overflow: hidden;
+						margin-bottom: 50px;
 					}
 					.interests_title_wrap{
 							background-color: #fff !important;
