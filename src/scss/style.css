@@ -10276,13 +10276,13 @@ ul li:not(ul li div) {
 @media (min-width: 767px) {
   .container {
     display: table !important;
-    max-width: 1200px;
-    margin: 0 auto; } }
+    max-width: none;
+    margin: auto; } }
 
 @media (min-width: 767px) {
   body.page-template .container {
-    max-width: none;
-    margin: auto; } }
+    max-width: 1200px;
+    margin: 0 auto; } }
 
 @media (min-width: 767px) {
   #home {
