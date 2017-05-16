@@ -10275,7 +10275,9 @@ ul li:not(ul li div) {
 
 @media (min-width: 767px) {
   .container {
-    display: table !important; } }
+    display: table !important;
+    max-width: 1200px;
+    margin: 0 auto; } }
 
 @media (min-width: 767px) {
   #home {
@@ -10283,6 +10285,9 @@ ul li:not(ul li div) {
 @media (min-width: 767px) {
   #home .description {
     margin-top: 10px; } }
+#home .container {
+  max-width: none;
+  margin: auto; }
 
 .home_col_morelink, .events_morelink {
   color: #3e769a; }

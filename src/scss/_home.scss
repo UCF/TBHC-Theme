@@ -7,6 +7,8 @@ ul li:not(ul li div) {
 .container {
     @media (min-width: $screen-xs-max) {
         display: table !important;
+            max-width: 1200px;
+        margin: 0 auto;
     }
 }
 
@@ -19,6 +21,10 @@ ul li:not(ul li div) {
         @media (min-width: $screen-xs-max) {
             margin-top: 10px;
         }
+    }
+    .container{
+        max-width: none;
+        margin: auto;
     }
 }
 
