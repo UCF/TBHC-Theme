@@ -813,6 +813,39 @@ function frontpage_interests(){
 		<div class="interests_title_wrap">
 			<h2 class="interests_title"><span>What Are You Interested In?</span></h2>
 		</div>	
+		<?php
+				
+			// orce override?
+			if(get_theme_option('home_page_theme') == 1){ ?>
+				<style>
+					.interests_title_wrap{
+						background-color: #fff;
+						color: #000;
+					}
+					.interests_bg_overlay {
+						display: none;
+
+						@media (min-width: 770px) {
+							display: block;
+							background-color: black;
+							position: absolute;
+							width: 100%;
+							height: 100%;
+							opacity: .9;
+						}
+					}
+					.interests_false_wrap{
+						@media (min-width: 770px) {
+							background-image:url('https://testtbhccmsdev.smca.ucf.edu/wp-content/uploads/sites/2/2016/07/DISCOVERY_FINAL-1140x400.png');
+							background-size:cover;
+							height:100%;
+							background-position:50% 50%;
+						}
+					}
+				</style>
+				<div class="interests_false_wrap">
+					<div class="interests_bg_overlay"></div>
+			<?}?>
 		<div class="interests_lg_table">
 		<? foreach ( $itms as $itm ){ 
 			$link = get_permalink($itm->ID);
@@ -845,6 +878,14 @@ function frontpage_interests(){
 			</div>					
 		<? } ?>
 		</div>
+		<?php
+				
+			// orce override?
+			if(get_theme_option('home_page_theme') == 1){ ?>
+				</div>
+			<?}
+
+		?>
 	</section>
 	<? return ob_get_clean();
 } 
