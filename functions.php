@@ -816,7 +816,7 @@ function frontpage_interests(){
 		<?php
 				
 			// orce override?
-			if(get_theme_option('home_page_theme') === 1){ ?>
+			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
 				<style>
 					@media (min-width: 990px) {
 					section#interests{
@@ -881,7 +881,7 @@ function frontpage_interests(){
 		<?php
 				
 			// orce override?
-			if(get_theme_option('home_page_theme') === 1){ ?>
+			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
 				</div>
 			<?}
 
