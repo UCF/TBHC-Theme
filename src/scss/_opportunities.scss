@@ -4,6 +4,10 @@
     text-align: left;
     word-break: break-word;
 
+    @media (min-width: $screen-sm-max) {
+        padding: 0;
+    }
+
     .opportunities_title_wrap {
         padding-left: 3%;
 

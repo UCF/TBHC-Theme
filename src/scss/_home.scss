@@ -7,6 +7,17 @@ ul li:not(ul li div) {
 .container {
     @media (min-width: $screen-xs-max) {
         display: table !important;
+        max-width: none;
+        margin: auto;
+    }
+}
+
+body.page-template {
+    .container {
+        @media (min-width: $screen-xs-max) {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
     }
 }
 
@@ -45,6 +56,7 @@ ul li:not(ul li div) {
             color: #8f3931;
         }
     }
+
     @media (min-width: $screen-xs-max) {
         float: none;
         display: table-cell !important;
@@ -227,6 +239,7 @@ ul li:not(ul li div) {
 
 .moreBtnPad {
     padding-top: 11px;
+
     .moreBtn {
         width: 100%;
 

@@ -84,12 +84,6 @@
 				}				
 			}
 		</style>
-		<?php
-				// orce override?
-		if(get_theme_option('home_page_theme') === 1){
-			wp_enqueue_style('orce_overrides', '../static/css/orce-overrides.min.css');
-		}
-		?>
 		</head>
 	<body <?php echo body_class(); ?>>
 
@@ -156,6 +150,7 @@
 					echo do_shortcode('[centerpiece id="'.$latest_centerpiece[0]->ID.'"]');
 				?>
 			</div>
+			<?php if(get_theme_option('home_page_theme') != 1 && get_theme_option('home_page_theme') !== 1){ ?>
 			<nav id="section-nav-xs" class="navbar navbar-inverse">
 			<div id="nav-xs-center-wrap">
 				<div class="navbar-section">
@@ -165,7 +160,6 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<span class="navbar-brand">Menu</span>
 				</div>
 				<div class="collapse navbar-collapse" id="section-menu-xs-collapse">
 					<?php
@@ -181,7 +175,8 @@
 				</div>
 				</div>
 			</nav>		
-		<?}?>
+			<?}
+		}?>
 		<div class="container">
 			<div class="row status-alert" id="status-alert-template" data-alert-id="">
 				<div class="col-md-12 col-sm-12 alert-wrap">

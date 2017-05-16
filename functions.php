@@ -813,6 +813,41 @@ function frontpage_interests(){
 		<div class="interests_title_wrap">
 			<h2 class="interests_title"><span>What Are You Interested In?</span></h2>
 		</div>	
+		<?php
+				
+			// orce override?
+			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
+				<style>
+					@media (min-width: 990px) {
+					section#interests{
+						padding: 0 !important;
+						background-color: white !important;
+						overflow: hidden;
+						margin-bottom: 50px;
+					}
+					.interests_title_wrap{
+							background-color: #fff !important;
+							color: #000 !important;
+					}
+					.interests_bg_overlay {
+							display: block !important;
+							background-color: black !important;
+							position: absolute !important;
+							width: 100% !important;
+							height: 100% !important;
+							opacity: .8 !important;
+					}
+					.interests_false_wrap{
+							background-image:url('https://testtbhccmsdev.smca.ucf.edu/wp-content/uploads/sites/2/2016/07/DISCOVERY_FINAL-1140x400.png') !important;
+							background-size:cover !important;
+							height:100% !important;
+							background-position:50% 50% !important;
+						}
+					}
+				</style>
+				<div class="interests_false_wrap">
+					<div class="interests_bg_overlay"></div>
+			<?}?>
 		<div class="interests_lg_table">
 		<? foreach ( $itms as $itm ){ 
 			$link = get_permalink($itm->ID);
@@ -845,6 +880,14 @@ function frontpage_interests(){
 			</div>					
 		<? } ?>
 		</div>
+		<?php
+				
+			// orce override?
+			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
+				</div>
+			<?}
+
+		?>
 	</section>
 	<? return ob_get_clean();
 } 

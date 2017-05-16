@@ -26,6 +26,7 @@
         padding: 0 3%;
 
         @media (min-width: $screen-sm-max) {
+            padding: 0;
             position: relative;
         }
 
@@ -50,6 +51,7 @@
             margin: 0 auto;
             display: table;
             position: relative;
+            padding: 0;
         }
 
         .events_table_group {

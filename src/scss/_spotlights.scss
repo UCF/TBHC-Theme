@@ -1,5 +1,8 @@
 ﻿section#spotlights {
     padding: 0 8%;
+            @media (min-width: $screen-sm-max) {
+    padding:0;
+}
 
     .spotlights_title_wrap {
         @media (min-width: $screen-sm-max) {
