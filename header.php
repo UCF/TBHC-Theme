@@ -150,7 +150,7 @@
 					echo do_shortcode('[centerpiece id="'.$latest_centerpiece[0]->ID.'"]');
 				?>
 			</div>
-			<?php if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
+			<?php if(get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
 			<nav id="section-nav-xs" class="navbar navbar-inverse">
 			<div id="nav-xs-center-wrap">
 				<div class="navbar-section">
