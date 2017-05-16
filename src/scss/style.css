@@ -12649,7 +12649,8 @@ section#interests {
         color: white;
         max-width: 1200px;
         margin: 0 auto;
-        overflow: hidden; } }
+        overflow: hidden;
+        padding: 0; } }
     section#interests .interests_title_wrap .interests_title span {
       position: relative;
       display: inline-block; }
@@ -12781,6 +12782,9 @@ section#opportunities {
   width: 100%;
   text-align: left;
   word-break: break-word; }
+  @media (min-width: 991px) {
+    section#opportunities {
+      padding: 0; } }
   section#opportunities .opportunities_title_wrap {
     padding-left: 3%; }
     @media (min-width: 991px) {
@@ -12849,6 +12853,9 @@ section#opportunities {
 section#spotlights {
   padding: 0 8%; }
   @media (min-width: 991px) {
+    section#spotlights {
+      padding: 0; } }
+  @media (min-width: 991px) {
     section#spotlights .spotlights_title_wrap {
       max-width: 1200px;
       margin: 0 auto; } }
@@ -12914,6 +12921,7 @@ section#events {
     padding: 0 3%; }
     @media (min-width: 991px) {
       section#events .events_title_wrap {
+        padding: 0;
         position: relative; } }
     section#events .events_title_wrap .events_title {
       color: white;
@@ -12931,7 +12939,8 @@ section#events {
         max-width: 1200px;
         margin: 0 auto;
         display: table;
-        position: relative; } }
+        position: relative;
+        padding: 0; } }
     @media (min-width: 991px) {
       section#events .events_lg_table .events_table_group {
         display: table-cell;
