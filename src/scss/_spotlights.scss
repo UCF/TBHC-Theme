@@ -5,78 +5,91 @@
         padding: 0;
     }
 
-    .spotlights_title_wrap {
+    #spotlights_inner_wrap {
         @media (min-width: $screen-sm-max) {
-            max-width: $screen-lg;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .spotlights_title {
-            font-size: 3em;
-            font-weight: bold;
-        }
-
-        a {
-            color: #aaa;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-    }
-
-    .spotlights_lg_table {
-        @media (min-width: $screen-sm-max) {
-            max-width: $screen-lg;
-            margin: 0 auto;
-        }
-
-        .spotlight_person{
-            width: 30%;
-            float: right;
-        }
-
-        .spotlight_single_wrap {
+        #spotlights_left {
             @media (min-width: $screen-sm-max) {
+                float: left;
                 width: 70%;
             }
 
-            .spotlight_single {
-                display: table;
-                width: 100%;
+            .spotlights_title_wrap {
 
-                @media (min-width: $screen-sm-max) {
-                    padding: 5px;
+                .spotlights_title {
+                    font-size: 3em;
+                    font-weight: bold;
                 }
 
-                .spotlight_image_wrap {
-                    display: table-cell;
-                    width: 15%;
-                    vertical-align: top;
+                a {
+                    color: #aaa;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
 
-                    .spotlight_image {
+            .spotlights_lg_table {
+
+                .spotlight_single_wrap {
+                    @media (min-width: $screen-sm-max) {
+                        width: 70%;
+                    }
+
+                    .spotlight_single {
+                        display: table;
                         width: 100%;
+
+                        @media (min-width: $screen-sm-max) {
+                            padding: 5px;
+                        }
+
+                        .spotlight_image_wrap {
+                            display: table-cell;
+                            width: 15%;
+                            vertical-align: top;
+
+                            .spotlight_image {
+                                width: 100%;
+                            }
+                        }
+
+                        .spotlight_content_wrap {
+                            display: table-cell;
+                            padding-left: 3%;
+                            color: #333;
+
+                            .spotlight_type {
+                                background-color: #FC0;
+                                text-transform: uppercase;
+                                color: #333;
+                                padding-left: 5px;
+                                padding-right: 5px;
+                                line-height: 1.65;
+                            }
+
+                            .spotlight_title {
+                                font-weight: bold;
+                                padding: 5px 0;
+                                color: #333;
+                            }
+                        }
                     }
                 }
+            }
+        }
 
-                .spotlight_content_wrap {
-                    display: table-cell;
-                    padding-left: 3%;
-                    color: #333;
+        #spotlights_right {
+            @media (min-width: $screen-sm-max) {
+                float: right;
+                width: 30%;
+            }
 
-                    .spotlight_type {
-                        background-color: #FC0;
-                        text-transform: uppercase;
-                        color: #333;
-                        padding-left: 5px;
-                        padding-right: 5px;
-                        line-height: 1.65;
-                    }
-
-                    .spotlight_title {
-                        font-weight: bold;
-                        padding: 5px 0;
-                        color: #333;
-                    }
-                }
+            .spotlight_person {
+                width: 30%;
+                float: right;
             }
         }
     }
