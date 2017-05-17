@@ -10465,6 +10465,9 @@ body {
       padding-right: 0;
       margin: auto 0;
       width: 100%; } }
+  @media (min-width: 767px) {
+    .container .page-content, .container .row .page-content {
+      max-width: 1200px; } }
 
 /*.container-shadow {
     position: absolute;
@@ -12870,30 +12873,36 @@ section#spotlights {
     section#spotlights .spotlights_lg_table {
       max-width: 1200px;
       margin: 0 auto; } }
-  section#spotlights .spotlights_lg_table .spotlight_single {
+  section#spotlights .spotlights_lg_table .spotlight_person {
+    width: 30%;
+    float: right; }
+  @media (min-width: 991px) {
+    section#spotlights .spotlights_lg_table .sptlight_single_wrap {
+      width: 70%; } }
+  section#spotlights .spotlights_lg_table .sptlight_single_wrap .spotlight_single {
     display: table;
     width: 100%; }
     @media (min-width: 991px) {
-      section#spotlights .spotlights_lg_table .spotlight_single {
+      section#spotlights .spotlights_lg_table .sptlight_single_wrap .spotlight_single {
         padding: 5px; } }
-    section#spotlights .spotlights_lg_table .spotlight_single .spotlight_image_wrap {
+    section#spotlights .spotlights_lg_table .sptlight_single_wrap .spotlight_single .spotlight_image_wrap {
       display: table-cell;
       width: 15%;
       vertical-align: top; }
-      section#spotlights .spotlights_lg_table .spotlight_single .spotlight_image_wrap .spotlight_image {
+      section#spotlights .spotlights_lg_table .sptlight_single_wrap .spotlight_single .spotlight_image_wrap .spotlight_image {
         width: 100%; }
-    section#spotlights .spotlights_lg_table .spotlight_single .spotlight_content_wrap {
+    section#spotlights .spotlights_lg_table .sptlight_single_wrap .spotlight_single .spotlight_content_wrap {
       display: table-cell;
       padding-left: 3%;
       color: #333; }
-      section#spotlights .spotlights_lg_table .spotlight_single .spotlight_content_wrap .spotlight_type {
+      section#spotlights .spotlights_lg_table .sptlight_single_wrap .spotlight_single .spotlight_content_wrap .spotlight_type {
         background-color: #FC0;
         text-transform: uppercase;
         color: #333;
         padding-left: 5px;
         padding-right: 5px;
         line-height: 1.65; }
-      section#spotlights .spotlights_lg_table .spotlight_single .spotlight_content_wrap .spotlight_title {
+      section#spotlights .spotlights_lg_table .sptlight_single_wrap .spotlight_single .spotlight_content_wrap .spotlight_title {
         font-weight: bold;
         padding: 5px 0;
         color: #333; }

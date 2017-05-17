@@ -1,70 +1,93 @@
 ﻿section#spotlights {
     padding: 0 8%;
-            @media (min-width: $screen-sm-max) {
-    padding:0;
-}
 
-    .spotlights_title_wrap {
-        @media (min-width: $screen-sm-max) {
-            max-width: $screen-lg;
-            margin: 0 auto;
-        }
-
-        .spotlights_title {
-            font-size: 3em;
-            font-weight: bold;
-        }
-
-        a {
-            color: #aaa;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+    @media (min-width: $screen-sm-max) {
+        padding: 0;
     }
 
-    .spotlights_lg_table {
+    #spotlights_inner_wrap {
         @media (min-width: $screen-sm-max) {
-            max-width: $screen-lg;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .spotlight_single {
-            display: table;
-            width: 100%;
-
+        #spotlights_left {
             @media (min-width: $screen-sm-max) {
-                padding: 5px;
+                float: left;
+                width: 70%;
             }
 
-            .spotlight_image_wrap {
-                display: table-cell;
-                width: 15%;
-                vertical-align: top;
+            .spotlights_title_wrap {
 
-                .spotlight_image {
-                    width: 100%;
-                }
-            }
-
-            .spotlight_content_wrap {
-                display: table-cell;
-                padding-left: 3%;
-                color: #333;
-
-                .spotlight_type {
-                    background-color: #FC0;
-                    text-transform: uppercase;
-                    color: #333;
-                    padding-left: 5px;
-                    padding-right:5px;
-                    line-height:1.65;
-                }
-
-                .spotlight_title {
+                .spotlights_title {
+                    font-size: 3em;
                     font-weight: bold;
-                    padding: 5px 0;
-                    color: #333;
                 }
+
+                a {
+                    color: #aaa;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+
+            .spotlights_lg_table {
+
+                .spotlight_single_wrap {
+                    @media (min-width: $screen-sm-max) {
+                        width: 70%;
+                    }
+
+                    .spotlight_single {
+                        display: table;
+                        width: 100%;
+
+                        @media (min-width: $screen-sm-max) {
+                            padding: 5px;
+                        }
+
+                        .spotlight_image_wrap {
+                            display: table-cell;
+                            width: 15%;
+                            vertical-align: top;
+
+                            .spotlight_image {
+                                width: 100%;
+                            }
+                        }
+
+                        .spotlight_content_wrap {
+                            display: table-cell;
+                            padding-left: 3%;
+                            color: #333;
+
+                            .spotlight_type {
+                                background-color: #FC0;
+                                text-transform: uppercase;
+                                color: #333;
+                                padding-left: 5px;
+                                padding-right: 5px;
+                                line-height: 1.65;
+                            }
+
+                            .spotlight_title {
+                                font-weight: bold;
+                                padding: 5px 0;
+                                color: #333;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #spotlights_right {
+            @media (min-width: $screen-sm-max) {
+                float: right;
+                width: 30%;
+            }
+
+            .spotlight_person {
             }
         }
     }
