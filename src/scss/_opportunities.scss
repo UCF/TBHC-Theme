@@ -3,13 +3,9 @@
     width: 100%;
     text-align: left;
     word-break: break-word;
-
-    @media (min-width: $screen-sm-max) {
-        padding: 0;
-    }
+    padding: 0 10px;
 
     .opportunities_title_wrap {
-        padding-left: 3%;
 
         @media (min-width: $screen-sm-max) {
             padding-left: 0;
@@ -19,7 +15,8 @@
 
         .opportunities_title {
             display: inline-block;
-            font-size:17px;
+            font-weight: 800;
+            margin: 20px 0 10px 0;
         }
     }
 
@@ -37,9 +34,18 @@
                 display: table-cell;
             }
 
-            .opportunity_single {
+            &:hover {
+                background-color: #aaa;
+            }
+
+            a.opportunity_single {
                 display: table;
                 width: 100%;
+
+                &:hover {
+                    text-decoration: none;
+                    border-bottom: none;
+                }
 
                 @media (min-width: $screen-sm-max) {
                     position: relative;
@@ -50,24 +56,6 @@
 
                     .opportunity_title {
                         color: #000;
-                        /*h2.background {
-                position: relative;
-                z-index: 1;
-                &:before {
-                    border-top: 2px solid #dfdfdf;
-                    content:"";
-                    margin: 0 auto; // this centers the line to the full width specified 
-                    position: absolute; // positioning must be absolute here, and relative positioning must be applied to the parent
-                    top: 50%; left: 0; right: 0; bottom: 0;
-                    width: 95%;
-                    z-index: -1;
-                }
-                span { 
-                    // to hide the lines from behind the text, you have to set the background color the same as the container 
-                    background: #fff; 
-                    padding: 0 15px; 
-                }
-            }*/
                     }
 
                     .opportunity_type {
@@ -88,7 +76,7 @@
 
                     .opportunity_icon {
                         font-size: 1.5em;
-                        color: #aaa;
+                        color: #eee;
                     }
                 }
             }
