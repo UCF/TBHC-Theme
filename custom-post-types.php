@@ -686,6 +686,7 @@ class Person extends CustomPostType
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$use_order      = True,
+		$use_excerpt	= True,	
 		$taxonomies     = array('org_groups', 'category'),
 		$orderby = 'person_orderby_name',
 		$order = 'ASC';
