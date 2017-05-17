@@ -705,7 +705,7 @@ function frontpage_spotlights() {
 											<?=$spotlight->post_title?>	
 										</h3>
 										<p class="spotlight_content">
-											<?=get_the_excerpt($spotlight->ID)?>	
+											<?=get_the_excerpt($peeps[0]->ID)?>	
 										</p>
 									</div>
 								</a>
@@ -719,7 +719,7 @@ function frontpage_spotlights() {
 					<div class="spotlight_person">
 						<div class="spotlight_image_wrap">
 							<? $pthumb_id = get_post_thumbnail_id($peeps[0]->ID);
-								$pthumb_src = wp_get_attachment_image_src( $pthumb_id, 'home-thumb' );
+								$pthumb_src = wp_get_attachment_image_src( $pthumb_id, 'profile-grid-image' );
 								$pthumb_src = $pthumb_src[0];
 								if ($pthumb_src) { ?>
 									<img class="spotlight_image" src="<?=esc_attr($pthumb_src)?>" alt="<?=esc_attr($peeps[0]->post_title)?>"/>
