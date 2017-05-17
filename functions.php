@@ -722,6 +722,7 @@ function frontpage_spotlights() {
 						?>
 					</div>
 				</div>
+				<div class="clearfix"></div>
 			</div>
 		</section>
 	<? return ob_get_clean();
