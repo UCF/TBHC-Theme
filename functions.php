@@ -649,7 +649,7 @@ function frontpage_spotlights() {
 				),*/
 			'orderby' => 'date',
 			'order' => 'DESC',
-			'post_type' => 'people',
+			'post_type' => 'person',
 			'post_status' => 'publish',
 			'numberposts' => 1,
 	);
