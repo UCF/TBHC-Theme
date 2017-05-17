@@ -640,18 +640,18 @@ function frontpage_spotlights() {
 	$spotlights = array_splice($spotlights, 0, 2);
 	
 	$argsPeeps = array(
-			'tax_query' => array(
+			/*'tax_query' => array(
 						array(
 							'taxonomy' => 'org_groups',
 							'field' => 'slug',
 							'terms' => array( 'student-profile' )
 						)
-				),
+				),*/
 			'orderby' => 'date',
 			'order' => 'DESC',
-			/*'post_type' => 'people',
+			'post_type' => 'people',
 			'post_status' => 'publish',
-			'numberposts' => 1,*/
+			'numberposts' => 1,
 	);
 	$peeps =get_posts($argsPeeps);	
 	
