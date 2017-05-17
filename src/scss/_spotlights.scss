@@ -20,6 +20,7 @@
             .spotlights_title_wrap {
 
                 .spotlights_title {
+                    font-size:17px;
                     font-size: 3em;
                     font-weight: bold;
                 }
@@ -34,9 +35,6 @@
             .spotlights_lg_table {
 
                 .spotlight_single_wrap {
-                    @media (min-width: $screen-sm-max) {
-                        width: 70%;
-                    }
 
                     .spotlight_single {
                         display: table;
