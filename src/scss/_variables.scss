@@ -3,7 +3,8 @@ $fa-font-path:   '../../static/fonts/font-awesome/';
 
 // Font overrides
 $font-family-serif: Georgia, serif;
-$font-family-base: "Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;//$font-family-serif;
+$font-family-base: "Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif,$font-family-serif;
+$font-family-sans-serif:  $font-family-base;
 $font-size-base: 13px;
 $font-size-h1: 30px;
 $font-size-h2: 24px;
