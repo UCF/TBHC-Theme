@@ -647,11 +647,11 @@ function frontpage_spotlights() {
 							'terms' => array( 'student-profile' )
 						)
 				),
-			'orderby' => 'post_date',
+			'orderby' => 'date',
 			'order' => 'DESC',
-			'post_type' => 'people',
+			/*'post_type' => 'people',
 			'post_status' => 'publish',
-			'numberposts' => 1,
+			'numberposts' => 1,*/
 	);
 	$peeps =get_posts($argsPeeps);	
 	
