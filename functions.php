@@ -717,9 +717,22 @@ function frontpage_spotlights() {
 				</div>
 				<div id="spotlights_right">
 					<div class="spotlight_person">
-						<?
-							print_r($peeps);
-						?>
+						<div class="spotlight_image_wrap">
+							<? $pthumb_id = get_post_thumbnail_id($peeps[0]->ID);
+								$pthumb_src = wp_get_attachment_image_src( $pthumb_id, 'home-thumb' );
+								$pthumb_src = $pthumb_src[0];
+								if ($pthumb_src) { ?>
+									<img class="spotlight_image" src="<?=esc_attr($pthumb_src)?>" alt="<?=esc_attr($peeps[0]->post_title)?>"/>
+								<? } ?>
+						</div>
+						<div class="spotlight_content_wrap">
+							<h3 class="spotlight_title">
+								<?=$peeps[0]->post_title?>	
+							</h3>
+							<p class="spotlight_content">
+								<?=get_the_excerpt($peeps[0]->ID)?>	
+							</p>
+						</div>
 					</div>
 				</div>
 				<div class="clearfix"></div>
