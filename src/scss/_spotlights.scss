@@ -1,8 +1,9 @@
 ﻿section#spotlights {
     padding: 0 8%;
-            @media (min-width: $screen-sm-max) {
-    padding:0;
-}
+
+    @media (min-width: $screen-sm-max) {
+        padding: 0;
+    }
 
     .spotlights_title_wrap {
         @media (min-width: $screen-sm-max) {
@@ -28,42 +29,53 @@
             margin: 0 auto;
         }
 
-        .spotlight_single {
-            display: table;
-            width: 100%;
+        .spotlight_person{
+            width: 30%;
+            float: right;
+        }
 
+        .sptlight_single_wrap {
             @media (min-width: $screen-sm-max) {
-                padding: 5px;
+                width: 70%;
             }
 
-            .spotlight_image_wrap {
-                display: table-cell;
-                width: 15%;
-                vertical-align: top;
+            .spotlight_single {
+                display: table;
+                width: 100%;
 
-                .spotlight_image {
-                    width: 100%;
-                }
-            }
-
-            .spotlight_content_wrap {
-                display: table-cell;
-                padding-left: 3%;
-                color: #333;
-
-                .spotlight_type {
-                    background-color: #FC0;
-                    text-transform: uppercase;
-                    color: #333;
-                    padding-left: 5px;
-                    padding-right:5px;
-                    line-height:1.65;
+                @media (min-width: $screen-sm-max) {
+                    padding: 5px;
                 }
 
-                .spotlight_title {
-                    font-weight: bold;
-                    padding: 5px 0;
+                .spotlight_image_wrap {
+                    display: table-cell;
+                    width: 15%;
+                    vertical-align: top;
+
+                    .spotlight_image {
+                        width: 100%;
+                    }
+                }
+
+                .spotlight_content_wrap {
+                    display: table-cell;
+                    padding-left: 3%;
                     color: #333;
+
+                    .spotlight_type {
+                        background-color: #FC0;
+                        text-transform: uppercase;
+                        color: #333;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        line-height: 1.65;
+                    }
+
+                    .spotlight_title {
+                        font-weight: bold;
+                        padding: 5px 0;
+                        color: #333;
+                    }
                 }
             }
         }

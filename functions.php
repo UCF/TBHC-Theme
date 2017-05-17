@@ -638,6 +638,23 @@ function frontpage_spotlights() {
 	}	
 	
 	$spotlights = array_splice($spotlights, 0, 2);
+	
+	$argsPeeps = array(
+			'tax_query' => array(
+						array(
+							'taxonomy' => 'org_groups',
+							'field' => 'slug',
+							'terms' => array( 'student-profile' )
+						)
+				),
+			'orderby' => 'post_date',
+			'order' => 'DESC',
+			'post_type' => 'people',
+			'post_status' => 'publish',
+			'numberposts' => 1,
+	);
+	$peeps =get_posts($argsPeeps);	
+	
 	ob_start(); ?>
 		<section id="spotlights">
 			<div class="spotlights_title_wrap">
@@ -692,6 +709,12 @@ function frontpage_spotlights() {
 						</a>
 					</div>
 				<? } ?>
+				<div class="spotlight_person">
+					<?
+						print_r($peeps);
+					?>
+				</div>
+				<div class="clearfix"></div>
 			</div>
 		</section>
 	<? return ob_get_clean();
