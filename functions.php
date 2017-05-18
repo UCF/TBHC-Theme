@@ -719,7 +719,7 @@ function frontpage_spotlights() {
 					<div class="spotlights_title_wrap">
 						<h2 class="spotlights_title">Featured Student</h2>
 					</div>
-					<div class="spotlight_person">
+					<a class="spotlight_person" href="<?=esc_attr($plink)?>">
 						<div class="spotlight_image_wrap">
 							<? 
 								$plink = get_permalink($peeps[0]->ID);
@@ -747,7 +747,7 @@ function frontpage_spotlights() {
 								</div>	
 							</a>
 						</div>
-					</div>
+					</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
