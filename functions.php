@@ -882,7 +882,7 @@ function frontpage_interests(){
 						font-size:25px !important;
 						bottom: 59% !important;
 					}
-					section#interests .interest_title{
+					section#interests .interest_content{
 						top:44% !important;
 					}
 					@media (min-width: 990px) {
