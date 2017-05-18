@@ -23,10 +23,9 @@
     }
 
     .events_title_wrap {
-        padding: 0 10px;
+        padding: 20px 10px 10px 10px;
 
         @media (min-width: $screen-sm-max) {
-            padding: 0;
             position: relative;
         }
 
@@ -51,7 +50,6 @@
             margin: 0 auto;
             display: table;
             position: relative;
-            padding: 0;
         }
 
         .events_table_group {
@@ -60,12 +58,14 @@
                 width: 50%;
             }
 
-            .events_type {
+            .events_type { 
+                margin: 10px 0;
                 background-color: #FC0;
                 text-transform: uppercase;
                 color: #333;
                 padding-left: 5px;
                 padding-right: 5px;
+                display: inline-block;
                 line-height: 1.65;
             }
 
