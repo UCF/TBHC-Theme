@@ -6,19 +6,19 @@
     padding: 0;
 
     .opportunities_title_wrap {
-        padding-left:3%;
-        padding-right:3%;
-        @media (min-width: $screen-sm-max) {
-            padding-left: 10px;
-            padding-right:0;
-            margin: 0 auto;
-            max-width: $screen-lg;
-        }
+        margin: 20px 0 10px 10px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
 
         .opportunities_title {
-            display: inline-block;
-            font-weight: 800;
-            margin: 20px 0 10px 0;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        a {
+            color: #aaa;
+            font-weight: bold;
+            text-transform: uppercase;
         }
     }
 

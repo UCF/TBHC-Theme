@@ -663,7 +663,7 @@ function frontpage_spotlights() {
 						<h2 class="spotlights_title">Spotlights</h2>
 						<a href="<?=get_permalink(get_page_by_title('Spotlight Archives', OBJECT, 'page')->ID)?>">
 							Check out more stories
-							<i class="fa fa-external-link"></i>
+							<!--<i class="fa fa-external-link"></i>-->
 						</a>	
 					</div>	
 					<div class="spotlights_lg_table">
@@ -717,7 +717,11 @@ function frontpage_spotlights() {
 				</div>
 				<div id="spotlights_right">
 					<div class="spotlights_title_wrap">
-						<h2 class="spotlights_title">Featured Student</h2>
+						<a href="<?=get_permalink(get_page_by_title('Students of TBHC'))?>">
+							<h2 class="spotlights_title">
+								Students of TBHC
+							</h2>
+						</a>
 					</div>
 					<?
 					$plink = get_permalink($peeps[0]->ID);
@@ -982,7 +986,7 @@ function frontpage_events(){
 					<?}?>					
 					<a href="<?=$element["url"]?>" class="event_single_wrap">
 						<div class="event_single">
-							<div class="event_datetime"><?=$dateFormatted->format('D j - g:i A')?></div>
+							<div class="event_datetime"><?=$dateFormatted->format('M j - g:i A')?></div>
 							<h3 class="event_title"><?=$element["title"]?></h3>
 							<?if (array_search($element, $events) === 0){?>
 								<div class="event_content"><?=$element["description"]?></div>	
