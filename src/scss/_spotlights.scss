@@ -113,16 +113,28 @@
                         font-weight: bold;
                         padding: 5px 0;
                         color: #333;
+
+                        &:after {
+                            background-color: #ffc904;
+                            bottom: 0;
+                            content: '';
+                            display: block;
+                            height: 3px;
+                            left: 0;
+                            position: absolute;
+                            width: 40px;
+                        }
                     }
                 }
 
                 .spotlight_link {
-                    
-                        &:hover {
-                            text-decoration: none;
-                            border: none;
-                            transition: background-color .2s;
-                        }
+
+                    &:hover {
+                        text-decoration: none;
+                        border: none;
+                        transition: background-color .2s;
+                    }
+
                     .spotlight_more {
                         background-color: #FC0;
                         text-transform: uppercase;
