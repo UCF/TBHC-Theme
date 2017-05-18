@@ -5,15 +5,11 @@
     word-break: break-word;
     padding: 0;
 
-    @media (min-width: $screen-sm-max) {
-        padding: 0 10px;
-    }
-
     .opportunities_title_wrap {
         padding-left:10px;
         padding-right:10px;
         @media (min-width: $screen-sm-max) {
-            padding-left: 0;
+
             padding-right:0;
             margin: 0 auto;
             max-width: $screen-lg;
@@ -66,7 +62,7 @@
                     padding: 3%;
 
                     @media (min-width: $screen-sm-max) {
-                        padding: 10px 0;
+                        padding: 10px;
                     }
 
                     .opportunity_title {
