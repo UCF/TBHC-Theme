@@ -734,7 +734,7 @@ function frontpage_spotlights() {
 									<img class="spotlight_image" src="<?=esc_attr($pthumb_src)?>" alt="<?=esc_attr($peeps[0]->post_title)?>"/>
 								<? } ?>
 						</div>
-						<a class="spotlight_content_wrap">
+						<div class="spotlight_content_wrap">
 							<h3 class="spotlight_title">
 								<?=$peeps[0]->post_title?>	
 							</h3>
@@ -742,11 +742,11 @@ function frontpage_spotlights() {
 								<?=get_the_excerpt($peeps[0]->ID)?>	
 							</p>
 							<a class="spotlight_link" href="<?=esc_attr($plink)?>">
-								<div class="spotlight_type">
+								<div class="spotlight_more">
 									Read More
 								</div>	
 							</a>
-						</a>
+						</div>
 					</div>
 				</div>
 				<div class="clearfix"></div>

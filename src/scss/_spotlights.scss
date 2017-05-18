@@ -21,11 +21,11 @@
                 margin: 20px 0 10px 10px;
                 border-bottom: 1px solid #ccc;
                 padding-bottom: 10px;
+
                 .spotlights_title {
-                    font-size:17px;
+                    font-size: 17px;
                     font-size: 3em;
                     font-weight: bold;
-
                 }
 
                 a {
@@ -43,12 +43,14 @@
                     .spotlight_single {
                         display: table;
                         width: 100%;
-                        &:hover{
-                    text-decoration:none;
-                    border: none;
-                    background-color: #eee;
-                    transition: background-color .2s;
-                }
+
+                        &:hover {
+                            text-decoration: none;
+                            border: none;
+                            background-color: #eee;
+                            transition: background-color .2s;
+                        }
+
                         @media (min-width: $screen-sm-max) {
                             padding: 10px;
                         }
@@ -95,30 +97,42 @@
                 width: 30%;
                 padding: 10px 0;
             }
-                                        .spotlights_title_wrap{
-                                margin: 50px 0 20px 10px;
-                                }
+
+            .spotlights_title_wrap {
+                margin: 50px 0 20px 10px;
+            }
+
             .spotlight_person {
                 padding: 10px;
-                .spotlight_content_wrap {
-                            color: #333;
 
-                            .spotlight_title {
-                                margin-top:10px;
-                                font-weight: bold;
-                                padding: 5px 0;
-                                color: #333;
-                            }
+                .spotlight_content_wrap {
+                    color: #333;
+
+                    .spotlight_title {
+                        margin-top: 10px;
+                        font-weight: bold;
+                        padding: 5px 0;
+                        color: #333;
+                    }
+                }
+
+                .spotlight_link {
+                    
+                        &:hover {
+                            text-decoration: none;
+                            border: none;
+                            transition: background-color .2s;
                         }
-                .spotlight_more {
-                                background-color: #FC0;
-                                text-transform: uppercase;
-                                color: #333;
-                                padding-left: 5px;
-                                padding-right: 5px;
-                                line-height: 1.65;
-                                display: inline-block;
-                            }
+                    .spotlight_more {
+                        background-color: #FC0;
+                        text-transform: uppercase;
+                        color: #333;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        line-height: 1.65;
+                        display: inline-block;
+                    }
+                }
             }
         }
     }
