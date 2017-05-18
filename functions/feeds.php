@@ -286,20 +286,33 @@ function get_events($start, $limit){
 	}else{
 		$url .= '&';
 	}
-	$url    .= 'upcoming=upcoming&format=json';
-
+	$url    .= 'format=json';
+	//if(DEBUG){
+		//print_r($url);
+	//}
 	// Set a timeout
 	$opts = array('http' => array(
 						'method'  => 'GET',
 						'timeout' => FEED_FETCH_TIMEOUT
 	));
-	$context = stream_context_create($opts);
-
+	$raw_events = wp_safe_remote_get($url, array('timeout' => FEED_FETCH_TIMEOUT));
+	if ( !is_wp_error( $raw_events ) ) {
+		$raw_events = wp_remote_retrieve_body( $raw_events );
+		$raw_events = json_decode( $raw_events, TRUE );
+	}
+	else {
+		$raw_events = false;
+	}
+	
 	// Grab the weather feed
-	$raw_events = file_get_contents($url, false, $context);
+
+	//if(DEBUG){
+		//print_r("RAW EVENTS:");
+		//print_r($raw_events);
+	//}
 	if ($raw_events) {
-		$events = json_decode($raw_events, TRUE);
-		$events = array_slice($events, $start, $limit);
+		//$events = json_decode($raw_events, TRUE);
+		$events = array_slice($raw_events, $start, $limit);
 		return $events;
 	}
 	else { return NULL; }

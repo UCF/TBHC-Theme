@@ -29,6 +29,7 @@
 		if ( is_page() || ( is_404() && $post = get_page_by_title( '404' ) ) ) {
 			esi_include( 'page_specific_stylesheet', $post->ID ); // Wrap in ESI to prevent caching of .css file
 		}
+		
 		?>
 		<script type="text/javascript">
 			var PostTypeSearchDataManager = {
@@ -66,7 +67,10 @@
 			}
 			#jumbotron-logo img{
 				width: <?=get_theme_option('header_width_mobile')?>;        
-			}						
+			}					
+			#centerpiece_slider ul>img {
+				height: <?=get_theme_option('centerpiece_mobile_height')?>;
+			}			
 			@media(min-width: 770px){
 				#jumbotron-logo{
 					padding-top: <?=get_theme_option('header_top_pad_desktop')?>;
@@ -74,7 +78,10 @@
 				}
 				#jumbotron-logo img{
 					width: <?=get_theme_option('header_width_desktop')?>;        
-				}			
+				}		
+				#centerpiece_slider ul>img{
+					height: <?=get_theme_option('centerpiece_desktop_height')?>;
+				}				
 			}
 		</style>
 		</head>
@@ -143,7 +150,33 @@
 					echo do_shortcode('[centerpiece id="'.$latest_centerpiece[0]->ID.'"]');
 				?>
 			</div>
-		<?}?>
+			<?php if(get_theme_option('home_page_theme') != 1 && get_theme_option('home_page_theme') !== 1){ ?>
+			<nav id="section-nav-xs" class="navbar navbar-inverse">
+			<div id="nav-xs-center-wrap">
+				<div class="navbar-section">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#section-menu-xs-collapse" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="section-menu-xs-collapse">
+					<?php
+						wp_nav_menu( array(
+						'theme_location' => 'homepage-sections',
+						'container' => false,
+						'menu_class' => 'menu nav navbar-nav',
+						'menu_id' => 'section-menu-xs',
+						'walker' => new Bootstrap_Walker_Nav_Menu(),
+						'nav_dropdowns'	=> false
+						) );
+					?>
+				</div>
+				</div>
+			</nav>		
+			<?}
+		}?>
 		<div class="container">
 			<div class="row status-alert" id="status-alert-template" data-alert-id="">
 				<div class="col-md-12 col-sm-12 alert-wrap">

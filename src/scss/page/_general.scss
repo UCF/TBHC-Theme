@@ -2,16 +2,30 @@ body {
     background-color: white;
 }
 
-.container {
+.container, .container .row {
     //opacity:.99;
     position: relative;
-    padding-top: 20px;
-    padding-bottom: 20px;
+
+    @media (min-width: $screen-xs-max) {
+        padding-left: 0;
+        padding-right: 0;
+        margin: auto 0;
+        width: 100%;
+    }
+
+    .page-content {
+        @media (min-width: $screen-xs-max) {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    }
+    //padding-top: 20px;
+    //padding-bottom: 20px;
     //z-index: -1;
     //box-shadow: 9px 0px 10px -10px rgba(0, 0, 0, .75), -9px 0px 10px -10px rgba(0, 0, 0, .75), 0px 9px 10px -10px rgba(0, 0, 0, .75);
 }
 
-.container-shadow {
+/*.container-shadow {
     position: absolute;
     //z-index: -1;
     left: 0;
@@ -37,7 +51,7 @@ body {
         height: 100%;
         display: block;
     }
-}
+}*/
 
 .person-profile .details img {
     width: 100%;
@@ -50,7 +64,7 @@ body {
     }
 
     select {
-        font-size: 1.25em;
+        margin-bottom:5px;
     }
 
     .row {
@@ -211,7 +225,7 @@ body {
 // Subpages - Sidebars - General
 .sidebar_title {
     font-family: $font-family-sans-serif;
-    font-size: 10.5px;
+    font-size: 12pt;
     font-weight: 700;
     letter-spacing: 1px;
     line-height: 12px;
@@ -221,7 +235,7 @@ body {
 
 .sidebar_nav {
     font-family: $font-family-sans-serif;
-    font-size: 13px;
+    font-size: 12pt;
     margin-bottom: 20px;
 
     a {
@@ -258,6 +272,7 @@ body {
 .sub-menu {
     padding: 0;
     list-style: none;
+
     > li {
         border-top: 1px solid #cbcbcb;
 
@@ -274,7 +289,8 @@ body {
 
     .sub-menu {
         padding: 0;
-        list-style:none;
+        list-style: none;
+
         > li {
             border-top: 1px solid #cbcbcb;
 
@@ -600,7 +616,7 @@ ul.spotlight-list, ul.opportunity-list {
 }
 
 .imgGrid2x2 {
-    .panel-grid{
+    .panel-grid {
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
@@ -618,4 +634,9 @@ ul.spotlight-list, ul.opportunity-list {
             margin-bottom: 0 !important;
         }
     }
+}
+
+.so-widget-image {
+    max-width: 100%;
+    height: auto;
 }

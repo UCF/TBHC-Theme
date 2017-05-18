@@ -108,6 +108,9 @@ abstract class CustomPostType{
 		if ($this->options('use_revisions')){
 			$supports[] = 'revisions';
 		}
+		if ($this->options('use_excerpt')){
+			$supports[] = 'excerpt';
+		}
 		return $supports;
 	}
 
@@ -683,6 +686,7 @@ class Person extends CustomPostType
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$use_order      = True,
+		$use_excerpt	= True,	
 		$taxonomies     = array('org_groups', 'category'),
 		$orderby = 'person_orderby_name',
 		$order = 'ASC';
@@ -818,6 +822,7 @@ class Opportunity extends CustomPostType {
 	$use_title      = True,
 	$use_metabox    = True,
 	$use_shortcode	= True,
+	$use_excerpt	= True,	
 	$taxonomies     = array('event_groups');	
 	
 	public function fields() {
@@ -849,7 +854,7 @@ class Opportunity extends CustomPostType {
 	public function objectsToHTML($objects, $css_classes) {
 	ob_start();?>
 		<ul class="opportunity-list">
-			<?php
+			<?
 				rsort($objects);
 				foreach ($objects as $opportunity) { 
 					$start_date = get_post_meta($opportunity->ID, 'opportunity_start', TRUE);
@@ -885,15 +890,14 @@ class Opportunity extends CustomPostType {
 						Category:&nbsp;<?=get_post_meta($opportunity->ID, 'opportunity_category', true)?>
 					</div>
 				</li>
-				<?php
+				<?
 				}
 			?>
 		</ul>
-	<?php
+	<?php return ob_get_clean();
 	}
 	
 }
-
 
 /**
  * Describes a spotlight feature
@@ -915,8 +919,8 @@ class Spotlight extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = True,
 		$use_shortcode	= True,
+		$use_excerpt	= True,
 		$taxonomies     = array('event_groups');	
-	
 
 	public function fields() {
 		$prefix = $this->options('name').'_';
@@ -947,7 +951,7 @@ class Spotlight extends CustomPostType {
 	public function objectsToHTML($objects, $css_classes) {		
 		ob_start();?>
 		<ul class="spotlight-list">
-			<?php
+			<?
 			rsort($objects);
 			foreach ($objects as $spotlight) { 
 				$link = get_permalink($opportunity->ID);
@@ -973,11 +977,12 @@ class Spotlight extends CustomPostType {
 						Category:&nbsp;<?=get_post_meta($spotlight->ID, 'spotlight_category', true)?>
 					</div>
 				</li>
-			<?php
+			<?
 			}
 			?>
 		</ul>
 	<?php
+	return ob_get_clean();
 	}
 
 }
@@ -1202,7 +1207,7 @@ class Slider extends CustomPostType {
 							'id'   => $prefix . 'title_background_color',
 							'type' => 'text',
 							'desc' => 'Title\'s background color. Requires \'Display Title\' to be checked.<em>Suggested units: hex (colors)</em>',
-							'default' => '#FFFFFF',
+							'default' => '#FFCC00',
 						),
 						array(
 							'name' => __('Title Opacity'),
@@ -1232,6 +1237,20 @@ class Slider extends CustomPostType {
 							'id'   => $prefix . 'slide_video',
 							'type' => 'textarea',
 							'desc' => 'Copy and paste your video embed code here. [video] shortcodes are also allowed, but require the parameter display="embed" in order to not use a modal window; e.g. [video name="My Video" display="embed"]',
+						),
+						array(
+							'name' => __('Origin Offset Top'),
+							'id'   => $prefix . 'background_top_offset',
+							'type' => 'text',
+							'desc' => 'Sets the distance from top of slide where image is \'fixed\' while other content expands/collapses due to resizing.<br/><em>Suggested units: % (variable height)</em>',
+							'default' => '50%',
+						),
+						array(
+							'name' => __('Origin Offset Left'),
+							'id'   => $prefix . 'background_left_offset',
+							'type' => 'text',
+							'desc' => 'Sets the distance from left of slide where image is \'fixed\' while other content expands/collapses due to resizing.<br/><em>Suggested units: % (variable width)</em>',
+							'default' => '50%',
 						),
 						array(
 							'name' => __('Slide Video Thumbnail'),
@@ -1494,6 +1513,34 @@ public
 		'type' => 'text',
 		'std'  => '',
 		),
+		);
+	}
+}
+class Interest extends CustomPostType{
+	public
+		$name           = 'interest',
+		$plural_name    = 'Interests',
+		$singular_name  = 'Interest',
+		$add_new_item   = 'Add New Interest',
+		$edit_item      = 'Edit Interest',
+		$new_item       = 'New Interest',
+		$public         = True,
+		$use_editor     = True,
+		$use_thumbnails = True,
+		$use_order      = True,
+		$use_title      = True,
+		$use_revisions  = False,
+		$use_metabox	= True;
+	public function fields() {
+		$prefix = $this->options('name').'_';
+		return array(
+			array(
+				'name' => 'URL Redirect',
+				'desc' => 'Specify a full url to use as a redirect when the interest is clicked.',
+				'id'   => $prefix.'url_redirect',
+				'type' => 'text',
+				'std'	=> '',
+			),
 		);
 	}
 }

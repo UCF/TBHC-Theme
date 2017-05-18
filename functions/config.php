@@ -21,6 +21,7 @@ function __init__(){
 	add_image_size('subpage-subimg', 160);
 	add_image_size('subpage-studentimg', 115, 280);
 	register_nav_menu('header', __('Header Menu'));
+	register_nav_menu('homepage-sections', __('Homepage Sections Menu (Under Centerpiece)'));
 	register_nav_menu('footer-outer-left-collapse', __('Footer Outer Left Menu (Mobile Collapse)'));	
 	register_nav_menu('footer-inner-left-collapse', __('Footer Inner Left Menu (Mobile Collapse)'));
 	register_nav_menu('footer-inner-right', __('Footer Inner Right Menu (Mobile Left)'));
@@ -113,7 +114,6 @@ define('WP_SITE_PATH', $path);
 
 define('LDAP_HOST', 'net.ucf.edu');
 
-
 /**
  * Set config values including meta tags, registered custom post types, styles,
  * scripts, and any other statically defined assets that belong in the Config
@@ -131,6 +131,7 @@ Config::$custom_post_types = array(
 	'AZIndexLink',
 	'NavDropdown',
 	'Post',
+	'Interest',
 );
 
 Config::$custom_taxonomies = array(
@@ -400,6 +401,18 @@ Config::$theme_settings = array(
 		)),
 	),
 	'Styles' => array(
+			new RadioField(array(
+			'name'        => 'Home Page Theme',
+			'id'          => THEME_OPTIONS_NAME.'[home_page_theme]',
+			'description' => 'Choose the theme for the homepage of this site.',
+			'default'     => 'Honors',
+			'choices'     => array(
+				'Honors'  => 0,
+				'ORCE' => 1,
+				'OPA' => 2,
+			),
+			'value'       => $theme_options['home_page_theme'],
+	    )),
 		new RadioField(array(
 			'name'        => 'Enable Responsiveness',
 			'id'          => THEME_OPTIONS_NAME.'[bootstrap_enable_responsive]',
@@ -491,6 +504,13 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[centerpiece_desktop_height]',
 			'description' => 'Override the default centerpiece height (does not affect mobile). Set to auto for default functionality.<br/><em>Suggested units: px (constant height)</em>',
 			'value'       => $theme_options['centerpiece_desktop_height'],
+			'default'	  => 'auto',
+		)),
+		new TextField(array(
+			'name'        => 'Centerpiece Mobile Height',
+			'id'          => THEME_OPTIONS_NAME.'[centerpiece_mobile_height]',
+			'description' => 'Override the default centerpiece height (does not affect desktop). Set to auto for default functionality.<br/><em>Suggested units: px (constant height)</em>',
+			'value'       => $theme_options['centerpiece_mobile_height'],
 			'default'	  => 'auto',
 		)),
 		new TextField(array(

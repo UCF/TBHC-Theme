@@ -3,8 +3,9 @@ $fa-font-path:   '../../static/fonts/font-awesome/';
 
 // Font overrides
 $font-family-serif: Georgia, serif;
-$font-family-base: "Helvetica Neue",Helvetica,Arial,sans-serif;//$font-family-serif;
-$font-size-base: 13px;
+$font-family-base: "Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif,$font-family-serif;
+$font-family-sans-serif:  $font-family-base;
+$font-size-base: 12pt;
 $font-size-h1: 30px;
 $font-size-h2: 24px;
 $font-size-h3: 15px;
@@ -13,3 +14,7 @@ $font-size-h5: 12px;
 $font-size-h6: 11px;
 $headings-font-weight: 600;
 $blockquote-font-size: $font-size-base;
+
+// Erik added these var overrides
+$grid-columns: 15;
+//$screen-sm-max: 770px;

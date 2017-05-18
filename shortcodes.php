@@ -323,7 +323,7 @@ function sc_person_profile_grid($atts) {
 		usort($people, function($a, $b){
 			$a_title = get_post_meta($a->ID, 'person_jobtitle', true);
 			$b_title = get_post_meta($b->ID, 'person_jobtitle', true);
-			$haystack = ["Dean", "Director", "Coordinator"];
+			$haystack = array("Dean", "Director", "Coordinator");
 			$res = 0;
 			if(preg_match('/Dean|Director|Coordinator/', $a_title) || preg_match('/Dean|Director|Coordinator/', $b_title)){
 				foreach ($haystack as $item)	{
@@ -857,6 +857,11 @@ add_shortcode('spotlight-grid', 'sc_spotlight_grid');
 			$slide_tit_bg_color		= get_post_meta($post->ID, 'ss_title_background_color', TRUE);	
 			$slide_tit_opacity		= get_post_meta($post->ID, 'ss_title_opacity', TRUE);	
 		
+			$slide_mob_height		= get_theme_option('centerpiece_mobile_height');
+			$slide_desk_height		= get_theme_option('centerpiece_desktop_height');
+			$slide_bg_off_top		= get_post_meta($post->ID, 'ss_background_top_offset', TRUE);	
+			$slide_bg_off_left		= get_post_meta($post->ID, 'ss_background_left_offset', TRUE);	
+			
 			// id have made a param array (literals in js), debug gets ezier
 			if(DEBUG){
 				$a = array($slide_display_tit,$slide_tit_off_top,$slide_tit_off_left,$slide_tit_font_sz,$slide_tit_font_col,$slide_tit_bg_color,$slide_tit_opacity);
@@ -867,8 +872,7 @@ add_shortcode('spotlight-grid', 'sc_spotlight_grid');
 			// slide width in order to trigger responsive styles properly--
 			// http://www.bluebit.co.uk/blog/Using_jQuery_Cycle_in_a_Responsive_Layout
 			$output .= '<div id="centerpiece_slider">
-						  <ul>
-						  	<img src="'.get_bloginfo('stylesheet_directory').'/static/img/blank_slide.png" style="max-width: 100%; height: auto;">';
+						  <ul><img src="'.get_bloginfo('stylesheet_directory').'/static/img/blank_slide.png"">';
 
 
 			foreach ($slide_order as $s) {
@@ -882,7 +886,7 @@ add_shortcode('spotlight-grid', 'sc_spotlight_grid');
 					$slide_single_duration = (!empty($slide_duration[$s]) ? $slide_duration[$s] : '6');
 
 					// Start <li>
-					$output .= '<li class="centerpiece_single" id="centerpiece_single_'.$s.'" data-duration="'.$slide_single_duration.'">';
+					$output .= '<li class="centerpiece_single" id="centerpiece_single_'.$s.'" data-duration="'.$slide_single_duration.'" style="height:100%;">';
 
 					// Add <a> tag and target="_blank" if applicable:
 					if ($slide_links_to[$s] !== '' && $slide_content_type[$s] == 'image') {
@@ -895,11 +899,13 @@ add_shortcode('spotlight-grid', 'sc_spotlight_grid');
 
 					// Image output:
 					if ($slide_content_type[$s] == 'image') {
-						$output .= '<img class="centerpiece_single_img" src="'.$slide_image_url[0].'" title="'.$slide_title[$s].'" alt="'.$slide_title[$s].'"';
+						//$output .= '<img class="centerpiece_single_img" src="'.$slide_image_url[0].'" title="'.$slide_title[$s].'" alt="'.$slide_title[$s].'"';
+						$output .= '<div class="centerpiece_single_img" style="background-image:url(\''.$slide_image_url[0].'\');background-size:cover;height:100%;background-position:'.$slide_bg_off_top[$s].' '.$slide_bg_off_left[$s].';"';
 						$output .= '/>';
 
 						if($slide_display_tit[$s] == 'on'){
-							$output .= '<div style="position:absolute;top:'.$slide_tit_off_top[$s].';left:'.$slide_tit_off_left[$s].';font-size:'.$slide_tit_font_sz[$s].';color:'.$slide_tit_font_col[$s].';background-color:'.$slide_tit_bg_color[$s].';opactiy:'.$slide_tit_opacity[$s].';">'.$slide_title[$s].'</div>';
+							$rgba = hex_and_opacity_to_rgba($slide_tit_bg_color[$s], $slide_tit_opacity[$s]);
+							$output .= '<div style="position:absolute;top:'.$slide_tit_off_top[$s].';left:'.$slide_tit_off_left[$s].';font-size:'.$slide_tit_font_sz[$s].';color:'.$slide_tit_font_col[$s].';background-color:rgba('.$rgba.');height:auto;">'.$slide_title[$s].'</div>';
 						}
 						
 						if ($slide_links_to[$s] !== '' && $slide_content_type[$s] == 'image') {

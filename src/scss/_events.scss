@@ -1,0 +1,107 @@
+﻿section#events {
+    position: relative;
+    background-color: black;
+    padding: 3%;
+
+    @media (min-width: $screen-sm-max) {
+        padding: 0;
+        background-image: url('../img/bldg_front.png');
+        background-position-x: 50%;
+        background-position-y: 50%;
+        background-size: cover;
+    }
+
+    .events_bg_overlay {
+        display: none;
+
+        @media (min-width: $screen-sm-max) {
+            display: block;
+            background-color: black;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: .9;
+        }
+    }
+
+    .events_title_wrap {
+        padding: 20px 10px 10px 10px;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        @media (min-width: $screen-sm-max) {
+            position: relative;
+        }
+
+        .events_title {
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 40px;
+
+            @media (min-width: $screen-sm-max) {
+                max-width: $screen-lg;
+                margin: 0 auto;
+            }
+        }
+    }
+
+    .events_lg_table {
+        padding: 10px;
+        width: 100%;
+    
+        @media (min-width: $screen-sm-max) {
+            max-width: $screen-lg;
+            margin: 0 auto;
+            display: table;
+            padding: 10px;
+            position: relative;
+        }
+
+        .events_table_group {
+            @media (min-width: $screen-sm-max) {
+                display: table-cell;
+                width: 50%;
+            }
+
+            .events_type {
+                margin: 10px 0 10px 0;
+                background-color: #FC0;
+                text-transform: uppercase;
+                color: #333;
+                padding-left: 5px;
+                padding-right: 5px;
+                display: inline-block;
+                line-height: 1.65;
+            }
+
+            .event_single_wrap {
+                &:hover{
+                    text-decoration:none;
+                    border: none;
+                }
+                &:active{
+                    text-decoration:none;
+                    border: none;
+                }
+                .event_single {
+                    margin: 15px 0 ;
+                    .event_datetime {
+                        color: #FC0;
+                        text-transform: uppercase;
+                        margin-bottom:5px;
+                    }
+
+                    .event_title {
+                        font-weight: bold;
+                        color: white;
+                    }
+                }
+
+                .event_content, .event_content p, .event_content a {
+                    color: white;
+                }
+            }
+        }
+    }
+}

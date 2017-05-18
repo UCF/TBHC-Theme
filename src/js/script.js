@@ -1626,7 +1626,7 @@ function getProfilesForGrid(inp1, inp2){ // moved out person-profile-grid to new
 		data.show_option_all2 = shwOptAll2;
 	}
 	$.post(ajaxUrl, data, function(res){
-		ele.text(res);
+		ele.replaceWith(res);
 	});
 }
 function getOppsForGrid(inp1, inp2){
@@ -1658,7 +1658,7 @@ function getOppsForGrid(inp1, inp2){
 		data.show_option_all2 = shwOptAll2;
 	}
 	jQuery.post(ajaxUrl, data, function(res){
-		jQuery('.opportunity-grid').text(res);
+		jQuery('.opportunity-grid').replaceWith(res);
 	});
 }
 function getSpotsForGrid(inp1, inp2){
@@ -1690,7 +1690,7 @@ function getSpotsForGrid(inp1, inp2){
 		data.show_option_all2 = shwOptAll2;
 	}
 	jQuery.post(ajaxUrl, data, function(res){
-		jQuery('.spotlight-grid').text(res);
+		jQuery('.spotlight-grid').replaceWith(res);
 	});
 }
 var debounce = function (func, threshold, execAsap) {
@@ -1710,13 +1710,14 @@ var debounce = function (func, threshold, execAsap) {
     };
 }
 function stickyHeadFix(){
-	var wpAdminBar = $('#wpadminbar'), headWrp = $('#header-nav-wrap');
+	var wpAdminBar = $('#wpadminbar'), headWrp = $('#section-nav-xs');
+	headWrp = headWrp.length <= 0 ? $('#header-nav-wrap') : headWrp;
 	headWrp.off("affixed.bs.affix");
 	headWrp.off("affix-top.bs.affix");
 	headWrp.affix({
 		offset: { top: headWrp.offset().top + (wpAdminBar.length ? 55 - wpAdminBar.height() : 55) } // 55 for the lazy load ucf search bar ugh
 	});
-	var toPrep = $('#cntrPceWrap').length ? $('#cntrPceWrap') : $('.container');
+	var toPrep = headWrp.prop("id").indexOf("header") >= 0 && $('#cntrPceWrap').length > 0 ? $('#cntrPceWrap') : $('.container');
 	headWrp.on('affixed.bs.affix', function(){ 
 		$(this).css("top", wpAdminBar.length ? wpAdminBar.height() : "0" + "px"); 
 		toPrep.prepend("<div id='fakeNav' class='hidden-xs' style='height:" + headWrp.height() + "px;display:block;'></div>");

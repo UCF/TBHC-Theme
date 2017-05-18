@@ -13,7 +13,7 @@ require_once('third-party/truncate-html.php');  # Includes truncateHtml function
 // stuff for cors
 add_filter( 'allowed_http_origins', 'add_allowed_origins' );
 function add_allowed_origins( $origins ) {
-    $origins = array(site_url(null, null, 'http'),site_url(null, null, 'https'),'https://e.issuu.com/issuu-reader3-embed-files/stable/embed.html');
+    $origins = array(site_url(null, null, 'http'),site_url(null, null, 'https'),'https://e.issuu.com/issuu-reader3-embed-files/stable/embed.html', site_url(null, null, 'https').'/wp-json/oembed/1.0/embed');
 	//print_r($origins);
     return $origins;
 }
@@ -385,6 +385,27 @@ function get_spots_from_event_group(){
 add_action( 'wp_ajax_get_spots_from_event_group', 'get_spots_from_event_group' );
 add_action( 'wp_ajax_nopriv_get_spots_from_event_group', 'get_spots_from_event_group' );
 
+function hex_and_opacity_to_rgba($color, $opacity){
+	/*
+        Convert HEX Color to RGBA Color, opacity value support.
+        Written By: Qassim Hassan
+        Website: wp-time.com
+	 */
+    $color = trim($color, "#");
+    $hex = hexdec($color);
+    if( strlen($color) == 6 ){
+        $r = hexdec( substr($color, 0, 2) );
+        $g = hexdec( substr($color, 2, 2) );
+        $b = hexdec( substr($color, 4, 2) );
+        $a = $opacity;
+    }
+    else{
+        return "Error color code! Please enter correct color code, for example #ffffff";
+        return false;
+    }
+    return $r.", ".$g.", ".$b.", ".$a;
+}
+
 /**
  * Allow special tags in post bodies that would get stripped otherwise for most users.
  * Modifies $allowedposttags defined in wp-includes/kses.php
@@ -448,7 +469,6 @@ $allowedposttags['button'] = array(
 	'style' => array(),
 	'width' => array(),
 	'height' => array(),
-
 	'align' => array(),
 	'aria-hidden' => array(),
 	'aria-labelledby' => array(),
@@ -495,7 +515,6 @@ $allowedposttags['button'] = array(
 	'data-parent' => array(),
 );
 
-
 /**
  * Retrieve a YouTube ID from its URL
  **/
@@ -512,12 +531,10 @@ function get_youtube_id($url){
 	}
 }
 
-
 /**
  * Allow shortcodes in widgets
  **/
 add_filter('widget_text', 'do_shortcode');
-
 
 /**
  * Hide unused admin tools (Links, Comments, etc)
@@ -527,17 +544,6 @@ function hide_admin_links() {
 	remove_menu_page('edit-comments.php');
 }
 add_action( 'admin_menu', 'hide_admin_links' );
-/**
- * Tryn to add a menu item to header-menu
- **/
-/*add_filter( 'wp_nav_menu_items', 'add_pusher_to_nav', 10, 2 );
-function add_pusher_to_nav( $items, $args )
-{
-	if($args->theme_location == 'header-menu'){
-		$items .= "<li>...</li>";
-	}
-	return $items;
-}*/
 
 /**
  * Adds a subheader to a page (if one is set for the page.)
@@ -596,8 +602,6 @@ function get_page_subheader( $post ) {
 	return ob_get_clean();
 }
 
-
-
 /**
  * Output Spotlights for front page.
  **/
@@ -631,83 +635,126 @@ function frontpage_spotlights() {
 			'post_status'   => 'publish',
 			);
 		$spotlights = get_posts($args);
-	}
-
-	$spotlight_one = $spotlights[0];
-	$spotlight_two = $spotlights[1];
-
-	$position_one  = get_post_meta($spotlight_one->ID, 'spotlight_position', TRUE);
-	$position_two  = get_post_meta($spotlight_two->ID, 'spotlight_position', TRUE);
+	}	
 	
-	function output_spotlight($spotlight) {
-		$link = get_permalink($spotlight->ID);
-		$ext_link = get_post_meta($spotlight->ID, 'spotlight_url_redirect', TRUE);
-		if($ext_link){
-			$link = $ext_link; 
-		}
-		
-		?>
-		<div class="home_spotlight_single">
-		
-			<a href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight->post_title)?>">
-				<?php
-					$thumb_id = get_post_thumbnail_id($spotlight->ID);
-					$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
-					$thumb_src = $thumb_src[0];
-				?>
-				<?php if ($thumb_src) { ?>
-				<img class="print-only spotlight_thumb" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight->post_title)?>"/>
-				<div class="screen-only spotlight_thumb" style="background-image:url('<?=esc_attr($thumb_src)?>');"><?=esc_attr($spotlight->post_title)?></div>
-				<?php } ?>
-			</a>
-			<h3 class="home_spotlight_title"><a href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight->post_title)?>"><?=$spotlight->post_title?></a></h3>
-			<?=truncateHtml($spotlight->post_content, 200)?>
-			<p><a class="home_spotlight_readmore ga-event" href="<?=esc_attr($link)?>" target="_blank" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight->post_title)?>">Read More…</a></p>
-		</div>
-		<?
-	}
+	$spotlights = array_splice($spotlights, 0, 2);
 	
-	// If neither positions are set, or the two positions conflict with each
-	// other, just display them in the order they were retrieved:
-	if (($position_one == '' && $position_two == '') || ($position_one == $position_two)) {
-		output_spotlight($spotlight_one);
-		output_spotlight($spotlight_two);
-	}
+	$argsPeeps = array(
+			'tax_query' => array(
+						array(
+							'taxonomy' => 'org_groups',
+							'field' => 'slug',
+							'terms' => array( 'student-profile' )
+						)
+				),
+			'orderby' => 'date',
+			'order' => 'DESC',
+			'post_type' => 'person',
+			'post_status' => 'publish',
+			'numberposts' => 1,
+	);
+	$peeps =get_posts($argsPeeps);	
+	
+	ob_start(); ?>
+		<section id="spotlights">
+			<div id="spotlights_inner_wrap">
+				<div id="spotlights_left">
+					<div class="spotlights_title_wrap">
+						<h2 class="spotlights_title">Spotlights</h2>
+						<a href="<?=get_permalink(get_page_by_title('Spotlight Archives', OBJECT, 'page')->ID)?>">
+							Check out more stories
+							<i class="fa fa-external-link"></i>
+						</a>	
+					</div>	
+					<div class="spotlights_lg_table">
+						<? foreach ( $spotlights as $spotlight ){ 
+							$link = get_permalink($spotlight->ID);
+							$ext_link = get_post_meta($spotlight->ID, 'spotlight_url_redirect', TRUE);
+							if($ext_link){
+								$link = $ext_link; 
+							}
+							$cat_term = get_term_by('slug','event-category','event_groups');
+							$child_terms = get_term_children($cat_term->term_id, 'event_groups');
+							$all_terms   = wp_get_post_terms($spotlight->ID, 'event_groups');
+							foreach ( $all_terms as $term ) {
+								if( in_array($term->term_id, $child_terms ) ) {
+									$term_title = $term->name;
+									break;
+								}
+								if(DEBUG){
+									print_r($cat_term);
+									print_r($child_terms);
+									print_r($all_terms);					
+								}					
+							}?>
+							<div class="spotlight_single_wrap">
+								<a class="spotlight_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight->post_title)?>">
+									<div class="spotlight_image_wrap">
+										<? $thumb_id = get_post_thumbnail_id($spotlight->ID);
+											$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
+											$thumb_src = $thumb_src[0];
+											if ($thumb_src) { ?>
+												<img class="spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight->post_title)?>"/>
+											<? } ?>
+									</div>
+									<div class="spotlight_content_wrap">
+										<div class="spotlight_type">
+											<?=$term_title?>
+										</div>	
+										<h3 class="spotlight_title">
+											<?=$spotlight->post_title?>	
+										</h3>
+										<p class="spotlight_content">
+											<?=get_the_excerpt($peeps[0]->ID)?>	
+										</p>
+									</div>
+								</a>
+							</div>
+						<? } ?>
 
-	// If one is set but not the other, respect the set spotlight's position
-	// and place the other one in the other slot:
-	else if ($position_one == '' && $position_two !== '') {
-		if ($position_two == 'top') {
-			output_spotlight($spotlight_two);
-			output_spotlight($spotlight_one);
-		}
-		else {
-			output_spotlight($spotlight_one);
-			output_spotlight($spotlight_two);
-		}
-	}
-	else if ($position_one !== '' && $position_two == '') {
-		if ($position_one == 'top') {
-			output_spotlight($spotlight_one);
-			output_spotlight($spotlight_two);
-		}
-		else {
-			output_spotlight($spotlight_two);
-			output_spotlight($spotlight_one);
-		}
-	}
-
-	// Otherwise, display them in their designated positions:
-	else {
-		if ($position_one == 'top') { // we can assume position_two is the opposite
-			output_spotlight($spotlight_one);
-			output_spotlight($spotlight_two);
-		}
-		else {
-			output_spotlight($spotlight_two);
-			output_spotlight($spotlight_one);
-		}
-	}
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div id="spotlights_right">
+					<div class="spotlights_title_wrap">
+						<h2 class="spotlights_title">Featured Student</h2>
+					</div>
+					<?
+					$plink = get_permalink($peeps[0]->ID);
+								$pext_link = get_post_meta($peeps[0]->ID, 'spotlight_url_redirect', TRUE);
+								if($pext_link){
+									$plink = $pext_link; 
+								}
+					?>
+					<a class="spotlight_person" href="<?=esc_attr($plink)?>">
+						<div class="spotlight_image_wrap">
+							<? 
+								$pthumb_id = get_post_thumbnail_id($peeps[0]->ID);
+								$pthumb_src = wp_get_attachment_image_src( $pthumb_id, 'profile-grid-image' );
+								$pthumb_src = $pthumb_src[0];
+								if ($pthumb_src) { ?>
+									<img class="spotlight_image" src="<?=esc_attr($pthumb_src)?>" alt="<?=esc_attr($peeps[0]->post_title)?>"/>
+								<? } ?>
+						</div>
+						<div class="spotlight_content_wrap">
+							<h3 class="spotlight_title">
+								<?=$peeps[0]->post_title?>	
+							</h3>
+							<p class="spotlight_content">
+								<?=get_the_excerpt($peeps[0]->ID)?>	
+							</p>
+							<div class="spotlight_link">
+								<div class="spotlight_more">
+									Read More
+								</div>	
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</section>
+	<? return ob_get_clean();
 }
 
 /**
@@ -719,13 +766,7 @@ function frontpage_opportunities() {
 		'post_type' 	=> 'opportunity',
 		'post_status'   => 'publish',
 		'meta_key'		=> 'opportunity_end',
-		//'orderby'		=> 'meta_value_num',
-		//'order'			=> 'DESC',
 		'meta_query'	=> array(
-			/*array(
-				'key'	=>	'opportunity_post_to_home',
-				'value'	=>	'on',
-			),*/
 			array(
 				'key'	=>	'opportunity_start',
 				'value'	=>	date('Ymd', mktime(23,59,59)), // this might work? set time as 23:59:59?
@@ -739,15 +780,13 @@ function frontpage_opportunities() {
 		),
 	);
 	$opportunities = get_posts($args);
-	
+		
 	if(empty($opportunities)){
 		$args = array(
-		'numberposts' => -1,
-		'post_type' 	=> 'opportunity',
-		'post_status'   => 'publish',
-		'meta_key'		=> 'opportunity_end',
-		//'orderby'		=> 'meta_value_num',
-		//'order'			=> 'DESC',		
+			'numberposts' => -1,
+			'post_type' 	=> 'opportunity',
+			'post_status'   => 'publish',
+			'meta_key'		=> 'opportunity_end',
 		);
 		$opportunities = get_posts($args);
 	}
@@ -765,91 +804,194 @@ function frontpage_opportunities() {
 		$res = ($a_dt < $b_dt) ? -1 : 1;
 		return $res;
 	});
-
-	//var_dump($opportunities);
-	//$opportunities = array_reverse($opportunities);
-	$opportunities = array_splice($opportunities, 0, 4);
 	
-	//$opportunities = rsort($opportunities);
+	$opportunities = array_splice($opportunities, 0, 5);
 	
-	$opportunity_one = $opportunities[0];
-	$opportunity_two = $opportunities[1];
-	
-	$position_one  = get_post_meta($opportunity_one->ID, 'opportunity_position', TRUE);
-	$position_two  = get_post_meta($opportunity_two->ID, 'opportunity_position', TRUE);
-	
-	function output_opportunity($opportunity) {	
-		$link = get_permalink($opportunity->ID);
-		$ext_link = get_post_meta($opportunity->ID, 'opportunity_url_redirect', TRUE);
-		if($ext_link){
-			$link = $ext_link; 
-		}
-		
-		?>
-		<div class="home_opportunity_single">
-			<a href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Opportunity Link" data-ga-label="<?=esc_attr($opportunity->post_title)?>">
-				<?php
-					$thumb_id = get_post_thumbnail_id($opportunity->ID);
-					$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
-					$thumb_src = $thumb_src[0];
-				?>
-				<?php if ($thumb_src) { ?>
-					<img class="print-only opportunity_thumb" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight->post_title)?>"/>
-					<div class="screen-only opportunity_thumb" style="background-image:url('<?=esc_attr($thumb_src)?>');"><?=esc_attr($opportunity->post_title)?></div>
-				<?php } ?>
-			</a>
-			<h3 class="home_opportunity_title"><a href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Opportunity Link" data-ga-label="<?=esc_attr($opportunity->post_title)?>"><?=$opportunity->post_title?></a></h3>
-			<?=truncateHtml($opportunity->post_content, 200)?>
-		</div>
-		<?
+	if(DEBUG){
+		print_r($opportunities);
 	}
 	
-	foreach($opportunities as $op){
-		output_opportunity($op);
-	}
-	
-	// If neither positions are set, or the two positions conflict with each
-	// other, just display them in the order they were retrieved:
-	if (($position_one == '' && $position_two == '') || ($position_one == $position_two)) {
-		//output_opportunity($opportunity_one);
-		//output_opportunity($opportunity_two);
-	}
-	
-	// If one is set but not the other, respect the set opportunity's position
-	// and place the other one in the other slot:
-	else if ($position_one == '' && $position_two !== '') {
-		if ($position_two == 'top') {
-			//output_opportunity($opportunity_two);
-			//output_opportunity($opportunity_one);
-		}
-		else {
-			//output_opportunity($opportunity_one);
-			//output_opportunity($opportunity_two);
-		}
-	}
-	else if ($position_one !== '' && $position_two == '') {
-		if ($position_one == 'top') {
-			//output_opportunity($opportunity_one);
-			//output_opportunity($opportunity_two);
-		}
-		else {
-			//output_opportunity($opportunity_two);
-			//output_opportunity($opportunity_one);
-		}
-	}
-	
-	// Otherwise, display them in their designated positions:
-	else {
-		if ($position_one == 'top') { // we can assume position_two is the opposite
-			//output_opportunity($opportunity_one);
-			//output_opportunity($opportunity_two);
-		}
-		else {
-			//output_opportunity($opportunity_two);
-			//output_opportunity($opportunity_one);
-		}
-	}
+	ob_start(); ?>
+		<section id="opportunities">
+			<div class="opportunities_title_wrap">
+				<h2 class="opportunities_title">Opportunities</h2>
+				<a href="<?=get_permalink(get_page_by_title('Opportunity Archives', OBJECT, 'page')->ID)?>">Even More Opportunities</a>	
+			</div>		
+			<div class="opportunities_lg_table">
+			<? foreach ( $opportunities as $opportunity ){ 
+				$link = get_permalink($opportunity->ID);
+				$ext_link = get_post_meta($opportunity->ID, 'opportunity_url_redirect', TRUE);
+				if($ext_link){
+					$link = $ext_link; 
+				} 
+				$cat_term = get_term_by('slug','event-category','event_groups');
+				$child_terms = get_term_children($cat_term->term_id, 'event_groups');
+				$all_terms   = wp_get_post_terms($opportunity->ID, 'event_groups');
+				if(DEBUG){
+					print_r($cat_term);
+					print_r($child_terms);
+					print_r($all_terms);					
+				}
+				foreach ( $all_terms as $term ) {
+					if( in_array($term->term_id, $child_terms ) ) {
+						$term_title = $term->name;
+						break;
+					}
+				}?>
+				<div class="opportunity_single_wrap">
+					<a class="opportunity_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Opportunity Link" data-ga-label="<?=esc_attr($opportunity->post_title)?>">
+						<div class="opportunity_content_wrap">
+							<h3 class="opportunity_title">
+								<?=$opportunity->post_title?>	
+							</h3>
+							<div class="opportunity_type">
+								<?=$term_title?>
+							</div>					
+						</div>
+						<div class="opportunity_icon_wrap">
+							<i class="fa fa-2x fa-chevron-right opportunity_icon"></i>
+						</div>
+					</a>
+				</div>
+			<? } ?>
+			</div>
+		</section>
+	<? return ob_get_clean();
 }
+
+
+function frontpage_interests(){
+	$itms = get_posts(array(
+		"post_type" => "interest",
+		"post_status" => "publish",
+	));
+	if(DEBUG){
+		print_r($itms);
+	}
+	ob_start(); ?>
+	<section id="interests">
+		<div class="interests_title_wrap">
+			<h2 class="interests_title"><span>What Are You Interested In?</span></h2>
+		</div>	
+		<?php
+				
+			// orce override?
+			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
+				<style>
+					@media (min-width: 990px) {
+					section#interests{
+						padding: 0 !important;
+						background-color: white !important;
+						overflow: hidden;
+						margin-bottom: 50px;
+					}
+					.interests_title_wrap{
+							background-color: #fff !important;
+							color: #000 !important;
+					}
+					.interests_bg_overlay {
+							display: block !important;
+							background-color: black !important;
+							position: absolute !important;
+							width: 100% !important;
+							height: 100% !important;
+							opacity: .8 !important;
+					}
+					.interests_false_wrap{
+							background-image:url('https://testtbhccmsdev.smca.ucf.edu/wp-content/uploads/sites/2/2016/07/DISCOVERY_FINAL-1140x400.png') !important;
+							background-size:cover !important;
+							height:100% !important;
+							background-position:50% 50% !important;
+						}
+					}
+				</style>
+				<div class="interests_false_wrap">
+					<div class="interests_bg_overlay"></div>
+			<?}?>
+		<div class="interests_lg_table">
+		<? foreach ( $itms as $itm ){ 
+			$link = get_permalink($itm->ID);
+			$ext_link = get_post_meta($itm->ID, 'interest_url_redirect', TRUE);
+			if($ext_link){
+				$link = $ext_link; 
+			}?>
+			<style>
+				@media(min-width: 770px){
+					.interest_single#interest_<?=$itm->ID?>{
+						background-image:url('<?=get_the_post_thumbnail_url($itm->ID)?>');				
+					}
+				}
+			</style>
+			<div class="interest_single_wrap" >
+				<a class="interest_single" href="<?=$link?>" id="interest_<?=$itm->ID?>">
+					<div class="interest_single_overlay"></div>
+					<div class="interest_content_wrap">
+						<h3 class="interest_title">
+							<?=$itm->post_title?>	
+						</h3>
+						<p class="interest_content">
+							<?=$itm->post_content?>	
+						</p>
+					</div>
+					<div class="interest_icon_wrap">
+						<i class="fa fa-2x fa-arrow-right interest_icon"></i>
+					</div>
+				</a>
+			</div>					
+		<? } ?>
+		</div>
+		<?php
+				
+			// orce override?
+			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
+				</div>
+			<?}
+
+		?>
+	</section>
+	<? return ob_get_clean();
+} 
+
+function frontpage_events(){
+	$events = get_events(0, 5);
+	if(DEBUG){
+		print_r($events);
+	}
+	ob_start();?>
+	<section id="events">
+	<div class="events_bg_overlay"></div>
+		<div class="events_title_wrap">
+			<h2 class="events_title">Upcoming Events</h2>
+		</div>
+		<div class="events_lg_table">
+			<div class="events_table_group first">
+				<? foreach($events as $element){
+					$dateFormatted = new DateTime($element["starts"], new DateTimeZone('EST'));
+					if (array_search($element, $events) === 0){?>
+						<div class="events_type">Up Next</div>
+					<?}else if(array_search($element, $events) === 1){?>
+						<div class="events_table_group second">	
+							<div class="events_type">Looking Ahead</div>
+					<?}?>					
+					<a href="<?=$element["url"]?>" class="event_single_wrap">
+						<div class="event_single">
+							<div class="event_datetime"><?=$dateFormatted->format('D j - g:i A')?></div>
+							<h3 class="event_title"><?=$element["title"]?></h3>
+							<?if (array_search($element, $events) === 0){?>
+								<div class="event_content"><?=$element["description"]?></div>	
+							<?}?>
+						</div>
+					</a>	
+					<?if (array_search($element, $events) === 0){?>
+						</div>	
+					<?}?>					
+				<?}?>
+			</div>
+		</div>
+	</section>
+	<? return ob_get_clean();
+}
+
 
 /**
  * Pulls, parses and caches the weather.
@@ -859,55 +1001,44 @@ function frontpage_opportunities() {
  **/
 function get_weather_data() {
 	$cache_key = 'weather';
-
 	// Check if cached weather data already exists
 	if(($weather = get_transient($cache_key)) !== False) {
 		return $weather;
 	} else {
 		$weather = array('condition' => 'Fair', 'temp' => '80&#186;', 'img' => '34');
-
 		// Set a timeout
 		$opts = array('http' => array(
 								'method'  => 'GET',
 								'timeout' => WEATHER_FETCH_TIMEOUT,
 		));
 		$context = stream_context_create($opts);
-
 		// Grab the weather feed
 		$raw_weather = file_get_contents(WEATHER_URL, false, $context);
 		if ($raw_weather) {
 			$json = json_decode($raw_weather);
-
 			$weather['condition'] 	= $json->condition;
 			$weather['temp']		= $json->temp;
 			$weather['img']			= (string)$json->imgCode;
-
 			// The temp, condition and image code should always be set,
 			// but in case they're not, we catch them here:
-
 			# Catch missing cid
 			if (!isset($weather['img']) or !$weather['img']){
 				$weather['img'] = '34';
 			}
-
 			# Catch missing condition
 			if (!is_string($weather['condition']) or !$weather['condition']){
 				$weather['condition'] = 'Fair';
 			}
-
 			# Catch missing temp
 			if (!isset($weather['temp']) or !$weather['temp']){
 				$weather['temp'] = '80&#186;';
 			}
 		}
-
 		// Cache the new weather data
 		set_transient($cache_key, $weather, WEATHER_CACHE_DURATION);
-
 		return $weather;
 	}
 }
-
 
 /**
  * Output weather data. Add an optional class for easy Bootstrap styling.
@@ -923,7 +1054,6 @@ function output_weather_data($cssclass=null) {
 	"</div>";
 }
 
-
 /**
  * Get and display announcements.
  * Note that, like the old Announcements advanced search, only one
@@ -934,19 +1064,14 @@ function output_weather_data($cssclass=null) {
 function get_announcements($role='all', $keyword=NULL, $time='thisweek') {
 	// Get some dates for meta_query comparisons:
 	$today = date('Y-m-d');
-
 	$thismonday = date('Y-m-d', strtotime('monday this week'));
 	$thissunday = date('Y-m-d', strtotime($thismonday.' + 6 days'));
-
 	$nextmonday = date('Y-m-d', strtotime('monday next week'));
 	$nextsunday = date('Y-m-d', strtotime($nextmonday.' + 6 days'));
-
 	$firstday_thismonth = date('Y-m-d', strtotime('first day of this month'));
 	$lastday_thismonth = date('Y-m-d', strtotime('last day of this month'));
-
 	$firstday_nextmonth = date('Y-m-d', strtotime('first day of next month'));
 	$lastday_nextmonth = date('Y-m-d', strtotime('last day of next month'));
-
 	// Set up query args based on GET params:
 	$args = array(
 		'numberposts' => -1,
@@ -955,7 +1080,6 @@ function get_announcements($role='all', $keyword=NULL, $time='thisweek') {
 		'order' => 'ASC',
 		'meta_key' => 'announcement_start_date',
 	);
-
 	// Announcement time queries should allow posts to fall within the week, even if
 	// their start and end dates do not fall immediately within the given time
 	// (allow for ongoing events that span during the given time, and then some).
@@ -984,7 +1108,6 @@ function get_announcements($role='all', $keyword=NULL, $time='thisweek') {
 		);
 		$args = array_merge($args, $role_args);
 	}
-
 	elseif ($keyword !== NULL) {
 		$keyword_args = array(
 			's' => $keyword,
@@ -1003,7 +1126,6 @@ function get_announcements($role='all', $keyword=NULL, $time='thisweek') {
 		);
 		$args = array_merge($args, $keyword_args);
 	}
-
 	elseif ($time !== 'thisweek') {
 		switch ($time) {
 			case 'nextweek':
@@ -1068,10 +1190,8 @@ function get_announcements($role='all', $keyword=NULL, $time='thisweek') {
 				$args = array_merge($args, $time_args);
 				break;
 			case 'thissemester':
-
 				// Compare the current month to predefined month values
 				// to pull announcements from the current semester
-
 				// Check for Spring Semester
 				if (CURRENT_MONTH >= SPRING_MONTH_START && CURRENT_MONTH <= SPRING_MONTH_END) {
 					$time_args = array(
@@ -1159,7 +1279,6 @@ function get_announcements($role='all', $keyword=NULL, $time='thisweek') {
 		}
 
 	}
-
 	else { // default retrieval args
 		$fallback_args = array(
 			'meta_query' => array(
@@ -1177,7 +1296,6 @@ function get_announcements($role='all', $keyword=NULL, $time='thisweek') {
 		);
 		$args = array_merge($args, $fallback_args);
 	}
-
 
 	// Fetch all announcements based on args given above:
 	$announcements = get_posts($args);
@@ -1210,7 +1328,6 @@ function get_announcements($role='all', $keyword=NULL, $time='thisweek') {
 		return $announcements;
 	}
 }
-
 
 /**
  * Prints a set of announcements, given an announcements array
@@ -1302,8 +1419,6 @@ function print_announcements($announcements, $liststyle='thumbtacks', $spantype=
 							else { print 'n/a'; }
 						?>
 						</p>
-
-
 					</div>
 				</div>
 			<?php
@@ -1312,12 +1427,10 @@ function print_announcements($announcements, $liststyle='thumbtacks', $spantype=
 			} // endforeach
 			print '</div>';
 			break;
-
 		default:
 			break;
 	}
 }
-
 
 /**
  * Takes an announcements array from get_announcements() and outputs an RSS feed.
@@ -1455,12 +1568,10 @@ function esi_include($statementname, $argset=null) {
  * Duration is specified in number of days.
  **/
 function get_feedback_entries($formid=1, $duration=7, $to=array('webcom@ucf.edu')) {
-
 	// Check that GF is actually installed
 	if (is_plugin_inactive('gravityforms/gravityforms.php')) {
 		die('Error: Gravity Forms is not activated. Please install/activate Gravity Forms and try again.');
 	}
-
 	// Make sure a valid email address to send to is set
 	if (empty($to)) {
 		die('Error: No email address specified to mail to.');
@@ -1468,18 +1579,15 @@ function get_feedback_entries($formid=1, $duration=7, $to=array('webcom@ucf.edu'
 	if (!is_array($to)) {
 		die('Error: $to expects an array value.');
 	}
-
 	// Define how far back to search for old entries
 	$dur_end_date 	= date('Y-m-d');
 	$dur_start_date = date('Y-m-d', strtotime($dur_end_date.' -'.$duration.' days'));
-
 	// WPDB stuff
 	global $wpdb;
 	global $blog_id;
 	$blog_id == 1 ? $gf_table = 'wp_rg_lead' : $gf_table = 'wp_'.$blog_id.'_rg_lead'; # Y U NO USE CONSISTENT NAMING SCHEMA??
 	define( 'DIEONDBERROR', true );
 	$wpdb->show_errors();
-
 	// Get all entry IDs
 	$entry_ids = $wpdb->get_results(
 			"
@@ -1491,10 +1599,8 @@ function get_feedback_entries($formid=1, $duration=7, $to=array('webcom@ucf.edu'
 			ORDER BY        date_created ASC
 			"
 	);
-
 	// Begin $output
 	$output .= '<h3>Feedback Submissions for '.date('M. j, Y', strtotime($dur_start_date)).' to '.date('M. j, Y', strtotime($dur_end_date)).'</h3><br />';
-
 	if (count($entry_ids) == 0) {
 		$output .= 'No submissions found for this time period.';
 	}
@@ -1502,13 +1608,10 @@ function get_feedback_entries($formid=1, $duration=7, $to=array('webcom@ucf.edu'
 		// Get field data for the entry IDs we got
 		foreach ($entry_ids as $obj) {
 			$entry = RGFormsModel::get_lead($obj->id);
-
 			$output .= '<ul>';
-
 			$entry_output 	= array();
 			$about_array 	= array();
 			$routes_array 	= array();
-
 			// Only setup email for active entries (not trash/spam)
 			if ($entry['status'] == 'active') {
 				foreach ($entry as $field=>$val) {
@@ -1518,17 +1621,14 @@ function get_feedback_entries($formid=1, $duration=7, $to=array('webcom@ucf.edu'
 					// 3.1 to 3.7 	- 'Tell Us About Yourself' values
 					// 4.1 to 4.7	- 'Routes to' values
 					// 5			- Comment
-
 					// Entry ID
 					$entry_output['id'] = $obj->id;
-
 					// Date
 					if ($field == 'date_created') {
 						// Trim off seconds from date_created
 						$val = date('M. j, Y', strtotime($val));
 						$entry_output['date'] .= $val;
 					}
-
 					// Name
 					if ($field == 1) {
 						if ($val) {
@@ -1560,7 +1660,6 @@ function get_feedback_entries($formid=1, $duration=7, $to=array('webcom@ucf.edu'
 						}
 					}
 				}
-
 				$output .= '<li><strong>Entry: </strong>#'.$entry_output['id'].'</li>';
 				$output .= '<li><strong>From: </strong>'.$entry_output['name'].' < '.$entry_output['email'].' ></li>';
 				$output .= '<li><strong>Date Submitted: </strong>'.$entry_output['date'].'</li>';
@@ -1569,37 +1668,29 @@ function get_feedback_entries($formid=1, $duration=7, $to=array('webcom@ucf.edu'
 					$output .= '<li>'.$about.'</li>';
 				}
 				$output .= '</ul></li>';
-
 				$output .= '<li><strong>Route To: </strong><br/><ul>';
 				foreach ($routes_array as $routes) {
 					$output .= '<li>'.$routes.'</li>';
 				}
 				$output .= '</ul></li>';
-
 				$output .= '<li><strong>Comments: </strong><br/>'.$entry_output['comment'].'</li>';
-
 				$output .= '</ul><hr />';
 			}
 		}
-
 	}
 	// E-mail setup
 	$subject = 'UCF Comments and Feedback for '.date('M. j, Y', strtotime($dur_start_date)).' to '.date('M. j, Y', strtotime($dur_end_date));
 	$message = $output;
-
 	// Change e-mail content type to HTML
 	add_filter('wp_mail_content_type', create_function('', 'return "text/html"; '));
-
 	// Send e-mail; return success or error
 	$results = wp_mail( $to, $subject, $message );
-
 	if ($results == true) {
 		return 'Mail successfully sent at '.date('r');
 	}
 	else {
 		return 'wp_mail returned false; mail did not send.';
 	}
-
 }
 
 /**
@@ -1625,7 +1716,6 @@ function query_search_service($params) {
 	return $results;
 }
 
-
 /**
  * Query the undergraduate catalog feed
  * @return array
@@ -1649,7 +1739,6 @@ function query_undergraduate_catalog() {
 	return $results;
 }
 
-
 /**
  * Prevent Wordpress from trying to redirect to a "loose match" post when
  * an invalid URL is requested.  WordPress will redirect to 404.php instead.
@@ -1663,7 +1752,6 @@ function no_redirect_on_404($redirect_url) {
 	return $redirect_url;
 }
 add_filter('redirect_canonical', 'no_redirect_on_404');
-
 
 /**
  * Disable the Yoast SEO meta box on post types that we don't need it on
@@ -1684,7 +1772,6 @@ function remove_yoast_meta_boxes() {
 }
 add_action( 'add_meta_boxes', 'remove_yoast_meta_boxes' );
 
-
 /**
  * Output a page-specific stylesheet, if one exists.
  * Intended for use in header.php (in edge-side include)
@@ -1697,7 +1784,6 @@ function page_specific_stylesheet($pageid) {
 	else { return NULL; }
 }
 
-
 /**
  * Prints the Cloud.Typography font stylesheet <link> tag.
  **/
@@ -1707,7 +1793,6 @@ function webfont_stylesheet() {
 		echo '<link rel="stylesheet" href="'. $css_key .'" type="text/css" media="all" />';
 	}
 }
-
 
 /**
  * Output the CSS key for Cloud.Typography web fonts if a CSS key is set in
@@ -1720,7 +1805,6 @@ function page_specific_webfonts( $pageid ) {
 		webfont_stylesheet();
 	}
 }
-
 
 /**
  * Kill attachment, author, and daily archive pages.
@@ -1749,7 +1833,6 @@ function kill_unused_templates() {
 }
 add_action('template_redirect', 'kill_unused_templates');
 
-
 /**
 * Add ID attribute to registered University Header script.
 **/
@@ -1761,7 +1844,6 @@ function add_id_to_ucfhb($url) {
 	return $url;
 }
 add_filter('clean_url', 'add_id_to_ucfhb', 10, 3);
-
 
 /**
  * Returns an array of post groups, grouped by a specified taxonomy's terms.
@@ -1857,7 +1939,6 @@ function get_term_custom_meta( $term_id, $taxonomy, $key ) {
 	}
 	return stripslashes( $val );
 }
-
 
 /**
  * Saves a term's custom meta data.
@@ -2000,7 +2081,6 @@ function announcement_post_tax_save( $entry, $form ) {
 }
 add_action( 'gform_after_submission_4', 'announcement_post_tax_save', 10, 2 );
 
-
 /**
  * Allow json files to be uploaded to the media library.
  **/
@@ -2021,7 +2101,6 @@ function custom_body_classes( $classes ) {
 }
 add_filter( 'body_class', 'custom_body_classes' );
 
-
 /**
  * Enqueues page-specific javascript files.
  **/
@@ -2032,7 +2111,6 @@ function enqueue_page_js() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_page_js' );
-
 
 /**
  * Prints the Google Tag Manager snippet using the GTM ID in Theme Options.
@@ -2055,7 +2133,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	endif;
 	return ob_get_clean();
 }
-
 
 /**
  * Prints the Google Tag Manager data layer snippet.
@@ -2099,7 +2176,7 @@ function get_nav_panel(){
 	$css = siteorigin_panels_generate_css($items[0]->ID);
 	wp_send_json(array(
 		'html'	=>	$htmlOut,
-		'css'	=>	$css
+		/*'css'	=>	$css*/
 	));
 	die();
 }
