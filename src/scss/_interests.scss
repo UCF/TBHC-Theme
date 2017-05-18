@@ -197,12 +197,13 @@
             &:after {
                 content: "";
                 display: block;
-                width: 95%;
+                width: 90%;
                 border-bottom: 4px solid #e5e5e5;
+                margin:0 auto;
 
                 @media (min-width: $screen-sm-max) {
                     border: none;
-                    margin: 0px;
+                    margin: 0;
                     padding-bottom: 100%;
                 }
             }

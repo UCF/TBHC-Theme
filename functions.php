@@ -716,6 +716,9 @@ function frontpage_spotlights() {
 					</div>
 				</div>
 				<div id="spotlights_right">
+					<div class="spotlights_title_wrap">
+						<h2 class="spotlights_title">Featured Student</h2>
+					</div>
 					<div class="spotlight_person">
 						<div class="spotlight_image_wrap">
 							<? $pthumb_id = get_post_thumbnail_id($peeps[0]->ID);
