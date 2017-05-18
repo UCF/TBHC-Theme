@@ -16,6 +16,7 @@ body {
     .page-content {
         @media (min-width: $screen-xs-max) {
             max-width: 1200px;
+            margin: 0 auto;
         }
     }
     //padding-top: 20px;
