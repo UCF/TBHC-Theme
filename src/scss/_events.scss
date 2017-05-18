@@ -26,6 +26,8 @@
 
     .events_title_wrap {
         padding: 20px 10px 10px 10px;
+        max-width: 1200px;
+        margin: 0 auto;
 
         @media (min-width: $screen-sm-max) {
             position: relative;
@@ -47,12 +49,12 @@
     .events_lg_table {
         padding: 10px;
         width: 100%;
-
+    
         @media (min-width: $screen-sm-max) {
             max-width: $screen-lg;
             margin: 0 auto;
             display: table;
-            padding: 10px 0;
+            padding: 10px;
             position: relative;
         }
 
