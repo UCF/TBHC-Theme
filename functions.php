@@ -719,14 +719,16 @@ function frontpage_spotlights() {
 					<div class="spotlights_title_wrap">
 						<h2 class="spotlights_title">Featured Student</h2>
 					</div>
-					<a class="spotlight_person" href="<?=esc_attr($plink)?>">
-						<div class="spotlight_image_wrap">
-							<? 
-								$plink = get_permalink($peeps[0]->ID);
+					<?
+					$plink = get_permalink($peeps[0]->ID);
 								$pext_link = get_post_meta($peeps[0]->ID, 'spotlight_url_redirect', TRUE);
 								if($pext_link){
 									$plink = $pext_link; 
 								}
+					?>
+					<a class="spotlight_person" href="<?=esc_attr($plink)?>">
+						<div class="spotlight_image_wrap">
+							<? 
 								$pthumb_id = get_post_thumbnail_id($peeps[0]->ID);
 								$pthumb_src = wp_get_attachment_image_src( $pthumb_id, 'profile-grid-image' );
 								$pthumb_src = $pthumb_src[0];
