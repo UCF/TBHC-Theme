@@ -2,7 +2,7 @@
     padding: 0 8%;
 
     @media (min-width: $screen-sm-max) {
-        padding: 0;
+        padding: 10px;
     }
 
     #spotlights_inner_wrap {
@@ -18,11 +18,14 @@
             }
 
             .spotlights_title_wrap {
-
+                margin: 20px 0 10px 0;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 10px;
                 .spotlights_title {
                     font-size:17px;
                     font-size: 3em;
                     font-weight: bold;
+
                 }
 
                 a {
@@ -35,13 +38,13 @@
             .spotlights_lg_table {
 
                 .spotlight_single_wrap {
-
+                    padding: 20px 0 10px 0;
                     .spotlight_single {
                         display: table;
                         width: 100%;
 
                         @media (min-width: $screen-sm-max) {
-                            padding: 5px;
+                            padding: 5px 0;
                         }
 
                         .spotlight_image_wrap {
