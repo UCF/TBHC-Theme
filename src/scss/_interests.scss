@@ -186,6 +186,7 @@
                     .interest_icon{
                          border: 4px #000 solid;
                          color:#FC0;
+                         transition: color .2s, border .2s;
                     }
                 }
                 &:active{
