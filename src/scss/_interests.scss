@@ -24,38 +24,44 @@
             padding: 0;
         }
 
-        .interests_title span {
-            position: relative;
-            display: inline-block;
-
-            &:before {
-                content: '';
-                position: absolute;
-                top: 50%;
-                border: none;
-
-                @media (min-width: $screen-sm-max) {
-                    border-bottom: #FFCC00 2px solid;
-                }
-
-                width: 600px; /* half of limiter*/
-                margin: 0 20px;
-                right: 100%;
+        .interests_title {
+            @media (min-width: $screen-sm-max) {
+                margin: 20px 10px 10px 10px;
             }
 
-            &:after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                border: none;
+            span {
+                position: relative;
+                display: inline-block;
 
-                @media (min-width: $screen-sm-max) {
-                    border-bottom: #FFCC00 2px solid;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    border: none;
+
+                    @media (min-width: $screen-sm-max) {
+                        border-bottom: #FFCC00 2px solid;
+                    }
+
+                    width: 50%; /* half of limiter*/
+                    margin: 0 20px;
+                    right: 100%;
                 }
 
-                width: 600px; /* half of limiter*/
-                margin: 0 20px;
-                left: 100%;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    border: none;
+
+                    @media (min-width: $screen-sm-max) {
+                        border-bottom: #FFCC00 2px solid;
+                    }
+
+                    width: 50%; /* half of limiter*/
+                    margin: 0 20px;
+                    left: 100%;
+                }
             }
         }
     }
@@ -99,6 +105,7 @@
                 display: table;
                 width: 100%;
                 background-size: cover;
+                padding: 10px;
 
                 @media (max-width: $screen-sm-max) {
                     background-image: none;
@@ -106,6 +113,7 @@
 
                 @media (min-width: $screen-sm-max) {
                     position: absolute;
+                    padding:0;
                     width: 85%;
                     height: 85%;
                     top: 7.5%;
@@ -131,14 +139,15 @@
                     .interest_title {
                         color: #000;
                         margin: 10px 0;
-                        font-size:17px;
+                        font-size: 17px;
 
                         @media (min-width: $screen-sm-max) {
                             position: absolute;
-                            bottom: 66%;
+                            bottom: 70%;
                             width: 100%;
                             padding: 0;
                             margin: 0;
+                            padding:5px;
                             text-align: center;
                         }
                     }
@@ -149,6 +158,7 @@
                         position: absolute;
                         top: 33%;
                         margin: 0;
+                        padding: 5px;
                         padding: 0;
                         text-align: center;
                     }
@@ -171,13 +181,22 @@
                         color: #000;
                     }
                 }
+                &:hover{
+                    text-decoration: none;
+                    .interest_icon{
+                         border: 4px #000 solid;
+                         color:#FC0;
+                    }
+                }
+                &:active{
+                    text-decoration: none;
+                }
             }
 
             &:after {
                 content: "";
                 display: block;
                 width: 95%;
-                margin: 1em auto 0;
                 border-bottom: 4px solid #e5e5e5;
 
                 @media (min-width: $screen-sm-max) {
