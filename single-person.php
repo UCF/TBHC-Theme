@@ -20,7 +20,7 @@
 				$time = get_post_meta($post->ID, 'dist_speaker_time', True);
 				$date = get_post_meta($post->ID, 'dist_speaker_date', True);
 				$location = get_post_meta($post->ID, 'dist_speaker_location', True);
-				$image_url = get_featured_image_url($post->ID, 'person-grid-image');
+				$image_url = get_featured_image_url($post->ID, 'person-grid-image');//use this instead wp-get-attachment-image
 				$email = get_post_meta($post->ID, 'person_email', True);
 				$phones = Person::get_phones($post);
 				$office = get_post_meta($post->ID, 'person_office', True);

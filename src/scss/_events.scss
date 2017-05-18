@@ -1,8 +1,10 @@
 ﻿section#events {
     position: relative;
     background-color: black;
+    padding: 3%;
 
     @media (min-width: $screen-sm-max) {
+        padding: 0;
         background-image: url('../img/bldg_front.png');
         background-position-x: 50%;
         background-position-y: 50%;
@@ -23,10 +25,11 @@
     }
 
     .events_title_wrap {
-        padding: 0 3%;
+        padding: 20px 10px 10px 10px;
+        max-width: 1200px;
+        margin: 0 auto;
 
         @media (min-width: $screen-sm-max) {
-            padding: 0;
             position: relative;
         }
 
@@ -34,6 +37,7 @@
             color: white;
             text-transform: uppercase;
             font-weight: bold;
+            font-size: 40px;
 
             @media (min-width: $screen-sm-max) {
                 max-width: $screen-lg;
@@ -43,15 +47,15 @@
     }
 
     .events_lg_table {
-        padding: 0 3%;
+        padding: 10px;
         width: 100%;
-
+    
         @media (min-width: $screen-sm-max) {
             max-width: $screen-lg;
             margin: 0 auto;
             display: table;
+            padding: 10px;
             position: relative;
-            padding: 0;
         }
 
         .events_table_group {
@@ -61,24 +65,37 @@
             }
 
             .events_type {
+                margin: 10px 0 10px 0;
                 background-color: #FC0;
                 text-transform: uppercase;
                 color: #333;
                 padding-left: 5px;
                 padding-right: 5px;
+                display: inline-block;
                 line-height: 1.65;
             }
 
             .event_single_wrap {
-
-                .event_datetime {
-                    color: #FC0;
-                    text-transform: uppercase;
+                &:hover{
+                    text-decoration:none;
+                    border: none;
                 }
+                &:active{
+                    text-decoration:none;
+                    border: none;
+                }
+                .event_single {
+                    margin: 15px 0 ;
+                    .event_datetime {
+                        color: #FC0;
+                        text-transform: uppercase;
+                        margin-bottom:5px;
+                    }
 
-                .event_title {
-                    font-weight: bold;
-                    color: white;
+                    .event_title {
+                        font-weight: bold;
+                        color: white;
+                    }
                 }
 
                 .event_content, .event_content p, .event_content a {

@@ -698,14 +698,14 @@ function frontpage_spotlights() {
 											<? } ?>
 									</div>
 									<div class="spotlight_content_wrap">
-										<span class="spotlight_type">
+										<div class="spotlight_type">
 											<?=$term_title?>
-										</span>	
+										</div>	
 										<h3 class="spotlight_title">
 											<?=$spotlight->post_title?>	
 										</h3>
 										<p class="spotlight_content">
-											<?=get_the_excerpt($spotlight->ID)?>	
+											<?=get_the_excerpt($peeps[0]->ID)?>	
 										</p>
 									</div>
 								</a>
@@ -716,11 +716,40 @@ function frontpage_spotlights() {
 					</div>
 				</div>
 				<div id="spotlights_right">
-					<div class="spotlight_person">
-						<?
-							print_r($peeps);
-						?>
+					<div class="spotlights_title_wrap">
+						<h2 class="spotlights_title">Featured Student</h2>
 					</div>
+					<?
+					$plink = get_permalink($peeps[0]->ID);
+								$pext_link = get_post_meta($peeps[0]->ID, 'spotlight_url_redirect', TRUE);
+								if($pext_link){
+									$plink = $pext_link; 
+								}
+					?>
+					<a class="spotlight_person" href="<?=esc_attr($plink)?>">
+						<div class="spotlight_image_wrap">
+							<? 
+								$pthumb_id = get_post_thumbnail_id($peeps[0]->ID);
+								$pthumb_src = wp_get_attachment_image_src( $pthumb_id, 'profile-grid-image' );
+								$pthumb_src = $pthumb_src[0];
+								if ($pthumb_src) { ?>
+									<img class="spotlight_image" src="<?=esc_attr($pthumb_src)?>" alt="<?=esc_attr($peeps[0]->post_title)?>"/>
+								<? } ?>
+						</div>
+						<div class="spotlight_content_wrap">
+							<h3 class="spotlight_title">
+								<?=$peeps[0]->post_title?>	
+							</h3>
+							<p class="spotlight_content">
+								<?=get_the_excerpt($peeps[0]->ID)?>	
+							</p>
+							<div class="spotlight_link">
+								<div class="spotlight_more">
+									Read More
+								</div>	
+							</div>
+						</div>
+					</a>
 				</div>
 				<div class="clearfix"></div>
 			</div>
@@ -936,22 +965,23 @@ function frontpage_events(){
 		</div>
 		<div class="events_lg_table">
 			<div class="events_table_group first">
-				<? foreach($events as $element){?>					
-					<?if (array_search($element, $events) === 0){?>
-						<span class="events_type">Up Next</span>
+				<? foreach($events as $element){
+					$dateFormatted = new DateTime($element["starts"], new DateTimeZone('EST'));
+					if (array_search($element, $events) === 0){?>
+						<div class="events_type">Up Next</div>
 					<?}else if(array_search($element, $events) === 1){?>
 						<div class="events_table_group second">	
 							<span class="events_type">Looking Ahead</span>
 					<?}?>					
-					<div class="event_single_wrap">
+					<a href="<?=$element["url"]?>" class="event_single_wrap">
 						<div class="event_single">
-							<div class="event_datetime"><?=$element["starts"]?></div>
+							<div class="event_datetime"><?=$dateFormatted->format('D j - g:i A');?></div>
 							<h3 class="event_title"><?=$element["title"]?></h3>
 							<?if (array_search($element, $events) === 0){?>
 								<div class="event_content"><?=$element["description"]?></div>	
 							<?}?>
 						</div>
-					</div>	
+					</a>	
 					<?if (array_search($element, $events) === 0){?>
 						</div>	
 					<?}?>					

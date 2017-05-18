@@ -16,6 +16,7 @@ body {
     .page-content {
         @media (min-width: $screen-xs-max) {
             max-width: 1200px;
+            margin: 0 auto;
         }
     }
     //padding-top: 20px;
@@ -63,7 +64,7 @@ body {
     }
 
     select {
-        font-size: 1.25em;
+        margin-bottom:5px;
     }
 
     .row {
