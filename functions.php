@@ -968,7 +968,7 @@ function frontpage_events(){
 								<div class="event_content"><?=$element["description"]?></div>	
 							<?}?>
 						</div>
-					</div>	
+					</a>	
 					<?if (array_search($element, $events) === 0){?>
 						</div>	
 					<?}?>					
