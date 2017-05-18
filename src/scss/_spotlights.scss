@@ -99,7 +99,11 @@
             }
 
             .spotlights_title_wrap {
-                margin: 50px 0 20px 10px;
+                margin: 30px 0 20px 10px;
+
+                @media (min-width: $screen-sm-max) {
+                    margin: 50px 0 20px 10px;
+                }
             }
 
             .spotlight_person {
