@@ -971,7 +971,7 @@ function frontpage_events(){
 						<div class="events_type">Up Next</div>
 					<?}else if(array_search($element, $events) === 1){?>
 						<div class="events_table_group second">	
-							<span class="events_type">Looking Ahead</span>
+							<div class="events_type">Looking Ahead</div>
 					<?}?>					
 					<a href="<?=$element["url"]?>" class="event_single_wrap">
 						<div class="event_single">
