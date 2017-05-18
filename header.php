@@ -151,7 +151,7 @@
 				?>
 			</div>
 			<?php if(get_theme_option('home_page_theme') != 1 && get_theme_option('home_page_theme') !== 1){ ?>
-			<nav id="section-nav-xs" class="navbar">
+			<nav id="section-nav-xs" class="navbar navbar-inverse">
 			<div id="nav-xs-center-wrap">
 				<div class="navbar-section">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#section-menu-xs-collapse" aria-expanded="false">
