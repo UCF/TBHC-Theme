@@ -42,7 +42,7 @@
     }
 
     .events_lg_table {
-        padding: 20px 10px 10px 10px;
+        padding: 10px;
         width: 100%;
 
         @media (min-width: $screen-sm-max) {
@@ -59,7 +59,7 @@
             }
 
             .events_type { 
-                margin: 10px 0;
+                margin-bottom: 10px;
                 background-color: #FC0;
                 text-transform: uppercase;
                 color: #333;
