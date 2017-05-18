@@ -878,6 +878,13 @@ function frontpage_interests(){
 			// orce override?
 			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
 				<style>
+					section#interests .interest_title{
+						font-size:25px !important;
+						bottom: 59% !important;
+					}
+					section#interests .interest_title{
+						top:44% !important;
+					}
 					@media (min-width: 990px) {
 					section#interests{
 						padding: 0 !important;
@@ -888,7 +895,7 @@ function frontpage_interests(){
 					.interests_title_wrap{
 							background-color: #fff !important;
 							color: #000 !important;
-					}
+					}					
 					.interests_bg_overlay {
 							display: block !important;
 							background-color: black !important;
