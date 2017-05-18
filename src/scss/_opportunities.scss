@@ -6,14 +6,17 @@
     padding: 0;
 
     .opportunities_title_wrap {
-        margin: 20px auto 10px auto;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
         padding-left: 10px;
+
         @media (min-width: $screen-sm-max) {
             max-width: 1200px;
         }
 
         .opportunities_title {
-            font-size: 17px;
+            font-size: 24px;
             font-weight: 700;
         }
 
