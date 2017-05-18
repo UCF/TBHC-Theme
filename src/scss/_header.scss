@@ -225,9 +225,11 @@
                 color: #9d9d9d;            
                 &:hover{
                     color:white !important;
+                    background-color: inherit !important;
                 }
                 &:active{
                     color:white !important;
+                    background-color: inherit !important;
                 }
             }
         }
