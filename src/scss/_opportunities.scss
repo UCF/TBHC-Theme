@@ -6,10 +6,10 @@
     padding: 0;
 
     .opportunities_title_wrap {
-        padding-left:10px;
-        padding-right:10px;
+        padding-left:3%;
+        padding-right:3%;
         @media (min-width: $screen-sm-max) {
-
+            padding-left: 10px;
             padding-right:0;
             margin: 0 auto;
             max-width: $screen-lg;
