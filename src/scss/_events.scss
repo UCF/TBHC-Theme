@@ -1,8 +1,10 @@
 ﻿section#events {
     position: relative;
     background-color: black;
+    padding: 3%;
 
     @media (min-width: $screen-sm-max) {
+        padding: 0;
         background-image: url('../img/bldg_front.png');
         background-position-x: 50%;
         background-position-y: 50%;

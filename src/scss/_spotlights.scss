@@ -75,6 +75,7 @@
                                 padding-left: 5px;
                                 padding-right: 5px;
                                 line-height: 1.65;
+                                display: inline-block;
                             }
 
                             .spotlight_title {
@@ -92,18 +93,32 @@
             @media (min-width: $screen-sm-max) {
                 float: right;
                 width: 30%;
+                padding: 10px 0;
             }
-
+                                        .spotlights_title_wrap{
+                                margin: 50px 0 20px 10px;
+                                }
             .spotlight_person {
+                padding: 10px;
                 .spotlight_content_wrap {
                             color: #333;
 
                             .spotlight_title {
+                                margin-top:10px;
                                 font-weight: bold;
                                 padding: 5px 0;
                                 color: #333;
                             }
                         }
+                .spotlight_more {
+                                background-color: #FC0;
+                                text-transform: uppercase;
+                                color: #333;
+                                padding-left: 5px;
+                                padding-right: 5px;
+                                line-height: 1.65;
+                                display: inline-block;
+                            }
             }
         }
     }

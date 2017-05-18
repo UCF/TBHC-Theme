@@ -698,9 +698,9 @@ function frontpage_spotlights() {
 											<? } ?>
 									</div>
 									<div class="spotlight_content_wrap">
-										<span class="spotlight_type">
+										<div class="spotlight_type">
 											<?=$term_title?>
-										</span>	
+										</div>	
 										<h3 class="spotlight_title">
 											<?=$spotlight->post_title?>	
 										</h3>
@@ -721,21 +721,32 @@ function frontpage_spotlights() {
 					</div>
 					<div class="spotlight_person">
 						<div class="spotlight_image_wrap">
-							<? $pthumb_id = get_post_thumbnail_id($peeps[0]->ID);
+							<? 
+								$plink = get_permalink($peeps[0]->ID);
+								$pext_link = get_post_meta($peeps[0]->ID, 'spotlight_url_redirect', TRUE);
+								if($pext_link){
+									$plink = $pext_link; 
+								}
+								$pthumb_id = get_post_thumbnail_id($peeps[0]->ID);
 								$pthumb_src = wp_get_attachment_image_src( $pthumb_id, 'profile-grid-image' );
 								$pthumb_src = $pthumb_src[0];
 								if ($pthumb_src) { ?>
 									<img class="spotlight_image" src="<?=esc_attr($pthumb_src)?>" alt="<?=esc_attr($peeps[0]->post_title)?>"/>
 								<? } ?>
 						</div>
-						<div class="spotlight_content_wrap">
+						<a class="spotlight_content_wrap">
 							<h3 class="spotlight_title">
 								<?=$peeps[0]->post_title?>	
 							</h3>
 							<p class="spotlight_content">
 								<?=get_the_excerpt($peeps[0]->ID)?>	
 							</p>
-						</div>
+							<a class="spotlight_link" href="<?=esc_attr($plink)?>">
+								<div class="spotlight_type">
+									Read More
+								</div>	
+							</a>
+						</a>
 					</div>
 				</div>
 				<div class="clearfix"></div>
