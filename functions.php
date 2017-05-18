@@ -741,11 +741,11 @@ function frontpage_spotlights() {
 							<p class="spotlight_content">
 								<?=get_the_excerpt($peeps[0]->ID)?>	
 							</p>
-							<a class="spotlight_link" href="<?=esc_attr($plink)?>">
+							<div class="spotlight_link">
 								<div class="spotlight_more">
 									Read More
 								</div>	
-							</a>
+							</div>
 						</div>
 					</a>
 				</div>
