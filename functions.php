@@ -878,6 +878,13 @@ function frontpage_interests(){
 			// orce override?
 			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
 				<style>
+					section#interests .interest_title{
+						font-size:25px !important;
+						bottom: 59% !important;
+					}
+					section#interests .interest_content{
+						top:44% !important;
+					}
 					@media (min-width: 990px) {
 					section#interests{
 						padding: 0 !important;
@@ -888,7 +895,7 @@ function frontpage_interests(){
 					.interests_title_wrap{
 							background-color: #fff !important;
 							color: #000 !important;
-					}
+					}					
 					.interests_bg_overlay {
 							display: block !important;
 							background-color: black !important;
@@ -971,11 +978,11 @@ function frontpage_events(){
 						<div class="events_type">Up Next</div>
 					<?}else if(array_search($element, $events) === 1){?>
 						<div class="events_table_group second">	
-							<span class="events_type">Looking Ahead</span>
+							<div class="events_type">Looking Ahead</div>
 					<?}?>					
 					<a href="<?=$element["url"]?>" class="event_single_wrap">
 						<div class="event_single">
-							<div class="event_datetime"><?=$dateFormatted->format('D j - g:i A');?></div>
+							<div class="event_datetime"><?=$dateFormatted->format('D j - g:i A')?></div>
 							<h3 class="event_title"><?=$element["title"]?></h3>
 							<?if (array_search($element, $events) === 0){?>
 								<div class="event_content"><?=$element["description"]?></div>	
