@@ -14,9 +14,9 @@ ul li:not(ul li div) {
 
 body.page-template {
     .container {
+        margin: 20px auto;
         @media (min-width: $screen-xs-max) {
             max-width: 1200px;
-            margin: 20px auto;
         }
     }
 }
