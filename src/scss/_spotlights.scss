@@ -110,6 +110,11 @@
                 padding: 10px;
                 display: block;
 
+                &:hover {
+                    text-decoration: none;
+                    border: none;
+                }
+
                 .spotlight_content_wrap {
                     color: #333;
 
@@ -137,7 +142,6 @@
                     &:hover {
                         text-decoration: none;
                         border: none;
-                        transition: background-color .2s;
                     }
 
                     .spotlight_more {
