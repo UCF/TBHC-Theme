@@ -705,7 +705,7 @@ function frontpage_spotlights() {
 											<?=$spotlight->post_title?>	
 										</h3>
 										<p class="spotlight_content">
-											<?=get_the_excerpt($peeps[0]->ID)?>	
+											<?=get_the_excerpt($spotlight->ID)?>	
 										</p>
 									</div>
 								</a>
