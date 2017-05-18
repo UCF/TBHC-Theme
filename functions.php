@@ -952,8 +952,9 @@ function frontpage_events(){
 		</div>
 		<div class="events_lg_table">
 			<div class="events_table_group first">
-				<? foreach($events as $element){?>					
-					<?if (array_search($element, $events) === 0){?>
+				<? foreach($events as $element){
+					$dateFormatted = new DateTime($element["starts"], new DateTimeZone('EST'));
+					if (array_search($element, $events) === 0){?>
 						<span class="events_type">Up Next</span>
 					<?}else if(array_search($element, $events) === 1){?>
 						<div class="events_table_group second">	
@@ -961,7 +962,7 @@ function frontpage_events(){
 					<?}?>					
 					<div class="event_single_wrap">
 						<div class="event_single">
-							<div class="event_datetime"><?=$element["starts"]?></div>
+							<div class="event_datetime"><?=$dateFormatted->format('DjgiA');?></div>
 							<h3 class="event_title"><?=$element["title"]?></h3>
 							<?if (array_search($element, $events) === 0){?>
 								<div class="event_content"><?=$element["description"]?></div>	

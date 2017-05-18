@@ -23,7 +23,7 @@
     }
 
     .events_title_wrap {
-        padding: 0 3%;
+        padding: 0 10px;
 
         @media (min-width: $screen-sm-max) {
             padding: 0;
@@ -34,7 +34,7 @@
             color: white;
             text-transform: uppercase;
             font-weight: bold;
-
+            font-size: 40px;
             @media (min-width: $screen-sm-max) {
                 max-width: $screen-lg;
                 margin: 0 auto;
@@ -43,7 +43,7 @@
     }
 
     .events_lg_table {
-        padding: 0 3%;
+        padding: 20px 10px 10px 10px;
         width: 100%;
 
         @media (min-width: $screen-sm-max) {
