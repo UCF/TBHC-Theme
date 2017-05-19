@@ -990,7 +990,7 @@ function frontpage_events(){
 			</div>
 			<div class="events_table_group second">	
 				<div class="events_type">Looking Ahead</div>
-				<? foreach($revents as $element){
+				<? foreach($revent as $element){
 					$dateFormatted = new DateTime($element["starts"], new DateTimeZone('EST'));
 					?><a href="<?=$element["url"]?>" class="event_single_wrap">
 						<div class="event_single">
