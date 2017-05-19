@@ -968,6 +968,8 @@ function frontpage_events(){
 	if(DEBUG){
 		print_r($events);
 	}
+	$levent = array_splice($events, 0, 1);
+	$revent = array_slice($events, 1);
 	ob_start();?>
 	<section id="events">
 	<div class="events_bg_overlay"></div>
@@ -976,26 +978,26 @@ function frontpage_events(){
 		</div>
 		<div class="events_lg_table">
 			<div class="events_table_group first">
-				<? foreach($events as $element){
+			<?	$dateFormatted = new DateTime($levent[0]["starts"], new DateTimeZone('EST'));
+				?><div class="events_type">Up Next</div>
+				<div href="<?=$levent[0]['url']?>" class="event_single_wrap">
+					<div class="event_single">
+						<div class="event_datetime"><?=$dateFormatted->format('M j - g:i A')?></div>
+						<div class="event_title"><?=$levent[0]["title"]?></div>
+						<div class="event_content"><?=$levent[0]["description"]?></div>	
+					</div>
+				</div>
+			</div>
+			<div class="events_table_group second">	
+				<div class="events_type">Looking Ahead</div>
+				<? foreach($revent as $element){
 					$dateFormatted = new DateTime($element["starts"], new DateTimeZone('EST'));
-					if (array_search($element, $events) === 0){?>
-						<div class="events_type">Up Next</div>
-					<?}else if(array_search($element, $events) === 1){?>
-						<div class="events_table_group second">	
-							<div class="events_type">Looking Ahead</div>
-					<?}?>					
-					<a href="<?=$element["url"]?>" class="event_single_wrap">
+					?><a href="<?=$element["url"]?>" class="event_single_wrap">
 						<div class="event_single">
 							<div class="event_datetime"><?=$dateFormatted->format('M j - g:i A')?></div>
-							<h3 class="event_title"><?=$element["title"]?></h3>
-							<?if (array_search($element, $events) === 0){?>
-								<div class="event_content"><?=$element["description"]?></div>	
-							<?}?>
+							<div class="event_title"><?=$element["title"]?></div>
 						</div>
 					</a>	
-					<?if (array_search($element, $events) === 0){?>
-						</div>	
-					<?}?>					
 				<?}?>
 			</div>
 		</div>

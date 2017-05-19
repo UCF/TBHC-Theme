@@ -62,13 +62,17 @@
             @media (min-width: $screen-sm-max) {
                 display: table-cell;
                 width: 50%;
+            }
 
-                &.left {
-                    padding-right: 10px;
+            &.first {
+                @media (min-width: $screen-sm-max) {
+                    padding-right: 15px;
                 }
+            }
 
-                &.right {
-                    padding: 10px;
+            &.second {
+                @media (min-width: $screen-sm-max) {
+                    padding-left: 15px;
                 }
             }
 
@@ -99,13 +103,13 @@
 
                     .event_datetime {
                         color: #FC0;
-                        text-transform: uppercase;
                         margin-bottom: 5px;
                     }
 
                     .event_title {
                         font-weight: bold;
                         color: white;
+                        line-height:1.2em;
                     }
                 }
 

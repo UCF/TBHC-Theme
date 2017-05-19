@@ -1719,7 +1719,7 @@ function stickyHeadFix(){
 	});
 	var toPrep = headWrp.prop("id").indexOf("header") >= 0 && $('#cntrPceWrap').length > 0 ? $('#cntrPceWrap') : $('.container');
 	headWrp.on('affixed.bs.affix', function(){ 
-		$(this).css("top", wpAdminBar.length ? wpAdminBar.height() : "0" + "px"); 
+		$(this).css("top", wpAdminBar.length && wpAdminBar.css("position") == 'fixed' ? wpAdminBar.height() : "0" + "px"); 
 		toPrep.prepend("<div id='fakeNav' class='hidden-xs' style='height:" + headWrp.height() + "px;display:block;'></div>");
 	});
 	headWrp.on('affix-top.bs.affix', function(){ 
