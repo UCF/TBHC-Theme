@@ -64,7 +64,7 @@
                 width: 50%;
             }
 
-            /*&.first {
+            &.first {
                 @media (min-width: $screen-sm-max) {
                     padding-right: 15px;
                 }
@@ -72,9 +72,9 @@
 
             &.second {
                 @media (min-width: $screen-sm-max) {
-                    padding: 15px;
+                    padding-left: 15px;
                 }
-            }*/
+            }
 
             .events_type {
                 margin: 10px 0 10px 0;
