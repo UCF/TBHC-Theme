@@ -9,10 +9,11 @@
         margin: 0 auto;
         margin-top: 20px;
         margin-bottom: 10px;
-        padding-left: 10px;
+        padding-left: 20px;
 
         @media (min-width: $screen-sm-max) {
             max-width: 1200px;
+            padding-left:10px;
         }
 
         .opportunities_title {
