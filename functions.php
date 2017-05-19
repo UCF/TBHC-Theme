@@ -984,6 +984,7 @@ function frontpage_events(){
 					<div class="event_single">
 						<div class="event_datetime"><?=$dateFormatted->format('M j - g:i A')?></div>
 						<div class="event_title"><?=$levent[0]["title"]?></div>
+						<div class="event_content"><?=$levent[0]["description"]?></div>	
 					</div>
 				</a>
 			</div>
