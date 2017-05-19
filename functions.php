@@ -980,7 +980,7 @@ function frontpage_events(){
 			<div class="events_table_group first">
 			<?	$dateFormatted = new DateTime($levent[0]["starts"], new DateTimeZone('EST'));
 				?><div class="events_type">Up Next</div>
-				<a href="<?=$levent[0]["url"]?>" class="event_single_wrap">
+				<a href="<?=$levent[0]['url']?>" class="event_single_wrap">
 					<div class="event_single">
 						<div class="event_datetime"><?=$dateFormatted->format('M j - g:i A')?></div>
 						<h3 class="event_title"><?=$levent[0]["title"]?></h3>
