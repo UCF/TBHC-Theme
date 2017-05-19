@@ -99,7 +99,7 @@
     text-align: center;
     position: relative;
     background-color: #3d3c3c;
-    height: $grid-gutter-width;
+    min-height: $grid-gutter-width;
     width: 100%;
     color: #e5e5e5;
     padding-left: 0;

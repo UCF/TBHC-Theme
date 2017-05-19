@@ -980,13 +980,13 @@ function frontpage_events(){
 			<div class="events_table_group first">
 			<?	$dateFormatted = new DateTime($levent[0]["starts"], new DateTimeZone('EST'));
 				?><div class="events_type">Up Next</div>
-				<a href="<?=$levent[0]['url']?>" class="event_single_wrap">
+				<div href="<?=$levent[0]['url']?>" class="event_single_wrap">
 					<div class="event_single">
 						<div class="event_datetime"><?=$dateFormatted->format('M j - g:i A')?></div>
-						<h3 class="event_title"><?=$levent[0]["title"]?></h3>
+						<div class="event_title"><?=$levent[0]["title"]?></div>
 						<div class="event_content"><?=$levent[0]["description"]?></div>	
 					</div>
-				</a>	
+				</div>
 			</div>
 			<div class="events_table_group second">	
 				<div class="events_type">Looking Ahead</div>
@@ -995,7 +995,7 @@ function frontpage_events(){
 					?><a href="<?=$element["url"]?>" class="event_single_wrap">
 						<div class="event_single">
 							<div class="event_datetime"><?=$dateFormatted->format('M j - g:i A')?></div>
-							<h3 class="event_title"><?=$element["title"]?></h3>
+							<div class="event_title"><?=$element["title"]?></div>
 						</div>
 					</a>	
 				<?}?>
