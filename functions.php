@@ -880,7 +880,7 @@ function frontpage_interests(){
 		<?php
 				
 			// orce override?
-			if(/*get_theme_option('home_page_theme') == '1'*/true){ ?>
+			if(get_theme_option('home_page_theme') == '1'){ ?>
 				<style>
 					section#interests .interest_title{
 						font-size:25px !important;
@@ -954,7 +954,7 @@ function frontpage_interests(){
 		<?php
 				
 			// orce override?
-			if(/*get_theme_option('home_page_theme') == '1'*/true){ ?>
+			if(get_theme_option('home_page_theme') == '1'){ ?>
 				</div>
 			<?}
 
