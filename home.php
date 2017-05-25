@@ -5,7 +5,7 @@
 		<?= get_theme_option('home_page_theme') == '0' ? frontpage_opportunities() : '' ?>
 		<?=get_theme_option('home_page_theme') == '1' ? frontpage_interests() : ''?>
  		<?=get_theme_option('home_page_theme') == '0' || get_theme_option('home_page_theme') == '2' ? frontpage_spotlights() : ''?>
-		<?=get_theme_option('home_page_theme') == '0' && ? frontpage_events() : ''?>
+		<?=get_theme_option('home_page_theme') == '0' ? frontpage_events() : ''?>
 	</div>
 	<!--<div class="container-shadow">
 		<span></span>
