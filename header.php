@@ -175,7 +175,7 @@
 				</div>
 				</div>
 			</nav>		
-			<?//}
+			<?}
 		}?>
 		<div class="container">
 			<div class="row status-alert" id="status-alert-template" data-alert-id="">
