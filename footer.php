@@ -1,41 +1,38 @@
 			<div id="footer" style="<?=get_theme_option('footer_bg_color') ? 'background-color:'.get_theme_option('footer_bg_color').' !important;' : ''?>">
 				<div id="footer-navwrap" class="row">
-						<div class="hidden-sm hidden-xs footerCol col-md-3">
-						<?if(get_theme_option('home_page_theme') != '2'){ ?>
-							<?=wp_nav_menu(array(
-								'theme_location' => 'footer-outer-left-collapse',
-								//'menu' => 'footer-audience',
-								'menu_id' => 'footer-outer-left-collapse',
-								'container' => 'false',
-								'menu_class' => 'menu list-unstyled screen-only',
-								'fallback_cb' => false,
-								'depth' => 1,
-								'walker' => new Bootstrap_Walker_Nav_Menu()
-								));
-							?>				
-							<?}?>
-						</div>
-						<div class="hidden-sm hidden-xs footerCol col-md-3">
-							<?if(get_theme_option('home_page_theme') != '2'){ ?>
-							<?=wp_nav_menu(array(
-								'theme_location' => 'footer-inner-left-collapse',
-								//'menu' => 'footer-quick-links',
-								'container' => 'false',
-								'menu_class' => 'menu list-unstyled',
-								'menu_id' => 'footer-inner-left-collapse',
-								'fallback_cb' => false,
-								'depth' => 1,
-								'walker' => new Bootstrap_Walker_Nav_Menu()
-								));
-							?>
-							<?}?>
-						</div>
+					<?if(/*get_theme_option('home_page_theme') != '2'*/true){ ?>
+					<div class="hidden-sm hidden-xs footerCol col-md-3">
+						<?=wp_nav_menu(array(
+							'theme_location' => 'footer-outer-left-collapse',
+							//'menu' => 'footer-audience',
+							'menu_id' => 'footer-outer-left-collapse',
+							'container' => 'false',
+							'menu_class' => 'menu list-unstyled screen-only',
+							'fallback_cb' => false,
+							'depth' => 1,
+							'walker' => new Bootstrap_Walker_Nav_Menu()
+							));
+						?>				
+					</div>
+					<div class="hidden-sm hidden-xs footerCol col-md-3">
+						<?=wp_nav_menu(array(
+							'theme_location' => 'footer-inner-left-collapse',
+							//'menu' => 'footer-quick-links',
+							'container' => 'false',
+							'menu_class' => 'menu list-unstyled',
+							'menu_id' => 'footer-inner-left-collapse',
+							'fallback_cb' => false,
+							'depth' => 1,
+							'walker' => new Bootstrap_Walker_Nav_Menu()
+							));
+						?>
+					</div>
+					<?}?>
 					<div id="footer-logo" class="col-xs-15 col-sm-5 col-sm-push-5 col-md-push-0 col-md-3">
 						<a href="<?= site_url() ?>">
 							<img id="tbhcFooterLogo" src="<?php bloginfo('stylesheet_directory'); ?>/static/img/WebsiteFooterShort.png" alt="The Burnett Honors College">
 							</img>
 						</a>
-						<?if(get_theme_option('home_page_theme') != '2'){ ?>
 						<?=wp_nav_menu(array(
 							'theme_location' => 'social-links',
 							'container' => 'div',
@@ -45,10 +42,8 @@
 							'depth' => 1,
 							));
 						?>
-						<?}?>
 					</div>				
 					<div class="footerCol col-xs-half col-sm-5 col-sm-pull-5 col-md-pull-0 col-md-3">
-						<?if(get_theme_option('home_page_theme') != '2'){ ?>
 						<?=wp_nav_menu(array(
 							'theme_location' => 'footer-inner-right',
 							//'menu' => 7,
@@ -59,14 +54,6 @@
 							'depth' => 1,
 							));
 						?>
-						<?}else{?>
-							<div class="opaTel">
-								<a href="tel:4078232076">407.823.2076</a>
-							</div>
-							<div class="opaEmail">
-								<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
-							</div>
-						<?}?>
 					</div>	
 					<div class="footerCol col-xs-half col-sm-5 col-md-3">
 						<div id="contactInfo" role="contentinfo" class="vcard">
@@ -80,14 +67,12 @@
 									<span class="region">FL</span>
 									<span class="postal-code">32816</span>
 								</div>
-								<?if(get_theme_option('home_page_theme') != '2'){?>
-									<div class="tel">
-										<a href="tel:4078232076">407.823.2076</a>
-									</div>
-									<div class="email">
-										<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
-									</div>
-								<?}?>
+								<div class="tel">
+									<a href="tel:4078232076">407.823.2076</a>
+								</div>
+								<div class="email">
+									<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
+								</div>
 							</div>
 							<!--<br/>
 								<a href="<?=site_url()?>/feedback/">Comments and Feedback</a> | &copy;
