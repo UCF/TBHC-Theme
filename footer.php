@@ -1,32 +1,32 @@
 			<div id="footer" style="<?=get_theme_option('footer_bg_color') ? 'background-color:'.get_theme_option('footer_bg_color').' !important;' : ''?>">
 				<div id="footer-navwrap" class="row">
-					<?if(/*get_theme_option('home_page_theme') != '2'*/true){ ?>
-					<div class="hidden-sm hidden-xs footerCol col-md-3">
-						<?=wp_nav_menu(array(
-							'theme_location' => 'footer-outer-left-collapse',
-							//'menu' => 'footer-audience',
-							'menu_id' => 'footer-outer-left-collapse',
-							'container' => 'false',
-							'menu_class' => 'menu list-unstyled screen-only',
-							'fallback_cb' => false,
-							'depth' => 1,
-							'walker' => new Bootstrap_Walker_Nav_Menu()
-							));
-						?>				
-					</div>
-					<div class="hidden-sm hidden-xs footerCol col-md-3">
-						<?=wp_nav_menu(array(
-							'theme_location' => 'footer-inner-left-collapse',
-							//'menu' => 'footer-quick-links',
-							'container' => 'false',
-							'menu_class' => 'menu list-unstyled',
-							'menu_id' => 'footer-inner-left-collapse',
-							'fallback_cb' => false,
-							'depth' => 1,
-							'walker' => new Bootstrap_Walker_Nav_Menu()
-							));
-						?>
-					</div>
+					<?if(get_theme_option('home_page_theme') != '2'){ ?>
+						<div class="hidden-sm hidden-xs footerCol col-md-3">
+							<?=wp_nav_menu(array(
+								'theme_location' => 'footer-outer-left-collapse',
+								//'menu' => 'footer-audience',
+								'menu_id' => 'footer-outer-left-collapse',
+								'container' => 'false',
+								'menu_class' => 'menu list-unstyled screen-only',
+								'fallback_cb' => false,
+								'depth' => 1,
+								'walker' => new Bootstrap_Walker_Nav_Menu()
+								));
+							?>				
+						</div>
+						<div class="hidden-sm hidden-xs footerCol col-md-3">
+							<?=wp_nav_menu(array(
+								'theme_location' => 'footer-inner-left-collapse',
+								//'menu' => 'footer-quick-links',
+								'container' => 'false',
+								'menu_class' => 'menu list-unstyled',
+								'menu_id' => 'footer-inner-left-collapse',
+								'fallback_cb' => false,
+								'depth' => 1,
+								'walker' => new Bootstrap_Walker_Nav_Menu()
+								));
+							?>
+						</div>
 					<?}?>
 					<div id="footer-logo" class="col-xs-15 col-sm-5 col-sm-push-5 col-md-push-0 col-md-3">
 						<a href="<?= site_url() ?>">
