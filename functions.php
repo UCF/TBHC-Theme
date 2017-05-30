@@ -819,7 +819,7 @@ function frontpage_opportunities() {
 		<section id="opportunities">
 			<div class="opportunities_title_wrap">
 				<h2 class="opportunities_title">Opportunities</h2>
-				<a href="<?=get_permalink(get_page_by_title('Opportunity Archives', OBJECT, 'page')->ID)?>">Even More Opportunities</a>	
+				<a href="<?=get_permalink(get_page_by_title('More Opportunities', OBJECT, 'page')->ID)?>">Even More Opportunities</a>	
 			</div>		
 			<div class="opportunities_lg_table">
 			<? foreach ( $opportunities as $opportunity ){ 
