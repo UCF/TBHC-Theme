@@ -50,6 +50,44 @@
 			var PRINT_HEADER_IMG			= '<?php echo THEME_IMG_URL.'/ucflogo-print.png'; ?>';
 
 		</script>
+				<?
+			if(get_theme_option('home_page_theme') == '0'){?>
+			<script>
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+			  ga('create', 'UA-99997629-1', 'auto');
+			  ga('send', 'pageview');
+
+			</script>
+			<?}else if(get_theme_option('home_page_theme') == '1'){?>
+				<script>
+				  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+				  ga('create', 'UA-99997629-4', 'auto');
+				  ga('send', 'pageview');
+
+				</script>
+			<?}else if(get_theme_option('home_page_theme') == '2'){?>
+				<script>
+				  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+				  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+				  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+				  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+				  ga('create', 'UA-99997629-3', 'auto');
+				  ga('send', 'pageview');
+
+				</script>
+			<?}else{
+				wp_mail(array('Michael.Callahan@ucf.edu', 'tbhcweb2@ucf.edu'), 'No google analytics code for site.','Please ensure that all sites have a google analytics tracking code placed in the header.php file.');
+			}
+		?>
 		<script type="text/javascript" src="//malsup.github.io/min/jquery.cycle.all.min.js"></script>
 		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 		<!--[if IE]>
@@ -150,7 +188,7 @@
 					echo do_shortcode('[centerpiece id="'.$latest_centerpiece[0]->ID.'"]');
 				?>
 			</div>
-			<?php if(get_theme_option('home_page_theme') != 1 && get_theme_option('home_page_theme') !== 1){ ?>
+			<?php if(get_theme_option('home_page_theme') == '0'){ ?>
 			<nav id="section-nav-xs" class="navbar navbar-inverse">
 			<div id="nav-xs-center-wrap">
 				<div class="navbar-section">

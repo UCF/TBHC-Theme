@@ -819,7 +819,7 @@ function frontpage_opportunities() {
 		<section id="opportunities">
 			<div class="opportunities_title_wrap">
 				<h2 class="opportunities_title">Opportunities</h2>
-				<a href="<?=get_permalink(get_page_by_title('Opportunity Archives', OBJECT, 'page')->ID)?>">Even More Opportunities</a>	
+				<a href="<?=get_permalink(get_page_by_title('More Opportunities', OBJECT, 'page')->ID)?>">Even More Opportunities</a>	
 			</div>		
 			<div class="opportunities_lg_table">
 			<? foreach ( $opportunities as $opportunity ){ 
@@ -880,7 +880,7 @@ function frontpage_interests(){
 		<?php
 				
 			// orce override?
-			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
+			if(get_theme_option('home_page_theme') == '1'){ ?>
 				<style>
 					section#interests .interest_title{
 						font-size:25px !important;
@@ -954,7 +954,7 @@ function frontpage_interests(){
 		<?php
 				
 			// orce override?
-			if(get_theme_option('home_page_theme') == 1 && get_theme_option('home_page_theme') !== 0 && get_theme_option('home_page_theme') != 0){ ?>
+			if(get_theme_option('home_page_theme') == '1'){ ?>
 				</div>
 			<?}
 
@@ -982,7 +982,7 @@ function frontpage_events(){
 				?><div class="events_type">Up Next</div>
 				<div href="<?=$levent[0]['url']?>" class="event_single_wrap">
 					<div class="event_single">
-						<div class="event_datetime"><?=$dateFormatted->format('M j - g:i A')?></div>
+						<div class="event_datetime"><?=$dateFormatted ? $dateFormatted->format('M j - g:i A') : ''?></div>
 						<div class="event_title"><?=$levent[0]["title"]?></div>
 						<div class="event_content"><?=$levent[0]["description"]?></div>	
 					</div>
@@ -2412,7 +2412,7 @@ add_action('pre_get_posts','add_org_groups_filter_to_posts_query');
 
 // inspiration from http://wordpress.stackexchange.com/a/72562
 function get_terms_orderby_semester_year($orderby, $args){
-	print_r($orderby);
+	//print_r($orderby);
 	$orderby = "SUBSTR({$orderby}, (INSTR({$orderby}, ' ') + 1)) DESC, (CASE SUBSTR({$orderby}, 1, (INSTR({$orderby}, ' ') - 1)) WHEN 'Spring' THEN 1 WHEN 'Summer' THEN 2 ELSE 3 END)";
     return $orderby;
 }
