@@ -661,7 +661,7 @@ function frontpage_spotlights() {
 				<div id="spotlights_left">
 					<div class="spotlights_title_wrap">
 						<h2 class="spotlights_title">Spotlights</h2>
-						<a href="<?=get_permalink(get_page_by_title('Spotlight Archives', OBJECT, 'page')->ID)?>">
+						<a href="<?=get_permalink(get_page_by_title('spotlight archive', OBJECT, 'page')->ID)?>">
 							Check out more stories
 							<!--<i class="fa fa-external-link"></i>-->
 						</a>	
@@ -2412,7 +2412,7 @@ add_action('pre_get_posts','add_org_groups_filter_to_posts_query');
 
 // inspiration from http://wordpress.stackexchange.com/a/72562
 function get_terms_orderby_semester_year($orderby, $args){
-	print_r($orderby);
+	//print_r($orderby);
 	$orderby = "SUBSTR({$orderby}, (INSTR({$orderby}, ' ') + 1)) DESC, (CASE SUBSTR({$orderby}, 1, (INSTR({$orderby}, ' ') - 1)) WHEN 'Spring' THEN 1 WHEN 'Summer' THEN 2 ELSE 3 END)";
     return $orderby;
 }
