@@ -50,7 +50,7 @@
 			var PRINT_HEADER_IMG			= '<?php echo THEME_IMG_URL.'/ucflogo-print.png'; ?>';
 
 		</script>
-		<?
+				<?
 			if(get_theme_option('home_page_theme') == '0'){?>
 			<script>
 			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -62,7 +62,7 @@
 			  ga('send', 'pageview');
 
 			</script>
-			<?}else if(get_theme_option('home_page_theme' == '1')){?>
+			<?}else if(get_theme_option('home_page_theme') == '1'){?>
 				<script>
 				  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 				  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -188,7 +188,7 @@
 					echo do_shortcode('[centerpiece id="'.$latest_centerpiece[0]->ID.'"]');
 				?>
 			</div>
-			<?php if(get_theme_option('home_page_theme') != 1 && get_theme_option('home_page_theme') !== 1){ ?>
+			<?php if(get_theme_option('home_page_theme') == '0'){ ?>
 			<nav id="section-nav-xs" class="navbar navbar-inverse">
 			<div id="nav-xs-center-wrap">
 				<div class="navbar-section">

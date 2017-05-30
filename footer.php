@@ -1,5 +1,6 @@
 			<div id="footer" style="<?=get_theme_option('footer_bg_color') ? 'background-color:'.get_theme_option('footer_bg_color').' !important;' : ''?>">
 				<div id="footer-navwrap" class="row">
+					<?if(/*get_theme_option('home_page_theme') != '2'*/true){ ?>
 					<div class="hidden-sm hidden-xs footerCol col-md-3">
 						<?=wp_nav_menu(array(
 							'theme_location' => 'footer-outer-left-collapse',
@@ -26,6 +27,7 @@
 							));
 						?>
 					</div>
+					<?}?>
 					<div id="footer-logo" class="col-xs-15 col-sm-5 col-sm-push-5 col-md-push-0 col-md-3">
 						<a href="<?= site_url() ?>">
 							<img id="tbhcFooterLogo" src="<?php bloginfo('stylesheet_directory'); ?>/static/img/WebsiteFooterShort.png" alt="The Burnett Honors College">
