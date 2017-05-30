@@ -60,10 +60,10 @@
 							));
 						?>
 						<?}else{?>
-							<div class="tel">
+							<div class="opaTel">
 								<a href="tel:4078232076">407.823.2076</a>
 							</div>
-							<div class="email">
+							<div class="opaEmail">
 								<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
 							</div>
 						<?}?>

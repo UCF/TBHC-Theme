@@ -92,6 +92,12 @@
     }
 }
 
+.footerCol>.opaTel, .footerCol>.opaEmail{
+    display: block;
+    padding: 5px 0;
+    line-height: 15px;
+}
+
 #subfooter {
     font-size: 12pt;
     letter-spacing: .8px;
