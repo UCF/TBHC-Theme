@@ -582,7 +582,7 @@ function bootstrap_menus() {
 			function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
 				
 				// wow this is weird but works, thanks has_children right below here!
-				if(get_theme_option('home_page_theme') != '2') &&
+				if((get_theme_option('home_page_theme') != '2') &&
 					(
 						(is_array( $args[0] ) && array_key_exists('nav_dropdowns',$args[0]) && $args[0]['nav_dropdowns']) ||
 						(is_object( $args[0] ) && property_exists($args[0], 'nav_dropdowns') && $args[0]->nav_dropdowns)
