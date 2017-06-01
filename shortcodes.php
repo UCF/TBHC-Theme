@@ -596,7 +596,9 @@ function sc_opportunity_grid($atts) {
 					$location = '';
 					if($ext_link){
 						$link = $ext_link; 
-					}			
+					}else{
+						$link = get_permalink($opportunity->ID);
+					}					
 					if($start_date){
 						$start_date = new DateTime($start_date);
 					}
@@ -762,6 +764,9 @@ function sc_spotlight_grid($atts) {
 					$start_date; //= get_post_meta($spotlight->ID, 'spotlight_start', TRUE);
 					$end_date; //= get_post_meta($spotlight->ID, 'spotlight_end', TRUE);
 					$link = get_post_meta($spotlight->ID, 'spotlight_url_redirect', TRUE);
+					if(!$link){
+							$link = get_permalink($spotlight->ID);
+					}
 					$time = '';
 					$location = '';
 					if($start_date){
