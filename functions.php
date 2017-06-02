@@ -284,7 +284,7 @@ function edit_people_columns() {
 	'cb'          => '<input type="checkbox" />',
 	'title'       => 'Title',
 	'org_group' 		  => 'Organizational Group',	
-	'orderby' => 'Sort Name',
+	'order_by' => 'Sort Name',
 	'publish_date'=> 'Date'
 	);
 	return $columns;
@@ -305,7 +305,7 @@ function manage_people_columns( $column, $post_id ) {
 			print 'Published'.'<br/>'.get_post_time('Y/m/d', true, $post->ID);
 		}
 		break;
-		case 'orderby':
+		case 'order_by':
 		print get_post_meta($post->ID, 'person_orderby_name', true);
 		break;
 		case 'org_group':
@@ -323,7 +323,7 @@ add_action('manage_person_posts_custom_column', 'manage_people_columns', 10, 2);
 
 // Sortable custom columns for 'persons/people'
 function sortable_people_columns( $columns ) {
-	$columns['orderby'] = 'orderby';
+	$columns['order_by'] = 'order_by';
 	$columns['publish_date'] = 'publish_date';
 	return $columns;
 }

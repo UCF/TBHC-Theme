@@ -594,18 +594,17 @@ function sc_opportunity_grid($atts) {
 					$cPost = wp_trim_words($cPost->post_content, 50);	// was 75, dropped to 50
 					$time = '';
 					$location = '';
+					$link = get_permalink($opportunity->ID);					
+					$ext_link = get_post_meta($opportunity->ID, 'opportunity_url_redirect', TRUE);		
 					if($ext_link){
 						$link = $ext_link; 
-					}else{
-						$link = get_permalink($opportunity->ID);
-					}					
+					}
 					if($start_date){
 						$start_date = new DateTime($start_date);
 					}
 					if($end_date){
 						$end_date = new DateTime($end_date);
 					}
-					$link = get_post_meta($opportunity->ID, 'opportunity_url_redirect', TRUE);		
 					// added these lines to retrieve taxonomy terms instead of using the meta field we had
 					$parntCat = get_term_by('slug', 'event-category','event_groups');
 					$postCats = wp_get_post_terms($opportunity->ID, 'event_groups');
