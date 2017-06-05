@@ -84,8 +84,8 @@
 				  ga('send', 'pageview');
 
 				</script>
-			<?}else{
-				wp_mail(array('Michael.Callahan@ucf.edu', 'tbhcweb2@ucf.edu'), 'No google analytics code for site.','Please ensure that all sites have a google analytics tracking code placed in the header.php file.');
+			<?}else if(strpos(get_site_url(), 'dev') === 0 || strpos(get_site_url(), 'qa') === 0){
+				wp_mail(array('tbhcweb2@ucf.edu'), 'No google analytics code for site.','Please ensure that all sites have a google analytics tracking code placed in the header.php file.');
 			}
 		?>
 		<script type="text/javascript" src="//malsup.github.io/min/jquery.cycle.all.min.js"></script>
