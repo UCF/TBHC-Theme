@@ -805,6 +805,7 @@ function frontpage_scholarship_spotlight() {
 							$child_terms = get_term_children($cat_term->term_id, 'event_groups');
 							$all_terms   = wp_get_post_terms($spotlight[0]->ID, 'event_groups');
 							if(DEBUG){
+								print_r($link);
 								print_r($ext_link);
 								print_r($cat_term);
 								print_r($child_terms);
