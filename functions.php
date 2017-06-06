@@ -778,7 +778,7 @@ function frontpage_scholarship_spotlight() {
 	);
 	$spotlight = wp_get_recent_posts($args);
 
-	if(empty($spotlights)){
+	if(empty($spotlight)){
 		$args = array(
 			'numberposts' => 1,
 			'post_type' 	=> 'spotlight',
@@ -788,7 +788,7 @@ function frontpage_scholarship_spotlight() {
 	}		
 	
 	if(DEBUG){
-		print('.....'.$spotlight->ID.'.....');
+		print('.....'.$spotlight[0]->ID.'.....');
 		print_r($spotlight);
 	}
 	
