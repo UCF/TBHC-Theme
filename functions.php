@@ -788,6 +788,7 @@ function frontpage_scholarship_spotlight() {
 	}		
 	
 	if(DEBUG){
+		print_r($spotlight[0]->ID);
 		print_r($spotlight);
 	}
 	
