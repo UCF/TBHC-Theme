@@ -923,9 +923,11 @@ class Spotlight extends CustomPostType {
 		$taxonomies     = array('event_groups');	
 
 	public function asOpa(){
-		$this->name = 'scholarship';
 		$this->plural_name = 'Scholarships';
 		$this->singular_name = 'Scholarship';
+		$this->add_new_item = 'Add New Scholarship';
+		$this->edit_item = 'Edit Scholarship';
+		$this->new_item = 'New Scholarship';
 	}
 		
 	public function fields() {
