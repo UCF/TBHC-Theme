@@ -790,6 +790,7 @@ function frontpage_scholarship_spotlight() {
 	if(DEBUG){
 		print_r($spotlight);
 		print_r($spotlight[0]);
+		print_r($spotlight[0][0]);
 	}
 	
 	ob_start(); ?>
