@@ -800,7 +800,7 @@ function frontpage_scholarship_spotlight() {
 					</h2>
 				</div>
 				<div id="search_scholarships_left">
-					<?do_shortcode('[spotlight-grid event_groups="scholarship-categories" dropdown=true dd_event_groups="scholarship-categories"]')?>
+					<?echo do_shortcode('[spotlight-grid event_groups="scholarship-categories" dropdown=true dd_event_groups="scholarship-categories"]')?>
 				</div>
 				<div id="search_scholarships_right">
 					A search box?
