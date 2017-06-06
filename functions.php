@@ -766,7 +766,7 @@ function frontpage_spotlights() {
  **/
 function frontpage_scholarship_spotlight() {
 		$args = array(
-		'numberofposts' => 1,
+		'numberposts' => 1,
 		'post_type' 	=> 'spotlight',
 		'post_status'   => 'publish',
 		'meta_query'	=> array(
@@ -780,7 +780,7 @@ function frontpage_scholarship_spotlight() {
 
 	if(empty($spotlights)){
 		$args = array(
-			'numberofposts' => 1,
+			'numberposts' => 1,
 			'post_type' 	=> 'spotlight',
 			'post_status'   => 'publish',
 			);
