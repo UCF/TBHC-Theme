@@ -795,31 +795,26 @@ function frontpage_scholarship_spotlight() {
 		<section id="spotlights">
 			<div id="spotlights_inner_wrap">
 				<div id="spotlights_left">
-					<!--<div class="spotlights_title_wrap">
-						<h2 class="spotlights_title">Spotlights</h2>
-						<a href="<?=get_permalink(get_page_by_title('Scholarship Archives', OBJECT, 'page')->ID)?>">
-							Check out more stories
-						</a>	
-					</div>	-->
 					<div class="spotlights_lg_table">
 						<? 	$link = get_permalink($spotlight[0]->ID);
-							$ext_link = get_post_meta($spotlight[0]->ID, 'spotlight_url_redirect', TRUE);
+							$ext_link = get_post_meta($spotlight[0]->ID, 'website', TRUE);
 							if($ext_link){
 								$link = $ext_link; 
 							}
 							$cat_term = get_term_by('slug','scholarship-categories','event_groups');
 							$child_terms = get_term_children($cat_term->term_id, 'event_groups');
 							$all_terms   = wp_get_post_terms($spotlight[0]->ID, 'event_groups');
+							if(DEBUG){
+								print_r($ext_link);
+								print_r($cat_term);
+								print_r($child_terms);
+								print_r($all_terms);					
+							}		
 							foreach ( $all_terms as $term ) {
 								if( in_array($term->term_id, $child_terms ) ) {
 									$term_title = $term->name;
 									break;
-								}
-								if(DEBUG){
-									print_r($cat_term);
-									print_r($child_terms);
-									print_r($all_terms);					
-								}					
+								}			
 							}?>
 							<div class="spotlight_single_wrap">
 								<a class="spotlight_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight[0]->post_title)?>">
