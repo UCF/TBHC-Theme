@@ -1573,7 +1573,7 @@ add_action('init', 'register_custom_taxonomies');
 function register_custom_post_types(){
 	#Register custom post types
 	foreach(installed_custom_post_types() as $custom_post_type){
-		if(DEBUG && $custom_post_type->name == 'spotlight' && get_theme_option('home_page_theme') == '2'){
+		if($custom_post_type->name == 'spotlight' && get_theme_option('home_page_theme') == '2'){
 			$custom_post_type->asOpa();
 		}
 		$custom_post_type->register();
