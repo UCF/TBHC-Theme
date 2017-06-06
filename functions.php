@@ -792,6 +792,24 @@ function frontpage_scholarship_spotlight() {
 	}
 	
 	ob_start(); ?>
+		<section id="opa_header">
+			<div id="opa_header_inner_wrap">
+				<div id="opa_header_left">
+			
+				</div>
+				<div id="opa_header_right">
+					<div class="opa_header_type">
+						<?=$term_title?>
+					</div>	
+					<h3 class="opa_header_title">
+						<?=$spotlight[0]['post_title']?>	
+					</h3>
+					<p class="opa_header_content">
+						<?=get_the_excerpt($spotlight[0]['ID'])?>	
+					</p>
+				</div>
+			</div>
+		</section>
 		<section id="search_scholarships">
 			<div id="search_scholarships_inner_wrap">
 				<div class="search_scholarships_title_wrap">
