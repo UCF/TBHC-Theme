@@ -844,8 +844,6 @@ function frontpage_scholarship_spotlight() {
 									</div>
 								</a>
 							</div>
-						<? } ?>
-
 						<div class="clearfix"></div>
 					</div>
 				</div>
