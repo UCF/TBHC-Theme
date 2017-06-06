@@ -792,59 +792,72 @@ function frontpage_scholarship_spotlight() {
 	}
 	
 	ob_start(); ?>
-		<section id="spotlights">
-			<div id="spotlights_inner_wrap">
-				<div id="spotlights_left">
-					<div class="spotlights_lg_table">
-						<? 	$link = get_permalink($spotlight[0]['ID']);
-							$ext_link = get_post_meta($spotlight[0]['ID'], 'website', TRUE);
-							if($ext_link){
-								$link = $ext_link; 
-							}
-							$cat_term = get_term_by('slug','scholarship-categories','event_groups');
-							$child_terms = get_term_children($cat_term->term_id, 'event_groups');
-							$all_terms   = wp_get_post_terms($spotlight[0]['ID'], 'event_groups');
-							if(DEBUG){
-								print_r($link);
-								print_r($ext_link);
-								print_r($cat_term);
-								print_r($child_terms);
-								print_r($all_terms);					
-							}		
-							foreach ( $all_terms as $term ) {
-								if( in_array($term->term_id, $child_terms ) ) {
-									$term_title = $term->name;
-									break;
-								}			
-							}?>
-							<div class="spotlight_single_wrap">
-								<a class="spotlight_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight[0]['post_title'])?>">
-									<div class="spotlight_image_wrap">
-										<? $thumb_id = get_post_thumbnail_id($spotlight[0]['ID']);
-											$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
-											$thumb_src = $thumb_src[0];
-											if ($thumb_src) { ?>
-												<img class="spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight[0]['post_title'])?>"/>
-											<? } ?>
-									</div>
-									<div class="spotlight_content_wrap">
-										<div class="spotlight_type">
-											<?=$term_title?>
-										</div>	
-										<h3 class="spotlight_title">
-											<?=$spotlight[0]['post_title']?>	
-										</h3>
-										<p class="spotlight_content">
-											<?=get_the_excerpt($spotlight[0]['ID'])?>	
-										</p>
-									</div>
-								</a>
-							</div>
-						<div class="clearfix"></div>
-					</div>
+		<section id="search_scholarships">
+			<div id="search_scholarships_inner_wrap">
+				<div class="search_scholarships_title_wrap">
+					<h2 class="search_scholarships_title">
+						Search for a Scholarship
+					</h2>
 				</div>
-				<div class="clearfix"></div>
+				<div id="search_scholarships_left">
+					<?do_shortcode('[spotlight-grid event_groups="scholarship-categories" dropdown=true dd_event_groups="scholarship-categories"]')?>
+				</div>
+				<div id="search_scholarships_right">
+					A search box?
+				</div>
 			</div>
+		</section>
+		<section id="scholarship_spotlight">
+			<div id="scholarship_spotlight_inner_wrap">
+				<div class="scholarship_spotlight_single_wrap">
+					<a class="scholarship_spotlight_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight[0]['post_title'])?>">
+						<div id="scholarship_spotlight_left" class="hidden-sm hidden-xs">
+							<? 	$link = get_permalink($spotlight[0]['ID']);
+								$ext_link = get_post_meta($spotlight[0]['ID'], 'website', TRUE);
+								if($ext_link){
+									$link = $ext_link; 
+								}
+								$cat_term = get_term_by('slug','scholarship-categories','event_groups');
+								$child_terms = get_term_children($cat_term->term_id, 'event_groups');
+								$all_terms   = wp_get_post_terms($spotlight[0]['ID'], 'event_groups');
+								if(DEBUG){
+									print_r($link);
+									print_r($ext_link);
+									print_r($cat_term);
+									print_r($child_terms);
+									print_r($all_terms);					
+								}		
+								foreach ( $all_terms as $term ) {
+									if( in_array($term->term_id, $child_terms ) ) {
+										$term_title = $term->name;
+										break;
+									}			
+								}?>
+							<div class="scholarship_spotlight_image_wrap">
+								<? $thumb_id = get_post_thumbnail_id($spotlight[0]['ID']);
+									$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
+									$thumb_src = $thumb_src[0];
+									if ($thumb_src) { ?>
+										<img class="scholarship_spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight[0]['post_title'])?>"/>
+									<? } ?>
+							</div>
+						</div>
+						<div id="scholarship_spotlight_right">
+							<div class="scholarship_spotlight_content_wrap">
+								<div class="scholarship_spotlight_type">
+									<?=$term_title?>
+								</div>	
+								<h3 class="scholarship_spotlight_title">
+									<?=$spotlight[0]['post_title']?>	
+								</h3>
+								<p class="scholarship_spotlight_content">
+									<?=get_the_excerpt($spotlight[0]['ID'])?>	
+								</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>				
 		</section>
 	<? return ob_get_clean();
 }
