@@ -789,8 +789,6 @@ function frontpage_scholarship_spotlight() {
 	
 	if(DEBUG){
 		print_r($spotlight);
-		print_r($spotlight[0]);
-		print_r($spotlight[0]['ID']);
 	}
 	
 	ob_start(); ?>
@@ -798,14 +796,14 @@ function frontpage_scholarship_spotlight() {
 			<div id="spotlights_inner_wrap">
 				<div id="spotlights_left">
 					<div class="spotlights_lg_table">
-						<? 	$link = get_permalink($spotlight[0]->ID);
-							$ext_link = get_post_meta($spotlight[0]->ID, 'website', TRUE);
+						<? 	$link = get_permalink($spotlight[0]['ID']);
+							$ext_link = get_post_meta($spotlight[0]['ID'], 'website', TRUE);
 							if($ext_link){
 								$link = $ext_link; 
 							}
 							$cat_term = get_term_by('slug','scholarship-categories','event_groups');
 							$child_terms = get_term_children($cat_term->term_id, 'event_groups');
-							$all_terms   = wp_get_post_terms($spotlight[0]->ID, 'event_groups');
+							$all_terms   = wp_get_post_terms($spotlight[0]['ID'], 'event_groups');
 							if(DEBUG){
 								print_r($link);
 								print_r($ext_link);
@@ -820,13 +818,13 @@ function frontpage_scholarship_spotlight() {
 								}			
 							}?>
 							<div class="spotlight_single_wrap">
-								<a class="spotlight_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight[0]->post_title)?>">
+								<a class="spotlight_single" href="<?=esc_attr($link)?>" class="ga-event" data-ga-action="Spotlight Link" data-ga-label="<?=esc_attr($spotlight[0]['post_title'])?>">
 									<div class="spotlight_image_wrap">
-										<? $thumb_id = get_post_thumbnail_id($spotlight[0]->ID);
+										<? $thumb_id = get_post_thumbnail_id($spotlight[0]['ID']);
 											$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
 											$thumb_src = $thumb_src[0];
 											if ($thumb_src) { ?>
-												<img class="spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight[0]->post_title)?>"/>
+												<img class="spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight[0]['post_title'])?>"/>
 											<? } ?>
 									</div>
 									<div class="spotlight_content_wrap">
@@ -834,10 +832,10 @@ function frontpage_scholarship_spotlight() {
 											<?=$term_title?>
 										</div>	
 										<h3 class="spotlight_title">
-											<?=$spotlight[0]->post_title?>	
+											<?=$spotlight[0]['post_title']?>	
 										</h3>
 										<p class="spotlight_content">
-											<?=get_the_excerpt($spotlight[0]->ID)?>	
+											<?=get_the_excerpt($spotlight[0]['ID'])?>	
 										</p>
 									</div>
 								</a>
