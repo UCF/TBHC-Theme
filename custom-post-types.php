@@ -906,8 +906,14 @@ class Opportunity extends CustomPostType {
  **/
 
 class Spotlight extends CustomPostType {
-	private $nm = (get_theme_option('home_page_theme') == '2' ? 'Scholarship' : 'Spotlight');
-	private $nml = (get_theme_option('home_page_theme') == '2' ? 'scholarship' : 'spotlight');
+	private $nm = '', $nml = '';
+	if(get_theme_option('home_page_theme') == '2'){
+		$nm = 'Scholarship';
+		$nml = 'scholarship';
+	}else{
+		$nm = 'Spotlight';
+		$nml = 'spotlight';
+	}
 	public
 		$name           = $nml,
 		$plural_name    = $nm.'s',
