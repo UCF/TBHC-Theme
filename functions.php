@@ -762,6 +762,13 @@ function frontpage_spotlights() {
 }
 
 /**
+ * Output scholarships for front page.
+ **/
+function frontpage_scholarship() {
+}
+
+
+/**
  * Output Opportunities for front page.
 **/
 function frontpage_opportunities() {
