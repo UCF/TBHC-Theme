@@ -906,21 +906,13 @@ class Opportunity extends CustomPostType {
  **/
 
 class Spotlight extends CustomPostType {
-	private $nm = '', $nml = '';
-	if(get_theme_option('home_page_theme') == '2'){
-		$nm = 'Scholarship';
-		$nml = 'scholarship';
-	}else{
-		$nm = 'Spotlight';
-		$nml = 'spotlight';
-	}
 	public
-		$name           = $nml,
-		$plural_name    = $nm.'s',
-		$singular_name  = $nm,
-		$add_new_item   = 'Add New '.$nm,
-		$edit_item      = 'Edit '.$nm,
-		$new_item       = 'New '.$nm,
+		$name           = 'spotlight',
+		$plural_name    = 'Spotlights',
+		$singular_name  = 'Spotlight',
+		$add_new_item   = 'Add New Spotlight',
+		$edit_item      = 'Edit Spotlight',
+		$new_item       = 'New Spotlight',
 		$public         = True,
 		$use_editor     = True,
 		$use_thumbnails = True,
@@ -930,41 +922,36 @@ class Spotlight extends CustomPostType {
 		$use_excerpt	= True,
 		$taxonomies     = array('event_groups');	
 
+	public function asOpa(){
+		$this->name = 'scholarship';
+		$this->plural_name = 'Scholarships';
+		$this->singular_name = 'Scholarship';
+	}
+		
 	public function fields() {
 		$prefix = $this->options('name').'_';
-		if(get_theme_option('home_page_theme') == '2'){
-			return array(
-				array(
-					'name' => 'URL Redirect',
-					'desc' => 'Specify a full url to use as a redirect when the scholarship is clicked.',
-					'id'   => $prefix.'url_redirect',
-					'type' => 'text'
-				),
-			);
-		}else{
-			return array(
-				array(
-					'name' => 'Spotlight Position',
-					'desc' => 'Specify whether the spotlight should be positioned in the top slot of the spotlights section or the bottom.',
-					'id'   => $prefix.'position',
-					'type' => 'radio',
-					'options' => array('Top' => 'top', 'Bottom' => 'bottom'),
-				),
-				array(
-					'name' => 'URL Redirect',
-					'desc' => 'Specify a full url to use as a redirect when the spotlight is clicked.',
-					'id'   => $prefix.'url_redirect',
-					'type' => 'text'
-				),
-				array(
-					'name' => 'Post To Home',
-					'desc' => 'Indicate whether this spotlight should be visible from the home page spotlights feed.',
-					'id'   => $prefix.'post_to_home',
-					'type' => 'checkbox',
-					'std' => 'off'
-				)
-			);
-		}
+		return array(
+			array(
+				'name' => 'Spotlight Position',
+				'desc' => 'Specify whether the spotlight should be positioned in the top slot of the spotlights section or the bottom.',
+				'id'   => $prefix.'position',
+				'type' => 'radio',
+				'options' => array('Top' => 'top', 'Bottom' => 'bottom'),
+			),
+			array(
+				'name' => 'URL Redirect',
+				'desc' => 'Specify a full url to use as a redirect when the spotlight is clicked.',
+				'id'   => $prefix.'url_redirect',
+				'type' => 'text'
+			),
+			array(
+			'name' => 'Post To Home',
+			'desc' => 'Indicate whether this spotlight should be visible from the home page spotlights feed.',
+			'id'   => $prefix.'post_to_home',
+			'type' => 'checkbox',
+			'std' => 'off'
+			)
+		);
 	}
 	
 	public function objectsToHTML($objects, $css_classes) {		
