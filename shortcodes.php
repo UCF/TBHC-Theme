@@ -819,25 +819,25 @@ function sc_spotlight_grid($atts) {
 				foreach ($spots as $spotlight) { ?>
 					<li>
 						<div>
-							<?$spotlight[0]['post_title']?>
+							<?$spotlight['post_title']?>
 						</div>
 						<div>
-							<?$spotlight[0]['award']?>
+							<?$spotlight['award']?>
 						</div>
 						<div>
-							<?$spotlight[0]['institutional_endorsement/nomination_required']?>
+							<?$spotlight['institutional_endorsement/nomination_required']?>
 						</div>
 						<div>
-							<?$spotlight[0]['deadline']?>
+							<?$spotlight['deadline']?>
 						</div>
 						<div>
-							<?$spotlight[0]['field_of_study']?>
+							<?$spotlight['field_of_study']?>
 						</div>
 						<div>
-							<?$spotlight[0]['website']?>
+							<?$spotlight['website']?>
 						</div>
 						<div>
-							<?$spotlight[0]['post_content']?>
+							<?$spotlight['post_content']?>
 						</div>
 					</li>
 				<?}
