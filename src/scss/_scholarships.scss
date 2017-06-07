@@ -1,0 +1,171 @@
+﻿section#spotlights {
+    padding: 0 8%;
+
+    @media (min-width: $screen-sm-max) {
+        padding: 10px;
+    }
+
+    #spotlights_inner_wrap {
+        @media (min-width: $screen-sm-max) {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #spotlights_left {
+            @media (min-width: $screen-sm-max) {
+                float: left;
+                width: 70%;
+            }
+
+            .spotlights_title_wrap {
+                margin: 20px 0 10px 10px;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 10px;
+
+                .spotlights_title {
+                    font-size: 17px;
+                    font-size: 3em;
+                    font-weight: bold;
+                }
+
+                a {
+                    color: #aaa;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+            }
+
+            .spotlights_lg_table {
+
+                .spotlight_single_wrap {
+                    padding: 20px 0 10px 0;
+
+                    .spotlight_single {
+                        display: table;
+                        width: 100%;
+
+                        &:hover {
+                            text-decoration: none;
+                            border: none;
+                            background-color: #eee;
+                            transition: background-color .2s;
+                        }
+
+                        @media (min-width: $screen-sm-max) {
+                            padding: 10px;
+                        }
+
+                        .spotlight_image_wrap {
+                            display: table-cell;
+                            width: 15%;
+                            vertical-align: top;
+
+                            .spotlight_image {
+                                width: 100%;
+                            }
+                        }
+
+                        .spotlight_content_wrap {
+                            display: table-cell;
+                            padding-left: 3%;
+                            color: #333;
+
+                            .spotlight_type {
+                                background-color: #FC0;
+                                text-transform: uppercase;
+                                color: #333;
+                                padding-left: 5px;
+                                padding-right: 5px;
+                                line-height: 1.65;
+                                display: inline-block;
+                            }
+
+                            .spotlight_title {
+                                font-weight: bold;
+                                padding: 5px 0;
+                                color: #333;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #spotlights_right {
+            @media (min-width: $screen-sm-max) {
+                float: right;
+                width: 30%;
+                padding: 10px 0;
+            }
+
+            .spotlights_title_wrap {
+                margin: 30px 0 20px 10px;
+
+                @media (min-width: $screen-sm-max) {
+                    margin: 50px 0 20px 10px;
+                }
+
+                a{
+                    &:active{
+                        color:#333;
+                    }
+                    &:hover{
+                        color:#333;
+                    }
+                }
+
+                .spotlights_title {
+                    font-weight: bold;
+                    color: #333;
+
+                    &:after {
+                        background-color: #ffc904;
+                        content: '';
+                        display: block;
+                        height: 3px;
+                        width: 40px;
+                    }
+                }
+            }
+
+            .spotlight_person {
+                padding: 10px;
+                display: block;
+
+                &:hover {
+                    text-decoration: none;
+                    border: none;
+                }
+
+                .spotlight_content_wrap {
+                    color: #333;
+
+                    .spotlight_title {
+                        margin-top: 10px;
+                        font-weight: bold;
+                        padding: 5px 0;
+                        color: #333;
+                    }
+                }
+
+                .spotlight_link {
+
+                    &:hover {
+                        text-decoration: none;
+                        border: none;
+                    }
+
+                    .spotlight_more {
+                        background-color: #FC0;
+                        text-transform: uppercase;
+                        color: #333;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                        line-height: 1.65;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+}
