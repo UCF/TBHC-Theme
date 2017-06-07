@@ -74,7 +74,7 @@
 					</div>	
 					<div class="footerCol col-xs-half col-sm-5 <?=get_theme_option('home_page_theme') == '2' ? 'opaLeft' : 'col-md-3'?>">
 						<div id="contactInfo" role="contentinfo" class="vcard">
-							<?if(get_theme_option('home_page_theme') != '2'){?>
+							<?if(get_theme_option('home_page_theme') == '2'){?>
 								<div class="location-title">
 									Location
 								</div>

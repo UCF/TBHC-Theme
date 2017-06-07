@@ -10502,7 +10502,7 @@ body {
   list-style: none; }
 
 @media (min-width: 767px) {
-  #page-title .col-sm-12 {
+  #page-title .col-sm-12, #page-title .col-sm-15 {
     padding-left: 0; } }
 
 .person-profile-grid p, .person-profile-grid br {

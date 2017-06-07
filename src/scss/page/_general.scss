@@ -30,9 +30,11 @@ body {
     list-style: none;
 }
 
-#page-title .col-sm-12 {
-    @media (min-width: $screen-xs-max) {
-        padding-left: 0;
+#page-title {
+    .col-sm-12, .col-sm-15 {
+        @media (min-width: $screen-xs-max) {
+            padding-left: 0;
+        }
     }
 }
 
@@ -160,7 +162,6 @@ body {
         }
     }
 }
-
 // Subpages - title
 #page-title {
     //border-bottom: 1px dotted #333;
@@ -189,8 +190,6 @@ body {
         }
     }
 }
-
-
 // Subpages - Sidebars - General
 .sidebar_title {
     font-family: $font-family-sans-serif;
@@ -275,7 +274,6 @@ body {
         }
     }
 }
-
 // Subpages - Left Sidebar
 #sidebar_left {
     @media (max-width: $screen-xs-max) {
@@ -317,7 +315,6 @@ body {
         padding-top: 0;
     }
 }
-
 // Overide mobile colors to match desktop
 #degree-single {
     #contentcol .mobile-degree-cta a.btn-success,
@@ -329,7 +326,6 @@ body {
         color: #000;
     }
 }
-
 // Subpages - Center Column (Content Column)
 #contentcol {
     @media (max-width: $screen-xs-max) {
@@ -487,8 +483,6 @@ body {
         }
     }
 }
-
-
 // Subpages - Right Sidebar
 #sidebar_right {
     padding-top: 140px;
