@@ -13123,5 +13123,9 @@ section#scholarship_spotlight {
     @media (min-width: 991px) {
       section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right .scholarship_spotlight_type {
         margin: auto; } }
+  section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right .scholarship_spotlight_title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px auto 15px auto; }
 
 /*# sourceMappingURL=style.css.map */
