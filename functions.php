@@ -875,6 +875,7 @@ function frontpage_scholarship_spotlight() {
 						</p>
 					</div>
 				</div>
+				<div class="clearfix"></div>
 			</div>				
 		</section>
 	<? return ob_get_clean();
