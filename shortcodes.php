@@ -823,19 +823,19 @@ function sc_spotlight_grid($atts) {
 							<?$spotlight->post_title?>
 						</div>
 						<div>
-							<?$spotlight['award']?>
+							<?$spotlight->award?>
 						</div>
 						<div>
-							<?$spotlight['institutional_endorsement/nomination_required']?>
+							<?$spotlight->institutional_endorsement/nomination_required?>
 						</div>
 						<div>
-							<?$spotlight['deadline']?>
+							<?$spotlight->deadline?>
 						</div>
 						<div>
-							<?$spotlight['field_of_study']?>
+							<?$spotlight->field_of_study?>
 						</div>
 						<div>
-							<?$spotlight['website']?>
+							<?$spotlight->website?>
 						</div>
 						<div>
 							<?$spotlight->post_content?>
