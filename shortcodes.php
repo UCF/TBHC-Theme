@@ -825,7 +825,7 @@ function sc_spotlight_grid($atts) {
 					<li class="scholarship-single-table">
 						<div class="row">
 							<h1 class="col-xs-15">
-								<?=get_post_meta( $spotlight->ID, 'post-title', true )?>
+								<?=$spotlight->post_title?>
 							</h1>
 						</div>
 						<div class="row">
@@ -870,7 +870,7 @@ function sc_spotlight_grid($atts) {
 						</div>
 						<div class="row">
 							<div class="col-xs-15">
-								<?=get_post_meta( $spotlight->ID, 'post-content', true )?>
+								<?=$spotlight->post_content?>
 							</div>
 						</div>
 					</li>
