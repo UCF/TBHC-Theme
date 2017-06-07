@@ -85,10 +85,13 @@
 
 #contactInfo {
     //line-height: 25px;
-    .organization-name, .adr > span, .adr > div {
+    .organization-name, .adr > span, .adr > div, .location-title {
         display: block;
         padding: 5px 0;
         line-height: 15px;
+    }
+    .location-title{
+        text-transform: uppercase;
     }
 }
 
@@ -96,6 +99,10 @@
     display: block;
     padding: 5px 0;
     line-height: 15px;
+}
+
+.footerCol.opaLeft{
+    text-align:left;
 }
 
 #subfooter {

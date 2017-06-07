@@ -53,10 +53,32 @@
 							//'menu_id' => 'department-sites',
 							'depth' => 1,
 							));
-						?>
+						if(get_theme_option('home_page_theme') == '2'){?>
+							<div id="contactInfo">
+								<div class="location-title">
+									Contact US
+								</div>
+								<div class="adr">
+									<div class="tel">
+										<a href="tel:4078232076">p.  407.823.2076</a>
+									</div>
+									<div class="tel">
+										<a href="tel:4078232076">f.  407.823.6583</a>
+									</div>
+									<div class="email">
+										<a href="mailto:honors@ucf.edu">e.  honors@ucf.edu</a>
+									</div>
+								</div>
+							</div>
+						<?}?>
 					</div>	
-					<div class="footerCol col-xs-half col-sm-5 <?=get_theme_option('home_page_theme') == '2' ? '' : 'col-md-3'?>">
+					<div class="footerCol col-xs-half col-sm-5 <?=get_theme_option('home_page_theme') == '2' ? 'opaLeft' : 'col-md-3'?>">
 						<div id="contactInfo" role="contentinfo" class="vcard">
+							<?if(get_theme_option('home_page_theme') != '2'){?>
+								<div class="location-title">
+									Location
+								</div>
+							<?}?>
 							<a href="<?=site_url()?>" class="print-noexpand fn org url">
 								<span class="organization-name">The Burnett Honors College</span>
 							</a>
@@ -67,12 +89,14 @@
 									<span class="region">FL</span>
 									<span class="postal-code">32816</span>
 								</div>
-								<div class="tel">
-									<a href="tel:4078232076">407.823.2076</a>
-								</div>
-								<div class="email">
-									<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
-								</div>
+								<?if(get_theme_option('home_page_theme') != '2'){?>
+									<div class="tel">
+										<a href="tel:4078232076">407.823.2076</a>
+									</div>
+									<div class="email">
+										<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
+									</div>
+								<?}?>
 							</div>
 							<!--<br/>
 								<a href="<?=site_url()?>/feedback/">Comments and Feedback</a> | &copy;

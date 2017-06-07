@@ -10149,15 +10149,20 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
     width: 50%;
     float: left; } }
 
-#contactInfo .organization-name, #contactInfo .adr > span, #contactInfo .adr > div {
+#contactInfo .organization-name, #contactInfo .adr > span, #contactInfo .adr > div, #contactInfo .location-title {
   display: block;
   padding: 5px 0;
   line-height: 15px; }
+#contactInfo .location-title {
+  text-transform: uppercase; }
 
 .footerCol > .opaTel, .footerCol > .opaEmail {
   display: block;
   padding: 5px 0;
   line-height: 15px; }
+
+.footerCol.opaLeft {
+  text-align: left; }
 
 #subfooter {
   font-size: 12pt;
