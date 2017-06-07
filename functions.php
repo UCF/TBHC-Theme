@@ -861,7 +861,7 @@ function frontpage_scholarship_spotlight() {
 							<? } ?>
 					</div>
 					<div class="scholarship_cta_wrap">
-						<h3 class="scholarship_spotlight_cta">Apply Now</h3>
+						<a href="<?=$spotlight[0]['website']?>" class="scholarship_spotlight_cta">Apply Now</a>
 					</div>
 				</div>
 				<div id="scholarship_spotlight_right">
@@ -875,6 +875,7 @@ function frontpage_scholarship_spotlight() {
 						<p class="scholarship_spotlight_content">
 							<?=get_the_excerpt($spotlight[0]['ID'])?>	
 						</p>
+						<a href="<?=$link?>">Click here for more information.</a>
 					</div>
 				</div>
 				<div class="clearfix"></div>

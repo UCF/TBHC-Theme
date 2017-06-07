@@ -31,7 +31,9 @@ body {
 }
 
 #page-title .col-sm-12 {
-    padding-left: 0;
+    @media (min-width: $screen-xs-max) {
+        padding-left: 0;
+    }
 }
 
 .person-profile-grid {

@@ -10496,8 +10496,9 @@ body {
 .spotlight-list, .opportunity-list {
   list-style: none; }
 
-#page-title .col-sm-12 {
-  padding-left: 0; }
+@media (min-width: 767px) {
+  #page-title .col-sm-12 {
+    padding-left: 0; } }
 
 .person-profile-grid p, .person-profile-grid br {
   display: none; }
@@ -13108,6 +13109,7 @@ section#scholarship_spotlight {
     color: black;
     font-size: 14pt;
     padding: 10px;
+    font-weight: 600px;
     display: block;
     width: 70%; }
   @media (min-width: 991px) {
