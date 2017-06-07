@@ -120,6 +120,12 @@ section#scholarship_spotlight {
                 text-transform: uppercase;
                 margin: 20px auto 15px auto;
             }
+            .scholarship_spotlight_more{
+                color:#333;
+                &:hover{
+                    color:#333;
+                }
+            }
         }
     }
 }

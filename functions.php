@@ -833,9 +833,6 @@ function frontpage_scholarship_spotlight() {
 				<div id="scholarship_spotlight_left" class="hidden-sm hidden-xs">
 					<? 	$link = get_permalink($spotlight[0]['ID']);
 						$ext_link = get_post_meta($spotlight[0]['ID'], 'website', TRUE);
-						if($ext_link){
-							$link = $ext_link; 
-						}
 						$cat_term = get_term_by('slug','scholarship-categories','event_groups');
 						$child_terms = get_term_children($cat_term->term_id, 'event_groups');
 						$all_terms   = wp_get_post_terms($spotlight[0]['ID'], 'event_groups');
@@ -861,7 +858,7 @@ function frontpage_scholarship_spotlight() {
 							<? } ?>
 					</div>
 					<div class="scholarship_cta_wrap">
-						<a href="<?=$spotlight[0]['website']?>" class="scholarship_spotlight_cta">Apply Now</a>
+						<a href="<?=$ext_link?>" class="scholarship_spotlight_cta">Apply Now</a>
 					</div>
 				</div>
 				<div id="scholarship_spotlight_right">
@@ -875,7 +872,7 @@ function frontpage_scholarship_spotlight() {
 						<p class="scholarship_spotlight_content">
 							<?=get_the_excerpt($spotlight[0]['ID'])?>	
 						</p>
-						<a href="<?=$link?>">Click here for more information.</a>
+						<a class="scholarship_spotlight_more" href="<?=$link?>">Click here for more information.</a>
 					</div>
 				</div>
 				<div class="clearfix"></div>
