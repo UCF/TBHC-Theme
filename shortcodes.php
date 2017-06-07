@@ -820,7 +820,7 @@ function sc_spotlight_grid($atts) {
 				<?foreach ($spots as $spotlight) { ?>
 					<li>
 						<div>
-							<?$spotlight['post_title']?>
+							<?$spotlight->post_title?>
 						</div>
 						<div>
 							<?$spotlight['award']?>
@@ -838,7 +838,7 @@ function sc_spotlight_grid($atts) {
 							<?$spotlight['website']?>
 						</div>
 						<div>
-							<?$spotlight['post_content']?>
+							<?$spotlight->post_content?>
 						</div>
 					</li>
 				<?}?>
