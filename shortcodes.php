@@ -678,9 +678,9 @@ function sc_spotlight_grid($atts) {
 			'event_groups' => $event_groups2 ? $event_groups.' '.$event_groups2 : $event_groups,
 			'orderby' => 'meta_value_num',
 			'order' => 'DESC',
-			'meta_key'	=> 'spotlight_end',
+			'meta_key'	=> get_theme_option('home_page_theme') == '2' ? '' : 'spotlight_end',
 			'operator' => $operator,
-			'meta_query'	=> array(
+			'meta_query'	=> get_theme_option('home_page_theme') == '2' ? '' : array(
 				array(
 					'key'	=>	'spotlight_start',
 					'value'	=>	date('Ymd'),
@@ -692,21 +692,22 @@ function sc_spotlight_grid($atts) {
 		'objects_only' => True,
 		)
 	);
-	usort($spots, function($a, $b){
-		$a_dt = new DateTime(get_post_meta($a->ID, 'spotlight_end', TRUE));
-		$b_dt = new DateTime(get_post_meta($b->ID, 'spotlight_end', TRUE));
-		$a_dt = $a_dt->getTimestamp();
-		$b_dt = $b_dt->getTimestamp();
-		if ($a_dt == $b_dt){
-			// If they have the same depth, compare titles
-			return strcmp($a->post_title, $b->post_title) * -1;
-		}
-		// If depth_a is smaller than depth_b, return -1; otherwise return 1
-		$res = ($a_dt > $b_dt) ? -1 : 1;
-		return $res;
-	});
-	//var_dump($spots);	
-	
+	if(get_theme_option('home_page_theme') != '2'){
+		usort($spots, function($a, $b){
+			$a_dt = new DateTime(get_post_meta($a->ID, 'spotlight_end', TRUE));
+			$b_dt = new DateTime(get_post_meta($b->ID, 'spotlight_end', TRUE));
+			$a_dt = $a_dt->getTimestamp();
+			$b_dt = $b_dt->getTimestamp();
+			if ($a_dt == $b_dt){
+				// If they have the same depth, compare titles
+				return strcmp($a->post_title, $b->post_title) * -1;
+			}
+			// If depth_a is smaller than depth_b, return -1; otherwise return 1
+			$res = ($a_dt > $b_dt) ? -1 : 1;
+			return $res;
+		});
+		//var_dump($spots);	
+	}
 	ob_start();
 	?><div class="spotlight-grid" data-url="<?=admin_url( 'admin-ajax.php' )?>" data-group="<?=esc_attr($dd_event_groups)?>" data-group2="<?=esc_attr($dd2_event_groups)?>" data-jn="<?=esc_attr($join)?>" data-oprtr="<?=esc_attr($operator)?>" data-allopt="<?=esc_attr($show_option_all)?>" data-allopt2="<?=esc_attr($show_option_all2)?>">
 		<? if($dropdown){ 
@@ -724,9 +725,13 @@ function sc_spotlight_grid($atts) {
 				$args['show_option_all'] = $show_option_all;
 			}
 			// filter hooks from http://wordpress.stackexchange.com/a/72562, get_terms_orderby_semester_year function exists in functions.php
-			add_filter('get_terms_orderby', 'get_terms_orderby_semester_year',10,2);
+			if(get_theme_option('home_page_theme') != '2'){
+				add_filter('get_terms_orderby', 'get_terms_orderby_semester_year',10,2);
+			}
 			$wp1Args = wp_dropdown_categories($args);
-			remove_filter('get_terms_orderby', 'get_terms_orderby_semester_year');
+			if(get_theme_option('home_page_theme') != '2'){
+				remove_filter('get_terms_orderby', 'get_terms_orderby_semester_year');
+			}
 			//
 			rsort($wp1Args);
 			echo str_replace(
@@ -758,6 +763,7 @@ function sc_spotlight_grid($atts) {
 		?>	
 		<ul class="spotlight-list">
 			<?php
+			if(get_theme_option('home_page_theme') != '2'){
 				//rsort($opps);
 				foreach ($spots as $spotlight) { 
 					$start_date; //= get_post_meta($spotlight->ID, 'spotlight_start', TRUE);
@@ -809,7 +815,33 @@ function sc_spotlight_grid($atts) {
 				</li>
 				<?php
 				}
-			?>
+			}else{
+				foreach ($spots as $spotlight) { ?>
+					<li>
+						<div>
+							<?$spotlight[0]['post_title']?>
+						</div>
+						<div>
+							<?$spotlight[0]['award']?>
+						</div>
+						<div>
+							<?$spotlight[0]['institutional_endorsement/nomination_required']?>
+						</div>
+						<div>
+							<?$spotlight[0]['deadline']?>
+						</div>
+						<div>
+							<?$spotlight[0]['field_of_study']?>
+						</div>
+						<div>
+							<?$spotlight[0]['website']?>
+						</div>
+						<div>
+							<?$spotlight[0]['post_content']?>
+						</div>
+					</li>
+				<?}
+			}?>
 		</ul>
 	</div>
 	
