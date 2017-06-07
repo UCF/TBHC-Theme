@@ -760,10 +760,9 @@ function sc_spotlight_grid($atts) {
 				wp_dropdown_categories($args2)
 			);
 		} 
-		?>	
-		<ul class="spotlight-list">
-			<?php
-			if(get_theme_option('home_page_theme') != '2'){
+		if(get_theme_option('home_page_theme') != '2'){ ?>	
+			<ul class="spotlight-list">
+				<?php
 				//rsort($opps);
 				foreach ($spots as $spotlight) { 
 					$start_date; //= get_post_meta($spotlight->ID, 'spotlight_start', TRUE);
@@ -813,10 +812,11 @@ function sc_spotlight_grid($atts) {
 						Category:&nbsp;<?=$catTerms?> <!-- silly bugger -->
 					</div>
 				</li>
-				<?php
-				}
-			}else{
-				foreach ($spots as $spotlight) { ?>
+			<? } ?>
+			</ul>
+		<?}else if(!(is_home() && is_front_page())){?>
+				<ul>
+				<?foreach ($spots as $spotlight) { ?>
 					<li>
 						<div>
 							<?$spotlight['post_title']?>
@@ -840,9 +840,9 @@ function sc_spotlight_grid($atts) {
 							<?$spotlight['post_content']?>
 						</div>
 					</li>
-				<?}
-			}?>
-		</ul>
+				<?}?>
+				</ul>
+			<?}?>
 	</div>
 	
 	<?
