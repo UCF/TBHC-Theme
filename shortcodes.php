@@ -814,7 +814,7 @@ function sc_spotlight_grid($atts) {
 				</li>
 			<? } ?>
 			</ul>
-		<?}else if(!(is_home() && is_front_page())){?>
+		<?}else if(!(is_home() || is_front_page())){?>
 				<ul>
 				<?foreach ($spots as $spotlight) { ?>
 					<li>
