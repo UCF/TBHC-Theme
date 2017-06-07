@@ -13062,15 +13062,18 @@ section#opa_header {
       width: 30%; } }
   section#opa_header #opa_header_inner_wrap #opa_header_left .opa_header_image {
     width: 100%; }
+  @media (min-width: 991px) {
+    section#opa_header #opa_header_inner_wrap #opa_header_right {
+      float: right;
+      width: 70%; } }
   section#opa_header #opa_header_inner_wrap #opa_header_right .opa_header_type {
     margin: 10px 0 10px 0;
     background-color: #FC0;
     text-transform: uppercase;
-    color: #333;
-    padding-left: 5px;
-    padding-right: 5px;
-    display: inline-block;
-    line-height: 1.65; }
+    color: white;
+    font-size: 14pt;
+    padding: 10px;
+    display: inline-block; }
   @media (min-width: 991px) {
     section#opa_header #opa_header_inner_wrap #spotlights_right {
       float: right;

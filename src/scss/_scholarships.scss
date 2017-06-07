@@ -23,16 +23,18 @@
         }
         
         #opa_header_right{
-
+            @media (min-width: $screen-sm-max) {
+                float: right;
+                width: 70%;
+            }
             .opa_header_type{
                 margin: 10px 0 10px 0;
                 background-color: #FC0;
                 text-transform: uppercase;
-                color: #333;
-                padding-left: 5px;
-                padding-right: 5px;
+                color: white;
+                font-size: 14pt;
+                padding: 10px;
                 display: inline-block;
-                line-height: 1.65;
             }
 
         }
