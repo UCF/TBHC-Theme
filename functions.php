@@ -796,7 +796,7 @@ function frontpage_scholarship_spotlight() {
 			<div id="opa_header_inner_wrap">
 				<div id="opa_header_left">
 					<div class="opa_header_image_wrap">
-						<img class="scholarship_spotlight_image" src="<?=get_theme_option('home_img')?>" alt="<?=esc_attr(get_theme_option('home_title'))?>"/>
+						<img class="opa_header_image" src="<?=get_theme_option('home_img')?>" alt="<?=esc_attr(get_theme_option('home_title'))?>"/>
 					</div>
 				</div>
 				<div id="opa_header_right">
