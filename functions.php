@@ -811,6 +811,7 @@ function frontpage_scholarship_spotlight() {
 					</p>
 				</div>
 			</div>
+			<div class="clearfix"></div>
 		</section>
 		<!--<section id="search_scholarships">
 			<div id="search_scholarships_inner_wrap">
