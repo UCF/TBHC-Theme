@@ -865,7 +865,7 @@ function sc_spotlight_grid($atts) {
 								<b>Website:</b>
 							</div>
 							<div class="col-xs-15 ">
-								<?=get_post_meta( $spotlight->ID, 'website', true )?>
+								<a href="<?=get_post_meta( $spotlight->ID, 'website', true )?>"><?=get_post_meta( $spotlight->ID, 'website', true )?></a>
 							</div>
 						</div>
 						<div class="row">
