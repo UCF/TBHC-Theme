@@ -669,6 +669,7 @@ function sc_spotlight_grid($atts) {
 	$EGID2			= get_term_by('slug', $dd2_event_groups, 'event_groups');
 	$EGID2			= $EGID2 ? $EGID2->term_id : false;
 	$operator		= ($atts['operator']) ? $atts['operator'] : NULL;
+	$short			= ($atts['short']) ? $atts['short'] : FALSE;
 	$spots 		= sc_object_list(
 		array(
 			'type' => 'spotlight',
@@ -760,7 +761,7 @@ function sc_spotlight_grid($atts) {
 				wp_dropdown_categories($args2)
 			);
 		} 
-		if(get_theme_option('home_page_theme') != '2'){ ?>	
+		if(get_theme_option('home_page_theme') != '2' && !$short){ ?>	
 			<ul class="spotlight-list">
 				<?php
 				//rsort($opps);
@@ -814,7 +815,7 @@ function sc_spotlight_grid($atts) {
 				</li>
 			<? } ?>
 			</ul>
-		<?}else if(!(is_home() || is_front_page())){?>
+		<?}else if(!$short){?>
 				<ul>
 				<?foreach ($spots as $spotlight) { ?>
 					<li>
