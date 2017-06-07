@@ -13048,10 +13048,10 @@ section#events {
       color: white; }
 
 section#opa_header {
-  padding: 0 3%; }
+  padding: 20px 3%; }
   @media (min-width: 991px) {
     section#opa_header {
-      padding: 10px; } }
+      padding: 20px 10px 10px 10px; } }
   @media (min-width: 991px) {
     section#opa_header #opa_header_inner_wrap {
       max-width: 1200px;
@@ -13065,7 +13065,8 @@ section#opa_header {
   @media (min-width: 991px) {
     section#opa_header #opa_header_inner_wrap #opa_header_right {
       float: right;
-      width: 70%; } }
+      width: 70%;
+      padding-left: 30px; } }
   section#opa_header #opa_header_inner_wrap #opa_header_right .opa_header_type {
     margin: 10px 0 10px 0;
     background-color: #FC0;
@@ -13073,53 +13074,54 @@ section#opa_header {
     color: white;
     font-size: 14pt;
     padding: 10px;
-    display: inline-block; }
-  @media (min-width: 991px) {
-    section#opa_header #opa_header_inner_wrap #spotlights_right {
-      float: right;
-      width: 30%;
-      padding: 10px 0; } }
-  section#opa_header #opa_header_inner_wrap #spotlights_right .spotlights_title_wrap {
-    margin: 30px 0 20px 10px; }
+    display: inline-block;
+    width: 100%; }
     @media (min-width: 991px) {
-      section#opa_header #opa_header_inner_wrap #spotlights_right .spotlights_title_wrap {
-        margin: 50px 0 20px 10px; } }
-    section#opa_header #opa_header_inner_wrap #spotlights_right .spotlights_title_wrap a:active {
-      color: #333; }
-    section#opa_header #opa_header_inner_wrap #spotlights_right .spotlights_title_wrap a:hover {
-      color: #333; }
-    section#opa_header #opa_header_inner_wrap #spotlights_right .spotlights_title_wrap .spotlights_title {
-      font-weight: bold;
-      color: #333; }
-      section#opa_header #opa_header_inner_wrap #spotlights_right .spotlights_title_wrap .spotlights_title:after {
-        background-color: #ffc904;
-        content: '';
-        display: block;
-        height: 3px;
-        width: 40px; }
-  section#opa_header #opa_header_inner_wrap #spotlights_right .spotlight_person {
+      section#opa_header #opa_header_inner_wrap #opa_header_right .opa_header_type {
+        margin: auto; } }
+  section#opa_header #opa_header_inner_wrap #opa_header_right .opa_header_title {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px auto 15px auto; }
+
+section#scholarship_spotlight {
+  background-color: #dbd9da;
+  padding: 20px 3%; }
+  @media (min-width: 991px) {
+    section#scholarship_spotlight #scholarship_spotlight_inner_wrap {
+      max-width: 1200px;
+      margin: 0 auto; } }
+  @media (min-width: 991px) {
+    section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_left {
+      float: left;
+      width: 30%; } }
+  section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_left .scholarship_spotlight_image_wrap .scholarship_spotlight_image {
+    width: 100%; }
+  section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_left .scholarship_spotlight_cta {
+    margin: 10px 0 10px 0;
+    background-color: #FC0;
+    text-transform: uppercase;
+    color: black;
+    font-size: 14pt;
     padding: 10px;
-    display: block; }
-    section#opa_header #opa_header_inner_wrap #spotlights_right .spotlight_person:hover {
-      text-decoration: none;
-      border: none; }
-    section#opa_header #opa_header_inner_wrap #spotlights_right .spotlight_person .spotlight_content_wrap {
-      color: #333; }
-      section#opa_header #opa_header_inner_wrap #spotlights_right .spotlight_person .spotlight_content_wrap .spotlight_title {
-        margin-top: 10px;
-        font-weight: bold;
-        padding: 5px 0;
-        color: #333; }
-    section#opa_header #opa_header_inner_wrap #spotlights_right .spotlight_person .spotlight_link:hover {
-      text-decoration: none;
-      border: none; }
-    section#opa_header #opa_header_inner_wrap #spotlights_right .spotlight_person .spotlight_link .spotlight_more {
-      background-color: #FC0;
-      text-transform: uppercase;
-      color: #333;
-      padding-left: 5px;
-      padding-right: 5px;
-      line-height: 1.65;
-      display: inline-block; }
+    display: inline-block;
+    width: 100%; }
+  @media (min-width: 991px) {
+    section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right {
+      float: right;
+      width: 70%;
+      padding-left: 30px; } }
+  section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right .scholarship_spotlight_type {
+    margin: 10px 0 10px 0;
+    background-color: #3d3b3c;
+    text-transform: uppercase;
+    color: white;
+    font-size: 14pt;
+    padding: 10px;
+    display: inline-block;
+    width: 100%; }
+    @media (min-width: 991px) {
+      section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right .scholarship_spotlight_type {
+        margin: auto; } }
 
 /*# sourceMappingURL=style.css.map */

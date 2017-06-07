@@ -85,7 +85,7 @@
 			</div>
 			<div id="subfooter" style="<?=get_theme_option('footer_bg_color') ? 'background-color:'.get_theme_option('footer_bg_color').' !important;' : ''?>">
 				<?php
-					custom_breadcrumbs();
+					//custom_breadcrumbs();
 				?>
 			</div>
 		</div><!-- .container -->

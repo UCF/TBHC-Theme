@@ -1,8 +1,8 @@
 ﻿section#opa_header {
-    padding: 0 3%;
+    padding: 20px 3%;
 
     @media (min-width: $screen-sm-max) {
-        padding: 10px;
+        padding: 20px 10px 10px 10px;
     }
 
     #opa_header_inner_wrap {
@@ -17,17 +17,19 @@
                 width: 30%;
             }
 
-            .opa_header_image{
+            .opa_header_image {
                 width: 100%;
             }
         }
-        
-        #opa_header_right{
+
+        #opa_header_right {
             @media (min-width: $screen-sm-max) {
                 float: right;
                 width: 70%;
+                padding-left: 30px;
             }
-            .opa_header_type{
+
+            .opa_header_type {
                 margin: 10px 0 10px 0;
                 background-color: #FC0;
                 text-transform: uppercase;
@@ -35,83 +37,75 @@
                 font-size: 14pt;
                 padding: 10px;
                 display: inline-block;
-            }
-
-        }
-
-        #spotlights_right {
-            @media (min-width: $screen-sm-max) {
-                float: right;
-                width: 30%;
-                padding: 10px 0;
-            }
-
-            .spotlights_title_wrap {
-                margin: 30px 0 20px 10px;
+                width: 100%;
 
                 @media (min-width: $screen-sm-max) {
-                    margin: 50px 0 20px 10px;
-                }
-
-                a{
-                    &:active{
-                        color:#333;
-                    }
-                    &:hover{
-                        color:#333;
-                    }
-                }
-
-                .spotlights_title {
-                    font-weight: bold;
-                    color: #333;
-
-                    &:after {
-                        background-color: #ffc904;
-                        content: '';
-                        display: block;
-                        height: 3px;
-                        width: 40px;
-                    }
+                    margin: auto;
                 }
             }
 
-            .spotlight_person {
+            .opa_header_title {
+                font-weight: bold;
+                text-transform: uppercase;
+                margin: 20px auto 15px auto;
+            }
+        }
+    }
+}
+
+section#scholarship_spotlight {
+    background-color: #dbd9da;
+    padding: 20px 3%;
+
+    #scholarship_spotlight_inner_wrap {
+        @media (min-width: $screen-sm-max) {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #scholarship_spotlight_left {
+            @media (min-width: $screen-sm-max) {
+                float: left;
+                width: 30%;
+            }
+
+            .scholarship_spotlight_image_wrap {
+                .scholarship_spotlight_image {
+                    width: 100%;
+                }
+            }
+
+            .scholarship_spotlight_cta {
+                margin: 10px 0 10px 0;
+                background-color: #FC0;
+                text-transform: uppercase;
+                color: black;
+                font-size: 14pt;
                 padding: 10px;
-                display: block;
+                display: inline-block;
+                width: 100%;
+            }
+        }
 
-                &:hover {
-                    text-decoration: none;
-                    border: none;
-                }
+        #scholarship_spotlight_right {
+            @media (min-width: $screen-sm-max) {
+                float: right;
+                width: 70%;
+                padding-left: 30px;
+            }
 
-                .spotlight_content_wrap {
-                    color: #333;
+            .scholarship_spotlight_type {
+                margin: 10px 0 10px 0;
+                background-color: #3d3b3c;
+                text-transform: uppercase;
+                color: white;
+                font-size: 14pt;
+                padding: 10px;
+                display: inline-block;
+                width: 100%;
 
-                    .spotlight_title {
-                        margin-top: 10px;
-                        font-weight: bold;
-                        padding: 5px 0;
-                        color: #333;
-                    }
-                }
-
-                .spotlight_link {
-
-                    &:hover {
-                        text-decoration: none;
-                        border: none;
-                    }
-
-                    .spotlight_more {
-                        background-color: #FC0;
-                        text-transform: uppercase;
-                        color: #333;
-                        padding-left: 5px;
-                        padding-right: 5px;
-                        line-height: 1.65;
-                        display: inline-block;
-                    }
+                @media (min-width: $screen-sm-max) {
+                    margin: auto;
                 }
             }
         }
