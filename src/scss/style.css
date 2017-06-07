@@ -13088,12 +13088,16 @@ section#scholarship_spotlight {
   background-color: #dbd9da;
   padding: 20px 3%; }
   @media (min-width: 991px) {
-    section#scholarship_spotlight #scholarship_spotlight_left {
+    section#scholarship_spotlight #scholarship_spotlight_inner_wrap {
+      max-width: 1200px;
+      margin: 0 auto; } }
+  @media (min-width: 991px) {
+    section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_left {
       float: left;
       width: 30%; } }
-  section#scholarship_spotlight #scholarship_spotlight_left .scholarship_spotlight_image_wrap .scholarship_spotlight_image {
+  section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_left .scholarship_spotlight_image_wrap .scholarship_spotlight_image {
     width: 100%; }
-  section#scholarship_spotlight #scholarship_spotlight_left .scholarship_spotlight_cta {
+  section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_left .scholarship_spotlight_cta {
     margin: 10px 0 10px 0;
     background-color: #FC0;
     text-transform: uppercase;
@@ -13103,11 +13107,11 @@ section#scholarship_spotlight {
     display: inline-block;
     width: 100%; }
   @media (min-width: 991px) {
-    section#scholarship_spotlight #scholarship_spotlight_right {
+    section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right {
       float: right;
       width: 70%;
       padding-left: 30px; } }
-  section#scholarship_spotlight #scholarship_spotlight_right .scholarship_spotlight_type {
+  section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right .scholarship_spotlight_type {
     margin: 10px 0 10px 0;
     background-color: #3d3b3c;
     text-transform: uppercase;
@@ -13117,7 +13121,7 @@ section#scholarship_spotlight {
     display: inline-block;
     width: 100%; }
     @media (min-width: 991px) {
-      section#scholarship_spotlight #scholarship_spotlight_right .scholarship_spotlight_type {
+      section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right .scholarship_spotlight_type {
         margin: auto; } }
 
 /*# sourceMappingURL=style.css.map */

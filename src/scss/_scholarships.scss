@@ -57,47 +57,57 @@ section#scholarship_spotlight {
     background-color: #dbd9da;
     padding: 20px 3%;
 
-    #scholarship_spotlight_left{
+    #scholarship_spotlight_inner_wrap {
         @media (min-width: $screen-sm-max) {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #scholarship_spotlight_left {
+            @media (min-width: $screen-sm-max) {
                 float: left;
                 width: 30%;
             }
-        .scholarship_spotlight_image_wrap{
-            .scholarship_spotlight_image{
+
+            .scholarship_spotlight_image_wrap {
+                .scholarship_spotlight_image {
+                    width: 100%;
+                }
+            }
+
+            .scholarship_spotlight_cta {
+                margin: 10px 0 10px 0;
+                background-color: #FC0;
+                text-transform: uppercase;
+                color: black;
+                font-size: 14pt;
+                padding: 10px;
+                display: inline-block;
                 width: 100%;
             }
         }
-        .scholarship_spotlight_cta{
-            margin: 10px 0 10px 0;
-            background-color: #FC0;
-            text-transform: uppercase;
-            color: black;
-            font-size: 14pt;
-            padding: 10px;
-            display: inline-block;
-            width: 100%;
-        }
-    }
-    #scholarship_spotlight_right {
-        @media (min-width: $screen-sm-max) {
+
+        #scholarship_spotlight_right {
+            @media (min-width: $screen-sm-max) {
                 float: right;
                 width: 70%;
                 padding-left: 30px;
             }
-        .scholarship_spotlight_type {
-            margin: 10px 0 10px 0;
-            background-color: #3d3b3c;
-            text-transform: uppercase;
-            color: white;
-            font-size: 14pt;
-            padding: 10px;
-            display: inline-block;
-            width: 100%;
 
-            @media (min-width: $screen-sm-max) {
-                margin: auto;
+            .scholarship_spotlight_type {
+                margin: 10px 0 10px 0;
+                background-color: #3d3b3c;
+                text-transform: uppercase;
+                color: white;
+                font-size: 14pt;
+                padding: 10px;
+                display: inline-block;
+                width: 100%;
+
+                @media (min-width: $screen-sm-max) {
+                    margin: auto;
+                }
             }
         }
     }
-    
 }

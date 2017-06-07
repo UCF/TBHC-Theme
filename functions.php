@@ -854,7 +854,7 @@ function frontpage_scholarship_spotlight() {
 						}?>
 					<div class="scholarship_spotlight_image_wrap">
 						<? $thumb_id = get_post_thumbnail_id($spotlight[0]['ID']);
-							$thumb_src = wp_get_attachment_image_src( $thumb_id, 'home-thumb' );
+							$thumb_src = wp_get_attachment_image_src( $thumb_id, 'profile-grid-image' );
 							$thumb_src = $thumb_src[0];
 							if ($thumb_src) { ?>
 								<img class="scholarship_spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight[0]['post_title'])?>"/>
@@ -864,9 +864,9 @@ function frontpage_scholarship_spotlight() {
 				</div>
 				<div id="scholarship_spotlight_right">
 					<div class="scholarship_spotlight_content_wrap">
-						<div class="scholarship_spotlight_type">
+						<h2 class="scholarship_spotlight_type">
 							<?=$term_title?>
-						</div>	
+						</h2>	
 						<h3 class="scholarship_spotlight_title">
 							<?=$spotlight[0]['post_title']?>	
 						</h3>
