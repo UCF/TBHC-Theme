@@ -817,7 +817,8 @@ function sc_spotlight_grid($atts) {
 			</ul>
 		<?}else if(!$short){?>
 				<ul>
-				<?foreach ($spots as $spotlight) { ?>
+				<?foreach ($spots as $spotlight) { 
+					if(DEBUG){print_r($spotlight);print_r(gettype($spotlight));}?>
 					<li>
 						<div>
 							<?$spotlight->post_title?>
