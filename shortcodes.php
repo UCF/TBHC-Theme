@@ -822,45 +822,55 @@ function sc_spotlight_grid($atts) {
 				<ul style="padding-left:0; list-style:none;">
 				<?foreach ($spots as $spotlight) { 
 					if(DEBUG){print_r($spotlight);print_r(gettype($spotlight));}?>
-					<li>
+					<li class="scholarship-single-table">
 						<div class="row">
-							<div class="col-xs-15 col-md-5">
+							<h1 class="col-xs-15">
+								<?=get_post_meta( $spotlight->ID, 'post-title', true )?>
+							</h1>
+						</div>
+						<div class="row">
+							<div class="col-xs-15 ">
 								<b>Award:</b>
 							</div>
-							<div class="col-xs-15 col-md-10">
+							<div class="col-xs-15 ">
 								<?=get_post_meta( $spotlight->ID, 'award', true )?>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 col-md-5">
+							<div class="col-xs-15 ">
 								<b>Institutional Endorsement/Nomination Required:</b>
 							</div>
-							<div class="col-xs-15 col-md-10">
+							<div class="col-xs-15 ">
 								<?=get_post_meta( $spotlight->ID, 'institutional_endorsement/nomination_required', true )?>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 col-md-5">
+							<div class="col-xs-15 ">
 								<b>Deadline:</b>
 							</div>
-							<div class="col-xs-15 col-md-10">
+							<div class="col-xs-15 ">
 								<?=get_post_meta( $spotlight->ID, 'deadline', true )?>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 col-md-5">
+							<div class="col-xs-15 ">
 								<b>Field of Study:</b>
 							</div>
-							<div class="col-xs-15 col-md-10">
+							<div class="col-xs-15 ">
 								<?=get_post_meta( $spotlight->ID, 'field_of_study', true )?>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 col-md-5">
+							<div class="col-xs-15 ">
 								<b>Website:</b>
 							</div>
-							<div class="col-xs-15 col-md-10">
+							<div class="col-xs-15 ">
 								<?=get_post_meta( $spotlight->ID, 'website', true )?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-15">
+								<?=get_post_meta( $spotlight->ID, 'post-content', true )?>
 							</div>
 						</div>
 					</li>
