@@ -860,7 +860,9 @@ function frontpage_scholarship_spotlight() {
 								<img class="scholarship_spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight[0]['post_title'])?>"/>
 							<? } ?>
 					</div>
-					<h3 class="scholarship_spotlight_cta">Apply Now</h3>
+					<div class="scholarship_cta_wrap">
+						<h3 class="scholarship_spotlight_cta">Apply Now</h3>
+					</div>
 				</div>
 				<div id="scholarship_spotlight_right">
 					<div class="scholarship_spotlight_content_wrap">

@@ -57,6 +57,10 @@ section#scholarship_spotlight {
     background-color: #dbd9da;
     padding: 20px 3%;
 
+    @media (min-width: $screen-sm-max) {
+        padding: 20px 10px 10px 10px;
+    }
+
     #scholarship_spotlight_inner_wrap {
         @media (min-width: $screen-sm-max) {
             max-width: 1200px;
@@ -76,14 +80,15 @@ section#scholarship_spotlight {
             }
 
             .scholarship_spotlight_cta {
-                margin: 10px 0 10px 0;
+                margin: 20px auto;
                 background-color: #FC0;
+                text-align: center;
                 text-transform: uppercase;
                 color: black;
                 font-size: 14pt;
                 padding: 10px;
-                display: inline-block;
-                width: 100%;
+                display: block;
+                width: 70%;
             }
         }
 
