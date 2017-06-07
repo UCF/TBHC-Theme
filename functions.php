@@ -795,17 +795,19 @@ function frontpage_scholarship_spotlight() {
 		<section id="opa_header">
 			<div id="opa_header_inner_wrap">
 				<div id="opa_header_left">
-			
+					<div class="opa_header_image_wrap">
+						<img class="scholarship_spotlight_image" src="<?=get_theme_option('home_img')?>" alt="<?=esc_attr(get_theme_option('home_title'))?>"/>
+					</div>
 				</div>
 				<div id="opa_header_right">
 					<div class="opa_header_type">
-						<?=$term_title?>
+						Office of Prestigious Awards
 					</div>	
 					<h3 class="opa_header_title">
-						<?=$spotlight[0]['post_title']?>	
+						<?=get_theme_option('home_title')?>	
 					</h3>
 					<p class="opa_header_content">
-						<?=get_the_excerpt($spotlight[0]['ID'])?>	
+						<?=get_theme_option('home_desc')?>	
 					</p>
 				</div>
 			</div>

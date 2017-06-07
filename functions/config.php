@@ -260,8 +260,21 @@ Config::$theme_settings = array(
 		new TextareaField(array(
 			'name'        => 'Home Page Description',
 			'id'          => THEME_OPTIONS_NAME.'[home_desc]',
-			'description' => 'Descriptive text that appears below the primary home page features (spotlights, news, events.) Allows for HTML and shortcode markup.',
+			'description' => 'Used for OPA',
 			'value'       => $theme_options['home_desc'],
+		)),		
+		new TextField(array(
+			'name'        => 'Home Page Title',
+			'id'          => THEME_OPTIONS_NAME.'[home_title]',
+			'description' => 'For OPA',
+			'value'       => $theme_options['home_title'],
+			'default'     => 'Preparing Tomorrow\'s Leaders Today',
+		)),
+		new TextField(array(
+			'name'        => 'Home Page Img',
+			'id'          => THEME_OPTIONS_NAME.'[home_img]',
+			'description' => 'For OPA',
+			'value'       => $theme_options['home_img'],
 		)),
 	),
 	'News' => array(
