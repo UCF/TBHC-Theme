@@ -18,7 +18,7 @@
 					<div class="scholarship-single-table">
 						<div class="row">
 							<div class="col-xs-15 col-md-5">
-								Award:
+								<b>Award:</b>
 							</div>
 							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( get_the_ID(), 'award', true )?>
@@ -26,7 +26,7 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-15 col-md-5">
-								Institutional Endorsement/Nomination Required:
+								<b>Institutional Endorsement/Nomination Required:</b>
 							</div>
 							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( get_the_ID(), 'institutional_endorsement/nomination_required', true )?>
@@ -34,7 +34,7 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-15 col-md-5">
-								Deadline:
+								<b>Deadline:</b>
 							</div>
 							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( get_the_ID(), 'deadline', true )?>
@@ -42,7 +42,7 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-15 col-md-5">
-								Field of Study:
+								<b>Field of Study:</b>
 							</div>
 							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( get_the_ID(), 'field_of_study', true )?>
@@ -50,7 +50,7 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-15 col-md-5">
-								Website:
+								<b>Website:</b>
 							</div>
 							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( get_the_ID(), 'website', true )?>

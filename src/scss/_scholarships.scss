@@ -129,3 +129,12 @@ section#scholarship_spotlight {
         }
     }
 }
+.scholarship-single-table{
+    .row{
+        div{
+            @media (min-width: $screen-sm-max) {
+                padding-left:0 px;
+            }
+        }
+    }
+}

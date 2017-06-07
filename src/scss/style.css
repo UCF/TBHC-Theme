@@ -13143,4 +13143,8 @@ section#scholarship_spotlight {
     section#scholarship_spotlight #scholarship_spotlight_inner_wrap #scholarship_spotlight_right .scholarship_spotlight_more:hover {
       color: #333; }
 
+@media (min-width: 991px) {
+  .scholarship-single-table .row div {
+    padding-left: 0 px; } }
+
 /*# sourceMappingURL=style.css.map */
