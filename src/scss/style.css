@@ -13154,5 +13154,7 @@ section#scholarship_spotlight {
     padding-left: 0px !important; } }
 .scholarship-single-table .row div a {
   word-break: break-word; }
+.scholarship-single-table:last-of-type hr {
+  display: none; }
 
 /*# sourceMappingURL=style.css.map */

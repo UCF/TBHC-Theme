@@ -873,7 +873,7 @@ function sc_spotlight_grid($atts) {
 								<?=$spotlight->post_content?>
 							</div>
 						</div>
-						</hr>
+						<hr></hr>
 					</li>
 				<?}?>
 				</ul>
