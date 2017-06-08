@@ -53,7 +53,7 @@
 								<b>Website:</b>
 							</div>
 							<div class="col-xs-15 col-md-10">
-								<?=get_post_meta( get_the_ID(), 'website', true )?>
+								<a href="<?=get_post_meta( get_the_ID(), 'website', true )?>"><?=get_post_meta( get_the_ID(), 'website', true )?></a>
 							</div>
 						</div>
 					</div>
