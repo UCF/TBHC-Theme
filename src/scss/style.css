@@ -13150,7 +13150,7 @@ section#scholarship_spotlight {
   .scholarship-single-table .row div {
     padding-left: 0 !important; } }
 @media (min-width: 991px) {
-  .scholarship-single-table .row h1 {
+  .scholarship-single-table .row h1.col-xs-15 {
     padding-left: 0 !important; } }
 .scholarship-single-table .row div a {
   word-break: break-word; }
