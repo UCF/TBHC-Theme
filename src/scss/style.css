@@ -13148,13 +13148,13 @@ section#scholarship_spotlight {
 
 @media (min-width: 991px) {
   .scholarship-single-table .row div {
-    padding-left: 0px !important; } }
+    padding-left: 0 !important; } }
 @media (min-width: 991px) {
   .scholarship-single-table .row h1 {
-    padding-left: 0px !important; } }
+    padding-left: 0 !important; } }
 .scholarship-single-table .row div a {
   word-break: break-word; }
-.scholarship-single-table:last-of-type hr {
+.scholarship-single-table:last-child hr {
   display: none; }
 
 /*# sourceMappingURL=style.css.map */

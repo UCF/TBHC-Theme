@@ -136,20 +136,20 @@ section#scholarship_spotlight {
     .row {
         div {
             @media (min-width: $screen-sm-max) {
-                padding-left: 0px !important;
+                padding-left: 0 !important;
             }
         }
 
         h1 {
             @media (min-width: $screen-sm-max) {
-                padding-left: 0px !important;
+                padding-left: 0 !important;
             }
         }
         div a{
             word-break: break-word;
         }
     }
-    &:last-of-type{
+    &:last-child{
         hr{
             display:none;
         }
