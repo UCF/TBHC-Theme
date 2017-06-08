@@ -284,7 +284,7 @@ function edit_people_columns() {
 	'cb'          => '<input type="checkbox" />',
 	'title'       => 'Title',
 	'org_group' 		  => 'Organizational Group',	
-	'orderby' => 'Sort Name',
+	'order_by' => 'Sort Name',
 	'publish_date'=> 'Date'
 	);
 	return $columns;
@@ -305,7 +305,7 @@ function manage_people_columns( $column, $post_id ) {
 			print 'Published'.'<br/>'.get_post_time('Y/m/d', true, $post->ID);
 		}
 		break;
-		case 'orderby':
+		case 'order_by':
 		print get_post_meta($post->ID, 'person_orderby_name', true);
 		break;
 		case 'org_group':
@@ -323,7 +323,7 @@ add_action('manage_person_posts_custom_column', 'manage_people_columns', 10, 2);
 
 // Sortable custom columns for 'persons/people'
 function sortable_people_columns( $columns ) {
-	$columns['orderby'] = 'orderby';
+	$columns['order_by'] = 'order_by';
 	$columns['publish_date'] = 'publish_date';
 	return $columns;
 }
@@ -639,6 +639,10 @@ function frontpage_spotlights() {
 	
 	$spotlights = array_splice($spotlights, 0, 2);
 	
+	if(DEBUG){
+		print_r($spotlights);
+	}
+	
 	$argsPeeps = array(
 			'tax_query' => array(
 						array(
@@ -654,6 +658,10 @@ function frontpage_spotlights() {
 			'numberposts' => 1,
 	);
 	$peeps =get_posts($argsPeeps);	
+	
+	if(DEBUG){
+		print_r($peeps);
+	}
 	
 	ob_start(); ?>
 		<section id="spotlights">
@@ -760,6 +768,127 @@ function frontpage_spotlights() {
 		</section>
 	<? return ob_get_clean();
 }
+
+/**
+ * Output scholarships for front page.
+ **/
+function frontpage_scholarship_spotlight() {
+		$args = array(
+		'numberposts' => 1,
+		'post_type' 	=> 'spotlight',
+		'post_status'   => 'publish',
+		'meta_query'	=> array(
+			array(
+				'key'	=>	'spotlight_post_to_home',
+				'value'	=>	'on',
+			),
+		),
+	);
+	$spotlight = wp_get_recent_posts($args);
+
+	if(empty($spotlight)){
+		$args = array(
+			'numberposts' => 1,
+			'post_type' 	=> 'spotlight',
+			'post_status'   => 'publish',
+			);
+		$spotlight = wp_get_recent_posts($args);
+	}		
+	
+	if(DEBUG){
+		print_r($spotlight);
+	}
+	
+	ob_start(); ?>
+		<section id="opa_header">
+			<div id="opa_header_inner_wrap">
+				<div id="opa_header_left">
+					<div class="opa_header_image_wrap">
+						<img class="opa_header_image" src="<?=get_theme_option('home_img')?>" alt="<?=esc_attr(get_theme_option('home_title'))?>"/>
+					</div>
+				</div>
+				<div id="opa_header_right">
+					<h2 class="opa_header_type">
+						Office of Prestigious Awards
+					</h2>	
+					<h3 class="opa_header_title">
+						<?=get_theme_option('home_title')?>	
+					</h3>
+					<p class="opa_header_content">
+						<?=get_theme_option('home_desc')?>	
+					</p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</section>
+		<!--<section id="search_scholarships">
+			<div id="search_scholarships_inner_wrap">
+				<div class="search_scholarships_title_wrap">
+					<h2 class="search_scholarships_title">
+						Search for a Scholarship
+					</h2>
+				</div>
+				<div id="search_scholarships_left">
+					<?//echo do_shortcode('[spotlight-grid event_groups="scholarship-categories" dropdown=true dd_event_groups="scholarship-categories" short=true]')?>
+				</div>
+				<div id="search_scholarships_right">
+					A search box?
+				</div>
+			</div>
+		</section>-->
+		<section id="scholarship_spotlight">
+			<div id="scholarship_spotlight_inner_wrap">
+				<div id="scholarship_spotlight_left" class="hidden-sm hidden-xs">
+					<? 	$link = get_permalink($spotlight[0]['ID']);
+						$ext_link = get_post_meta($spotlight[0]['ID'], 'website', TRUE);
+						$cat_term = get_term_by('slug','scholarship-categories','event_groups');
+						$child_terms = get_term_children($cat_term->term_id, 'event_groups');
+						$all_terms   = wp_get_post_terms($spotlight[0]['ID'], 'event_groups');
+						if(DEBUG){
+							print_r($link);
+							print_r($ext_link);
+							print_r($cat_term);
+							print_r($child_terms);
+							print_r($all_terms);					
+						}		
+						foreach ( $all_terms as $term ) {
+							if( in_array($term->term_id, $child_terms ) ) {
+								$term_title = $term->name;
+								break;
+							}			
+						}?>
+					<div class="scholarship_spotlight_image_wrap">
+						<? $thumb_id = get_post_thumbnail_id($spotlight[0]['ID']);
+							$thumb_src = wp_get_attachment_image_src( $thumb_id, 'profile-grid-image' );
+							$thumb_src = $thumb_src[0];
+							if ($thumb_src) { ?>
+								<img class="scholarship_spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight[0]['post_title'])?>"/>
+							<? } ?>
+					</div>
+					<div class="scholarship_cta_wrap">
+						<a href="<?=$ext_link?>" class="scholarship_spotlight_cta">Apply Now</a>
+					</div>
+				</div>
+				<div id="scholarship_spotlight_right">
+					<div class="scholarship_spotlight_content_wrap">
+						<h2 class="scholarship_spotlight_type">
+							<?=$term_title?>
+						</h2>	
+						<h3 class="scholarship_spotlight_title">
+							<?=$spotlight[0]['post_title']?>	
+						</h3>
+						<p class="scholarship_spotlight_content">
+							<?=get_the_excerpt($spotlight[0]['ID'])?>	
+						</p>
+						<a class="scholarship_spotlight_more" href="<?=$link?>">Click here for more information.</a>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>				
+		</section>
+	<? return ob_get_clean();
+}
+
 
 /**
  * Output Opportunities for front page.
@@ -980,7 +1109,7 @@ function frontpage_events(){
 			<div class="events_table_group first">
 			<?	$dateFormatted = new DateTime($levent[0]["starts"], new DateTimeZone('EST'));
 				?><div class="events_type">Up Next</div>
-				<div href="<?=$levent[0]['url']?>" class="event_single_wrap">
+				<div onclick="location.href='<?=$levent[0]['url']?>'" class="event_single_wrap" style="cursor: pointer;">
 					<div class="event_single">
 						<div class="event_datetime"><?=$dateFormatted ? $dateFormatted->format('M j - g:i A') : ''?></div>
 						<div class="event_title"><?=$levent[0]["title"]?></div>

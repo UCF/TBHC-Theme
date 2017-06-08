@@ -594,16 +594,17 @@ function sc_opportunity_grid($atts) {
 					$cPost = wp_trim_words($cPost->post_content, 50);	// was 75, dropped to 50
 					$time = '';
 					$location = '';
+					$link = get_permalink($opportunity->ID);					
+					$ext_link = get_post_meta($opportunity->ID, 'opportunity_url_redirect', TRUE);		
 					if($ext_link){
 						$link = $ext_link; 
-					}			
+					}
 					if($start_date){
 						$start_date = new DateTime($start_date);
 					}
 					if($end_date){
 						$end_date = new DateTime($end_date);
 					}
-					$link = get_post_meta($opportunity->ID, 'opportunity_url_redirect', TRUE);		
 					// added these lines to retrieve taxonomy terms instead of using the meta field we had
 					$parntCat = get_term_by('slug', 'event-category','event_groups');
 					$postCats = wp_get_post_terms($opportunity->ID, 'event_groups');
@@ -668,6 +669,7 @@ function sc_spotlight_grid($atts) {
 	$EGID2			= get_term_by('slug', $dd2_event_groups, 'event_groups');
 	$EGID2			= $EGID2 ? $EGID2->term_id : false;
 	$operator		= ($atts['operator']) ? $atts['operator'] : NULL;
+	$short			= ($atts['short']) ? $atts['short'] : FALSE;
 	$spots 		= sc_object_list(
 		array(
 			'type' => 'spotlight',
@@ -677,9 +679,9 @@ function sc_spotlight_grid($atts) {
 			'event_groups' => $event_groups2 ? $event_groups.' '.$event_groups2 : $event_groups,
 			'orderby' => 'meta_value_num',
 			'order' => 'DESC',
-			'meta_key'	=> 'spotlight_end',
+			'meta_key'	=> get_theme_option('home_page_theme') == '2' ? '' : 'spotlight_end',
 			'operator' => $operator,
-			'meta_query'	=> array(
+			'meta_query'	=> get_theme_option('home_page_theme') == '2' ? '' : array(
 				array(
 					'key'	=>	'spotlight_start',
 					'value'	=>	date('Ymd'),
@@ -691,21 +693,25 @@ function sc_spotlight_grid($atts) {
 		'objects_only' => True,
 		)
 	);
-	usort($spots, function($a, $b){
-		$a_dt = new DateTime(get_post_meta($a->ID, 'spotlight_end', TRUE));
-		$b_dt = new DateTime(get_post_meta($b->ID, 'spotlight_end', TRUE));
-		$a_dt = $a_dt->getTimestamp();
-		$b_dt = $b_dt->getTimestamp();
-		if ($a_dt == $b_dt){
-			// If they have the same depth, compare titles
-			return strcmp($a->post_title, $b->post_title) * -1;
-		}
-		// If depth_a is smaller than depth_b, return -1; otherwise return 1
-		$res = ($a_dt > $b_dt) ? -1 : 1;
-		return $res;
-	});
-	//var_dump($spots);	
-	
+	if(get_theme_option('home_page_theme') != '2'){
+		usort($spots, function($a, $b){
+			$a_dt = new DateTime(get_post_meta($a->ID, 'spotlight_end', TRUE));
+			$b_dt = new DateTime(get_post_meta($b->ID, 'spotlight_end', TRUE));
+			$a_dt = $a_dt->getTimestamp();
+			$b_dt = $b_dt->getTimestamp();
+			if ($a_dt == $b_dt){
+				// If they have the same depth, compare titles
+				return strcmp($a->post_title, $b->post_title) * -1;
+			}
+			// If depth_a is smaller than depth_b, return -1; otherwise return 1
+			$res = ($a_dt > $b_dt) ? -1 : 1;
+			return $res;
+		});
+	}
+	if(DEBUG){
+		print_r($spots);
+		print_r(gettype($spots));
+	}
 	ob_start();
 	?><div class="spotlight-grid" data-url="<?=admin_url( 'admin-ajax.php' )?>" data-group="<?=esc_attr($dd_event_groups)?>" data-group2="<?=esc_attr($dd2_event_groups)?>" data-jn="<?=esc_attr($join)?>" data-oprtr="<?=esc_attr($operator)?>" data-allopt="<?=esc_attr($show_option_all)?>" data-allopt2="<?=esc_attr($show_option_all2)?>">
 		<? if($dropdown){ 
@@ -723,9 +729,13 @@ function sc_spotlight_grid($atts) {
 				$args['show_option_all'] = $show_option_all;
 			}
 			// filter hooks from http://wordpress.stackexchange.com/a/72562, get_terms_orderby_semester_year function exists in functions.php
-			add_filter('get_terms_orderby', 'get_terms_orderby_semester_year',10,2);
+			if(get_theme_option('home_page_theme') != '2'){
+				add_filter('get_terms_orderby', 'get_terms_orderby_semester_year',10,2);
+			}
 			$wp1Args = wp_dropdown_categories($args);
-			remove_filter('get_terms_orderby', 'get_terms_orderby_semester_year');
+			if(get_theme_option('home_page_theme') != '2'){
+				remove_filter('get_terms_orderby', 'get_terms_orderby_semester_year');
+			}
 			//
 			rsort($wp1Args);
 			echo str_replace(
@@ -754,14 +764,17 @@ function sc_spotlight_grid($atts) {
 				wp_dropdown_categories($args2)
 			);
 		} 
-		?>	
-		<ul class="spotlight-list">
-			<?php
+		if(get_theme_option('home_page_theme') != '2' && !$short){ ?>	
+			<ul class="spotlight-list">
+				<?php
 				//rsort($opps);
 				foreach ($spots as $spotlight) { 
 					$start_date; //= get_post_meta($spotlight->ID, 'spotlight_start', TRUE);
 					$end_date; //= get_post_meta($spotlight->ID, 'spotlight_end', TRUE);
 					$link = get_post_meta($spotlight->ID, 'spotlight_url_redirect', TRUE);
+					if(!$link){
+							$link = get_permalink($spotlight->ID);
+					}
 					$time = '';
 					$location = '';
 					if($start_date){
@@ -803,10 +816,67 @@ function sc_spotlight_grid($atts) {
 						Category:&nbsp;<?=$catTerms?> <!-- silly bugger -->
 					</div>
 				</li>
-				<?php
-				}
-			?>
-		</ul>
+			<? } ?>
+			</ul>
+		<?}else if(!$short){?>
+				<ul style="padding-left:0; list-style:none;">
+				<?foreach ($spots as $spotlight) { 
+					if(DEBUG){print_r($spotlight);print_r(gettype($spotlight));}?>
+					<li class="scholarship-single-table">
+						<div class="row">
+							<h1 class="col-xs-15">
+								<?=$spotlight->post_title?>
+							</h1>
+						</div>
+						<div class="row">
+							<div class="col-xs-15 ">
+								<b>Award:</b>
+							</div>
+							<div class="col-xs-15 ">
+								<?=get_post_meta( $spotlight->ID, 'award', true )?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-15 ">
+								<b>Institutional Endorsement/Nomination Required:</b>
+							</div>
+							<div class="col-xs-15 ">
+								<?=get_post_meta( $spotlight->ID, 'institutional_endorsement/nomination_required', true )?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-15 ">
+								<b>Deadline:</b>
+							</div>
+							<div class="col-xs-15 ">
+								<?=get_post_meta( $spotlight->ID, 'deadline', true )?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-15 ">
+								<b>Field of Study:</b>
+							</div>
+							<div class="col-xs-15 ">
+								<?=get_post_meta( $spotlight->ID, 'field_of_study', true )?>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-15 ">
+								<b>Website:</b>
+							</div>
+							<div class="col-xs-15 ">
+								<a href="<?=get_post_meta( $spotlight->ID, 'website', true )?>"><?=get_post_meta( $spotlight->ID, 'website', true )?></a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-15">
+								<?=$spotlight->post_content?>
+							</div>
+						</div>
+					</li>
+				<?}?>
+				</ul>
+			<?}?>
 	</div>
 	
 	<?
@@ -905,7 +975,7 @@ add_shortcode('spotlight-grid', 'sc_spotlight_grid');
 
 						if($slide_display_tit[$s] == 'on'){
 							$rgba = hex_and_opacity_to_rgba($slide_tit_bg_color[$s], $slide_tit_opacity[$s]);
-							$output .= '<div style="position:absolute;top:'.$slide_tit_off_top[$s].';left:'.$slide_tit_off_left[$s].';font-size:'.$slide_tit_font_sz[$s].';color:'.$slide_tit_font_col[$s].';background-color:rgba('.$rgba.');height:auto;">'.$slide_title[$s].'</div>';
+							$output .= '<div class="hidden-xs hidden-sm" style="position:absolute;top:'.$slide_tit_off_top[$s].';left:'.$slide_tit_off_left[$s].';font-size:'.$slide_tit_font_sz[$s].';color:'.$slide_tit_font_col[$s].';background-color:rgba('.$rgba.');height:auto;">'.$slide_title[$s].'</div>';
 						}
 						
 						if ($slide_links_to[$s] !== '' && $slide_content_type[$s] == 'image') {

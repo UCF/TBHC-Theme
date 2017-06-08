@@ -922,30 +922,50 @@ class Spotlight extends CustomPostType {
 		$use_excerpt	= True,
 		$taxonomies     = array('event_groups');	
 
+	public function asOpa(){
+		$this->plural_name = 'Scholarships';
+		$this->singular_name = 'Scholarship';
+		$this->add_new_item = 'Add New Scholarship';
+		$this->edit_item = 'Edit Scholarship';
+		$this->new_item = 'New Scholarship';
+	}
+		
 	public function fields() {
 		$prefix = $this->options('name').'_';
-		return array(
-			array(
-				'name' => 'Spotlight Position',
-				'desc' => 'Specify whether the spotlight should be positioned in the top slot of the spotlights section or the bottom.',
-				'id'   => $prefix.'position',
-				'type' => 'radio',
-				'options' => array('Top' => 'top', 'Bottom' => 'bottom'),
-			),
-			array(
-				'name' => 'URL Redirect',
-				'desc' => 'Specify a full url to use as a redirect when the spotlight is clicked.',
-				'id'   => $prefix.'url_redirect',
-				'type' => 'text'
-			),
-			array(
-			'name' => 'Post To Home',
-			'desc' => 'Indicate whether this spotlight should be visible from the home page spotlights feed.',
-			'id'   => $prefix.'post_to_home',
-			'type' => 'checkbox',
-			'std' => 'off'
-			)
-		);
+		if(get_theme_option('home_page_theme') == '2'){
+			return array(
+				array(
+				'name' => 'Post To Home',
+				'desc' => 'Indicate whether this spotlight should be visible from the home page spotlights feed.',
+				'id'   => $prefix.'post_to_home',
+				'type' => 'checkbox',
+				'std' => 'off'
+				)
+			);
+		}else{
+			return array(
+				array(
+					'name' => 'Spotlight Position',
+					'desc' => 'Specify whether the spotlight should be positioned in the top slot of the spotlights section or the bottom.',
+					'id'   => $prefix.'position',
+					'type' => 'radio',
+					'options' => array('Top' => 'top', 'Bottom' => 'bottom'),
+				),
+				array(
+					'name' => 'URL Redirect',
+					'desc' => 'Specify a full url to use as a redirect when the spotlight is clicked.',
+					'id'   => $prefix.'url_redirect',
+					'type' => 'text'
+				),
+				array(
+				'name' => 'Post To Home',
+				'desc' => 'Indicate whether this spotlight should be visible from the home page spotlights feed.',
+				'id'   => $prefix.'post_to_home',
+				'type' => 'checkbox',
+				'std' => 'off'
+				)
+			);
+		}
 	}
 	
 	public function objectsToHTML($objects, $css_classes) {		

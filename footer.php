@@ -1,7 +1,7 @@
 			<div id="footer" style="<?=get_theme_option('footer_bg_color') ? 'background-color:'.get_theme_option('footer_bg_color').' !important;' : ''?>">
 				<div id="footer-navwrap" class="row">
 					<?if(/*get_theme_option('home_page_theme') != '2'*/true){ ?>
-					<div class="hidden-sm hidden-xs footerCol col-md-3">
+					<div class="hidden-sm hidden-xs footerCol <?=get_theme_option('home_page_theme') == '2' ? 'hidden-md hidden-lg' : 'col-md-3'?>">
 						<?=wp_nav_menu(array(
 							'theme_location' => 'footer-outer-left-collapse',
 							//'menu' => 'footer-audience',
@@ -14,7 +14,7 @@
 							));
 						?>				
 					</div>
-					<div class="hidden-sm hidden-xs footerCol col-md-3">
+					<div class="hidden-sm hidden-xs footerCol <?=get_theme_option('home_page_theme') == '2' ? 'hidden-md hidden-lg' : 'col-md-3'?>">
 						<?=wp_nav_menu(array(
 							'theme_location' => 'footer-inner-left-collapse',
 							//'menu' => 'footer-quick-links',
@@ -28,7 +28,7 @@
 						?>
 					</div>
 					<?}?>
-					<div id="footer-logo" class="col-xs-15 col-sm-5 col-sm-push-5 col-md-push-0 col-md-3">
+					<div id="footer-logo" class="col-xs-15 col-sm-5 col-sm-push-5 <?=get_theme_option('home_page_theme') == '2' ? '' : 'col-md-push-0 col-md-3'?>">
 						<a href="<?= site_url() ?>">
 							<img id="tbhcFooterLogo" src="<?php bloginfo('stylesheet_directory'); ?>/static/img/WebsiteFooterShort.png" alt="The Burnett Honors College">
 							</img>
@@ -43,7 +43,7 @@
 							));
 						?>
 					</div>				
-					<div class="footerCol col-xs-half col-sm-5 col-sm-pull-5 col-md-pull-0 col-md-3">
+					<div class="footerCol col-xs-half col-sm-5 col-sm-pull-5 <?=get_theme_option('home_page_theme') == '2' ? 'opaRight' : 'col-md-pull-0 col-md-3'?>">
 						<?=wp_nav_menu(array(
 							'theme_location' => 'footer-inner-right',
 							//'menu' => 7,
@@ -53,10 +53,32 @@
 							//'menu_id' => 'department-sites',
 							'depth' => 1,
 							));
-						?>
+						if(get_theme_option('home_page_theme') == '2'){?>
+							<div id="contactInfo">
+								<div class="location-title">
+									Contact US
+								</div>
+								<div class="adr">
+									<div class="tel">
+										<a href="tel:4078232076">p.  407.823.2076</a>
+									</div>
+									<div class="tel">
+										<a href="tel:4078232076">f.  407.823.6583</a>
+									</div>
+									<div class="email">
+										<a href="mailto:honors@ucf.edu">e.  honors@ucf.edu</a>
+									</div>
+								</div>
+							</div>
+						<?}?>
 					</div>	
-					<div class="footerCol col-xs-half col-sm-5 col-md-3">
+					<div class="footerCol col-xs-half col-sm-5 <?=get_theme_option('home_page_theme') == '2' ? 'opaLeft' : 'col-md-3'?>">
 						<div id="contactInfo" role="contentinfo" class="vcard">
+							<?if(get_theme_option('home_page_theme') == '2'){?>
+								<div class="location-title">
+									Location
+								</div>
+							<?}?>
 							<a href="<?=site_url()?>" class="print-noexpand fn org url">
 								<span class="organization-name">The Burnett Honors College</span>
 							</a>
@@ -67,12 +89,14 @@
 									<span class="region">FL</span>
 									<span class="postal-code">32816</span>
 								</div>
-								<div class="tel">
-									<a href="tel:4078232076">407.823.2076</a>
-								</div>
-								<div class="email">
-									<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
-								</div>
+								<?if(get_theme_option('home_page_theme') != '2'){?>
+									<div class="tel">
+										<a href="tel:4078232076">407.823.2076</a>
+									</div>
+									<div class="email">
+										<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
+									</div>
+								<?}?>
 							</div>
 							<!--<br/>
 								<a href="<?=site_url()?>/feedback/">Comments and Feedback</a> | &copy;
@@ -85,7 +109,7 @@
 			</div>
 			<div id="subfooter" style="<?=get_theme_option('footer_bg_color') ? 'background-color:'.get_theme_option('footer_bg_color').' !important;' : ''?>">
 				<?php
-					custom_breadcrumbs();
+					//custom_breadcrumbs();
 				?>
 			</div>
 		</div><!-- .container -->
