@@ -43,7 +43,7 @@
 							));
 						?>
 					</div>				
-					<div class="footerCol col-xs-half col-sm-5 col-sm-pull-5 <?=get_theme_option('home_page_theme') == '2' ? '' : 'col-md-pull-0 col-md-3'?>">
+					<div class="footerCol col-xs-half col-sm-5 col-sm-pull-5 <?=get_theme_option('home_page_theme') == '2' ? 'opaRight' : 'col-md-pull-0 col-md-3'?>">
 						<?=wp_nav_menu(array(
 							'theme_location' => 'footer-inner-right',
 							//'menu' => 7,

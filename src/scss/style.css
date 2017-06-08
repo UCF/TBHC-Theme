@@ -10164,6 +10164,9 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .footerCol.opaLeft {
   text-align: left; }
 
+.footerCol.opaRight {
+  text-align: right; }
+
 #subfooter {
   font-size: 12pt;
   letter-spacing: 0.8px;
