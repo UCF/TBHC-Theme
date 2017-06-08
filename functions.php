@@ -639,6 +639,10 @@ function frontpage_spotlights() {
 	
 	$spotlights = array_splice($spotlights, 0, 2);
 	
+	if(DEBUG){
+		print_r($spotlights);
+	}
+	
 	$argsPeeps = array(
 			'tax_query' => array(
 						array(
@@ -654,6 +658,10 @@ function frontpage_spotlights() {
 			'numberposts' => 1,
 	);
 	$peeps =get_posts($argsPeeps);	
+	
+	if(DEBUG){
+		print_r($peeps);
+	}
 	
 	ob_start(); ?>
 		<section id="spotlights">
