@@ -829,42 +829,42 @@ function sc_spotlight_grid($atts) {
 							</h1>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-5">
 								<b>Award:</b>
 							</div>
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( $spotlight->ID, 'award', true )?>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-5">
 								<b>Institutional Endorsement/Nomination Required:</b>
 							</div>
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( $spotlight->ID, 'institutional_endorsement/nomination_required', true )?>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-5">
 								<b>Deadline:</b>
 							</div>
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( $spotlight->ID, 'deadline', true )?>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-5">
 								<b>Field of Study:</b>
 							</div>
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-10">
 								<?=get_post_meta( $spotlight->ID, 'field_of_study', true )?>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-5">
 								<b>Website:</b>
 							</div>
-							<div class="col-xs-15 ">
+							<div class="col-xs-15 col-md-10">
 								<a href="<?=get_post_meta( $spotlight->ID, 'website', true )?>"><?=get_post_meta( $spotlight->ID, 'website', true )?></a>
 							</div>
 						</div>
@@ -873,6 +873,7 @@ function sc_spotlight_grid($atts) {
 								<?=$spotlight->post_content?>
 							</div>
 						</div>
+						</hr>
 					</li>
 				<?}?>
 				</ul>

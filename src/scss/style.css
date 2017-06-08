@@ -13148,6 +13148,11 @@ section#scholarship_spotlight {
 
 @media (min-width: 991px) {
   .scholarship-single-table .row div {
-    padding-left: 0px; } }
+    padding-left: 0px !important; } }
+@media (min-width: 991px) {
+  .scholarship-single-table .row h1 {
+    padding-left: 0px !important; } }
+.scholarship-single-table .row div a {
+  word-break: break-word; }
 
 /*# sourceMappingURL=style.css.map */
