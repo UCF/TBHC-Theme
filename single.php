@@ -16,6 +16,7 @@
 			<article role="main">
 				<? if(get_post_type() == 'document'){
 					Document::toHtml($post);
+					print('looks like u got a doc there...');
 				}else{
 					the_content();
 				}?>
