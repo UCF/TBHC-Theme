@@ -14,7 +14,11 @@
 		</div>
 		<div id="contentcol" class="col-md-15 col-sm-15">
 			<article role="main">
-				<?=the_content();?>
+				<? if(get_post_type() == 'document'){
+					Document::toHtml(the_post());
+				}else{
+					the_content();
+				}?>
 			</article>
 		</div>
 	</div>

@@ -113,6 +113,8 @@
 				?>
 			</div>
 		</div><!-- .container -->
+		<script type="text/javascript" src="//malsup.github.io/min/jquery.cycle.all.min.js"></script>
+		<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 	</body>
 	<?="\n".footer_()."\n"?>
 </html>
