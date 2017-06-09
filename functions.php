@@ -2549,13 +2549,15 @@ function get_terms_orderby_semester_year($orderby, $args){
 add_filter( 'storm_social_icons_use_latest', '__return_true' );
 
 
-function get_document_attatchment_permalink( $url, $post, $leavename=false ) {
-	if ( $post->post_type == 'document' ) {
-		$url = wp_get_attachment_url(get_post_meta($post->ID, 'document_file', True));
+function get_document_attatchment_permalink($arrArgs) {
+	foreach( $results as &$result ){
+		if(get_post_type($result['ID']) == 'document'){
+			$result['permalink'] = wp_get_attachment_url(get_post_meta($result['ID'], 'document_file', True));
+		}
 	}
-	return $url;
+    return $results;
 }
-add_filter( 'post_link', 'get_document_attatchment_permalink', 10, 3 );
+add_filter( 'wp_link_query', 'get_document_attatchment_permalink', 10, 3 );
 
 ?>
 
