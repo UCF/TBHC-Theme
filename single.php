@@ -18,7 +18,7 @@
 					Document::toHtml($post);
 					print('looks like u got a doc there...');
 					print_r($post);
-					print_r(get_post_meta($post->ID, 'document_file', True));
+					print_r(wp_get_attachment_url(get_post_meta($post->ID, 'document_file', True)));
 				}else{
 					the_content();
 				}?>
