@@ -2548,5 +2548,14 @@ function get_terms_orderby_semester_year($orderby, $args){
 
 add_filter( 'storm_social_icons_use_latest', '__return_true' );
 
+
+function get_document_attatchment_permalink( $url, $post, $leavename=false ) {
+	if ( $post->post_type == 'document' ) {
+		$url = wp_get_attachment_url(get_post_meta($post->ID, 'document_file', True));
+	}
+	return $url;
+}
+add_filter( 'post_link', 'get_document_attatchment_permalink', 10, 3 );
+
 ?>
 
