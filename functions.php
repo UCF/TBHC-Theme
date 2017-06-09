@@ -2549,7 +2549,7 @@ function get_terms_orderby_semester_year($orderby, $args){
 add_filter( 'storm_social_icons_use_latest', '__return_true' );
 
 
-function get_document_attatchment_permalink($arrArgs) {
+function get_document_attatchment_permalink($results) {
 	foreach( $results as &$result ){
 		if(get_post_type($result['ID']) == 'document'){
 			$result['permalink'] = wp_get_attachment_url(get_post_meta($result['ID'], 'document_file', True));
