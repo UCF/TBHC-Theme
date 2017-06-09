@@ -17,6 +17,7 @@
 				<? if(get_post_type() == 'document'){
 					Document::toHtml($post);
 					print('looks like u got a doc there...');
+					print_r(wp_get_attachment_url(get_post_meta($post->ID, $prefix.'_file', True)));
 				}else{
 					the_content();
 				}?>
