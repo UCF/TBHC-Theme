@@ -85,7 +85,7 @@
 
 				</script>
 			<?}else if(strpos(get_site_url(), 'dev') === 0 && strpos(get_site_url(), 'qa') === 0){
-				wp_mail(array('tbhcweb2@ucf.edu'), 'No google analytics code for site.','Please ensure that all sites have a google analytics tracking code placed in the header.php file.');
+				wp_mail(array(get_theme_options('bad_url_email_group')), 'No google analytics code for site.','Please ensure that all sites have a google analytics tracking code placed in the header.php file.');
 			}
 		?>
 		<script defer type="text/javascript" src="//code.jquery.com/jquery-migrate-1.4.1.min.js"></script>

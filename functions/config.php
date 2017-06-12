@@ -225,6 +225,13 @@ Config::$theme_settings = array(
 			'default'     => null,
 			'value'       => $theme_options['cb_domain'],
 		)),
+		new TextField(array(
+			'name'        => 'Bad Link Report Email',
+			'id'          => THEME_OPTIONS_NAME.'[bad_url_email_group]',
+			'description' => 'Input a single email or a email group to receive info on 404\'s and 301\'s. Be aware, this option may result in <b><em>tons</em></b> of emails regarding bad links.',
+			'default'     => 'tbhcweb2@ucf.edu',
+			'value'       => $theme_options['bad_url_email_group'],
+		)),
 	),
 	'Feeds' => array(
 		new SelectField(array(
