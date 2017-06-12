@@ -626,7 +626,14 @@ function jquery_in_header() {
 }
 add_action( 'wp_enqueue_scripts', 'jquery_in_header' );
 
-
+// we need to add async or defer to jq script tag to help w/ page load
+// https://matthewhorne.me/defer-async-wordpress-scripts/
+function add_async_attribute($tag, $handle) {
+    if ( 'jquery' !== $handle )
+        return $tag;
+    return str_replace( ' src', ' defer src', $tag );
+}
+add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
 /**
  * Meta content for header
  **/

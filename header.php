@@ -88,6 +88,9 @@
 				wp_mail(array('tbhcweb2@ucf.edu'), 'No google analytics code for site.','Please ensure that all sites have a google analytics tracking code placed in the header.php file.');
 			}
 		?>
+		<script defer type="text/javascript" src="//code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+		<script defer type="text/javascript" src="//malsup.github.io/min/jquery.cycle.all.min.js"></script>
+
 		<!--[if IE]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>			
 		<![endif]-->
