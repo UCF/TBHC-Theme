@@ -2548,11 +2548,14 @@ function get_terms_orderby_semester_year($orderby, $args){
 
 add_filter( 'storm_social_icons_use_latest', '__return_true' );
 
-
+// replaces url in the editor insert link popup. docs post type needs to reference it's file's location, not the single.php template
 function get_document_attatchment_permalink($results) {
 	foreach( $results as &$result ){
 		if(get_post_type($result['ID']) == 'document'){
 			$result['permalink'] = wp_get_attachment_url(get_post_meta($result['ID'], 'document_file', True));
+		if(!$result['permalink'] || strtolower($result['permalink']) == 'false'){
+				$result['permalink'] = get_post_meta($result['ID'], 'document_url', true);
+			}
 		}
 	}
     return $results;
