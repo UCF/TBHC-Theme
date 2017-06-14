@@ -841,7 +841,7 @@ function frontpage_scholarship_spotlight() {
 				<div id="scholarship_spotlight_left" class="hidden-sm hidden-xs">
 					<? 	$link = get_permalink($spotlight[0]['ID']);
 						$ext_link = get_post_meta($spotlight[0]['ID'], 'website', TRUE);
-						$cat_term = get_term_by('slug','scholarship-categories','event_groups');
+						$cat_term = get_term_by('slug','scholarship-category','event_groups');
 						$child_terms = get_term_children($cat_term->term_id, 'event_groups');
 						$all_terms   = wp_get_post_terms($spotlight[0]['ID'], 'event_groups');
 						if(DEBUG){
@@ -2547,6 +2547,20 @@ function get_terms_orderby_semester_year($orderby, $args){
 }
 
 add_filter( 'storm_social_icons_use_latest', '__return_true' );
+
+// replaces url in the editor insert link popup. docs post type needs to reference it's file's location, not the single.php template
+function get_document_attatchment_permalink($results) {
+	foreach( $results as &$result ){
+		if(get_post_type($result['ID']) == 'document'){
+			$result['permalink'] = wp_get_attachment_url(get_post_meta($result['ID'], 'document_file', True));
+		if(!$result['permalink'] || strtolower($result['permalink']) == 'false'){
+				$result['permalink'] = get_post_meta($result['ID'], 'document_url', true);
+			}
+		}
+	}
+    return $results;
+}
+add_filter( 'wp_link_query', 'get_document_attatchment_permalink', 10, 3 );
 
 ?>
 

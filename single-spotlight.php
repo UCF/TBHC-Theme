@@ -14,7 +14,7 @@
 		</div>
 		<div id="contentcol" class="col-md-15 col-sm-15">
 			<article role="main">
-				<?if(has_term('scholarship-categories','event_groups')){?>
+				<?if(has_term('scholarship-category','event_groups')){?>
 					<div class="scholarship-single-table">
 						<div class="row">
 							<div class="col-xs-15 col-md-5">
@@ -61,6 +61,7 @@
 				<?=the_content();?>
 			</article>
 		</div>
+	</div>
 	</div>
 
 <?php get_footer();?>

@@ -79,7 +79,7 @@
 									Location
 								</div>
 							<?}?>
-							<a href="<?=site_url()?>" class="print-noexpand fn org url">
+							<a href="https://honors.ucf.edu" class="print-noexpand fn org url">
 								<span class="organization-name">The Burnett Honors College</span>
 							</a>
 							<div class="adr">

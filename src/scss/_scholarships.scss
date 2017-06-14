@@ -120,21 +120,38 @@ section#scholarship_spotlight {
                 text-transform: uppercase;
                 margin: 20px auto 15px auto;
             }
-            .scholarship_spotlight_more{
-                color:#333;
-                &:hover{
-                    color:#333;
+
+            .scholarship_spotlight_more {
+                color: #333;
+
+                &:hover {
+                    color: #333;
                 }
             }
         }
     }
 }
-.scholarship-single-table{
-    .row{
-        div{
-            @media (min-width: $screen-sm-max) {
-                padding-left:0px;
+
+.scholarship-single-table {
+    .row {
+        div {
+            @media (min-width: $screen-xs-max) {
+                padding-left: 0 !important;
             }
+        }
+
+        h1.col-xs-15 {
+            @media (min-width: $screen-sm-max) {
+                padding-left: 0 !important;
+            }
+        }
+        div a{
+            word-break: break-word;
+        }
+    }
+    &:last-child{
+        hr{
+            display:none;
         }
     }
 }

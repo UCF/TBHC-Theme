@@ -14,7 +14,7 @@
 		</div>
 		<div id="contentcol" class="col-md-15 col-sm-15">
 			<article role="main">
-				<?=the_content();?>
+					<?the_content();?>
 			</article>
 		</div>
 	</div>

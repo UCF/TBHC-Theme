@@ -603,3 +603,9 @@ ul.spotlight-list, ul.opportunity-list {
     max-width: 100%;
     height: auto;
 }
+
+body.single-spotlight, body.single-person{
+    .container{
+        margin: 20px auto;
+    }
+}
