@@ -225,6 +225,13 @@ Config::$theme_settings = array(
 			'default'     => null,
 			'value'       => $theme_options['cb_domain'],
 		)),
+		new TextField(array(
+			'name'        => 'Bad Link Report Email',
+			'id'          => THEME_OPTIONS_NAME.'[bad_url_email_group]',
+			'description' => 'Input a single email or a email group to receive info on 404\'s and 301\'s. Be aware, this option may result in <b><em>tons</em></b> of emails regarding bad links.',
+			'default'     => 'tbhcweb2@ucf.edu',
+			'value'       => $theme_options['bad_url_email_group'],
+		)),
 	),
 	'Feeds' => array(
 		new SelectField(array(
@@ -626,7 +633,14 @@ function jquery_in_header() {
 }
 add_action( 'wp_enqueue_scripts', 'jquery_in_header' );
 
-
+// we need to add async or defer to jq script tag to help w/ page load
+// https://matthewhorne.me/defer-async-wordpress-scripts/
+function add_async_attribute($tag, $handle) {
+    if ( 'jquery' !== $handle )
+        return $tag;
+    return str_replace( ' src', ' defer src', $tag );
+}
+//add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
 /**
  * Meta content for header
  **/

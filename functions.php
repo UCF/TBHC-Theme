@@ -639,6 +639,10 @@ function frontpage_spotlights() {
 	
 	$spotlights = array_splice($spotlights, 0, 2);
 	
+	if(DEBUG){
+		print_r($spotlights);
+	}
+	
 	$argsPeeps = array(
 			'tax_query' => array(
 						array(
@@ -654,6 +658,10 @@ function frontpage_spotlights() {
 			'numberposts' => 1,
 	);
 	$peeps =get_posts($argsPeeps);	
+	
+	if(DEBUG){
+		print_r($peeps);
+	}
 	
 	ob_start(); ?>
 		<section id="spotlights">
@@ -833,10 +841,7 @@ function frontpage_scholarship_spotlight() {
 				<div id="scholarship_spotlight_left" class="hidden-sm hidden-xs">
 					<? 	$link = get_permalink($spotlight[0]['ID']);
 						$ext_link = get_post_meta($spotlight[0]['ID'], 'website', TRUE);
-						if($ext_link){
-							$link = $ext_link; 
-						}
-						$cat_term = get_term_by('slug','scholarship-categories','event_groups');
+						$cat_term = get_term_by('slug','scholarship-category','event_groups');
 						$child_terms = get_term_children($cat_term->term_id, 'event_groups');
 						$all_terms   = wp_get_post_terms($spotlight[0]['ID'], 'event_groups');
 						if(DEBUG){
@@ -860,7 +865,9 @@ function frontpage_scholarship_spotlight() {
 								<img class="scholarship_spotlight_image" src="<?=esc_attr($thumb_src)?>" alt="<?=esc_attr($spotlight[0]['post_title'])?>"/>
 							<? } ?>
 					</div>
-					<h3 class="scholarship_spotlight_cta">Apply Now</h3>
+					<div class="scholarship_cta_wrap">
+						<a href="<?=$ext_link?>" class="scholarship_spotlight_cta">Apply Now</a>
+					</div>
 				</div>
 				<div id="scholarship_spotlight_right">
 					<div class="scholarship_spotlight_content_wrap">
@@ -873,6 +880,7 @@ function frontpage_scholarship_spotlight() {
 						<p class="scholarship_spotlight_content">
 							<?=get_the_excerpt($spotlight[0]['ID'])?>	
 						</p>
+						<a class="scholarship_spotlight_more" href="<?=$link?>">Click here for more information.</a>
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -2539,6 +2547,20 @@ function get_terms_orderby_semester_year($orderby, $args){
 }
 
 add_filter( 'storm_social_icons_use_latest', '__return_true' );
+
+// replaces url in the editor insert link popup. docs post type needs to reference it's file's location, not the single.php template
+function get_document_attatchment_permalink($results) {
+	foreach( $results as &$result ){
+		if(get_post_type($result['ID']) == 'document'){
+			$result['permalink'] = wp_get_attachment_url(get_post_meta($result['ID'], 'document_file', True));
+		if(!$result['permalink'] || strtolower($result['permalink']) == 'false'){
+				$result['permalink'] = get_post_meta($result['ID'], 'document_url', true);
+			}
+		}
+	}
+    return $results;
+}
+add_filter( 'wp_link_query', 'get_document_attatchment_permalink', 10, 3 );
 
 ?>
 

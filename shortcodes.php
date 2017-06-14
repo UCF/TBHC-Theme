@@ -819,31 +819,61 @@ function sc_spotlight_grid($atts) {
 			<? } ?>
 			</ul>
 		<?}else if(!$short){?>
-				<ul>
+				<ul style="padding-left:0; list-style:none;">
 				<?foreach ($spots as $spotlight) { 
 					if(DEBUG){print_r($spotlight);print_r(gettype($spotlight));}?>
-					<li>
-						<div>
-							<?=$spotlight->post_title?>
+					<li class="scholarship-single-table">
+						<div class="row">
+							<h1 class="col-xs-15">
+								<?=$spotlight->post_title?>
+							</h1>
 						</div>
-						<div>
-							<?=$spotlight->award?>
+						<div class="row">
+							<div class="col-xs-15 col-md-5">
+								<b>Award:</b>
+							</div>
+							<div class="col-xs-15 col-md-10">
+								<?=get_post_meta( $spotlight->ID, 'award', true )?>
+							</div>
 						</div>
-						<div>
-							<?=$spotlight->institutional_endorsement/nomination_required?>
+						<div class="row">
+							<div class="col-xs-15 col-md-5">
+								<b>Institutional Endorsement/Nomination Required:</b>
+							</div>
+							<div class="col-xs-15 col-md-10">
+								<?=get_post_meta( $spotlight->ID, 'institutional_endorsement/nomination_required', true )?>
+							</div>
 						</div>
-						<div>
-							<?=$spotlight->deadline?>
+						<div class="row">
+							<div class="col-xs-15 col-md-5">
+								<b>Deadline:</b>
+							</div>
+							<div class="col-xs-15 col-md-10">
+								<?=get_post_meta( $spotlight->ID, 'deadline', true )?>
+							</div>
 						</div>
-						<div>
-							<?=$spotlight->field_of_study?>
+						<div class="row">
+							<div class="col-xs-15 col-md-5">
+								<b>Field of Study:</b>
+							</div>
+							<div class="col-xs-15 col-md-10">
+								<?=get_post_meta( $spotlight->ID, 'field_of_study', true )?>
+							</div>
 						</div>
-						<div>
-							<?=$spotlight->website?>
+						<div class="row">
+							<div class="col-xs-15 col-md-5">
+								<b>Website:</b>
+							</div>
+							<div class="col-xs-15 col-md-10">
+								<a href="<?=get_post_meta( $spotlight->ID, 'website', true )?>"><?=get_post_meta( $spotlight->ID, 'website', true )?></a>
+							</div>
 						</div>
-						<div>
-							<?=$spotlight->post_content?>
+						<div class="row">
+							<div class="col-xs-15">
+								<?=$spotlight->post_content?>
+							</div>
 						</div>
+						<hr></hr>
 					</li>
 				<?}?>
 				</ul>
