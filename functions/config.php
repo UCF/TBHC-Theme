@@ -640,7 +640,7 @@ function add_async_attribute($tag, $handle) {
         return $tag;
     return str_replace( ' src', ' defer src', $tag );
 }
-add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
+//add_filter('script_loader_tag', 'add_async_attribute', 10, 2);
 /**
  * Meta content for header
  **/
