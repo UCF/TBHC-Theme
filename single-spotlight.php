@@ -26,10 +26,10 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-15 col-md-5">
-								<b>Institutional Endorsement/Nomination Required:</b>
+								<b>Endorsement/Nomination Required:</b>
 							</div>
 							<div class="col-xs-15 col-md-10">
-								<?=get_post_meta( get_the_ID(), 'institutional_endorsement/nomination_required', true )?>
+								<?=get_post_meta( get_the_ID(), 'endorsement/nomination_required', true )?>
 							</div>
 						</div>
 						<div class="row">
