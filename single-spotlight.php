@@ -1,6 +1,6 @@
 <?php disallow_direct_load('single-spotlight.php');?>
 <?php get_header(); the_post();?>
-<?php $leftSidebar = get_sidebar('left');?>
+<?php $leftSidebar = get_sidebar('left'); print_r($leftSidebar); print_r($leftSidebar == strip_tags($leftSidebar));?>
 
 	<div class="row page-content" id="<?=$post->post_name?>">
 		<div class="col-md-15 col-sm-15">
