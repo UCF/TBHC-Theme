@@ -1,9 +1,6 @@
 <?php disallow_direct_load('sidebar-left.php');?>
-
 <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Left Sidebar')):?>
 <?php endif;?>
-
-
 <?php
 
 	$show_facebook	 		= get_post_meta($post->ID, 'page_widget_l_showfacebook', TRUE);	
