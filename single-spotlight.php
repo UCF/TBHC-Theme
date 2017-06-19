@@ -1,6 +1,14 @@
 <?php disallow_direct_load('single-spotlight.php');?>
 <?php get_header(); the_post();?>
-<?php $leftSidebar = get_sidebar('left'); print_r($leftSidebar); echo strip_tags($leftSidebar); print_r($leftSidebar == strip_tags($leftSidebar));?>
+<?php $leftSidebar = get_sidebar('left'); print_r($leftSidebar);
+echo '>>>';
+ print_r(strip_tags(html_entity_decode($leftSidebar))); 
+ echo '>>>';
+ print_r(htmlentities($leftSidebar)); 
+ echo '>>>';
+ print_r(htmlspecialchars_decode($leftSidebar)); 
+ echo '>>>';
+ print_r($leftSidebar == strip_tags($leftSidebar));?>
 
 	<div class="row page-content" id="<?=$post->post_name?>">
 		<div class="col-md-15 col-sm-15">
