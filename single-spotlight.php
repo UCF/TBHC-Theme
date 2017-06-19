@@ -1,19 +1,23 @@
 <?php disallow_direct_load('single-spotlight.php');?>
 <?php get_header(); the_post();?>
-<?php $leftSidebar = get_sidebar('left'); print_r(strlen($leftSidebar));?>
+<?php 
+	ob_start();
+	get_sidebar('left'); 
+	$leftSidebar = ob_get_clean();
+?>
 
 	<div class="row page-content" id="<?=$post->post_name?>">
 		<div class="col-md-15 col-sm-15">
 			<div id="page-title">
 				<div class="row">
-					<div class="<?= !ctype_space($leftSidebar) ? 'col-md-12 col-sm-12' : 'col-md-15 col-sm-15' ?>">
+					<div class="<?= $leftSidebar ? 'col-md-12 col-sm-12' : 'col-md-15 col-sm-15' ?>">
 						<h1><?=has_term('scholarship-categories','event_groups') ? 'Scholarship' : 'Spotlight'?>: <?php the_title(); ?></h1>
 					</div>
 					<?php esi_include( 'output_weather_data', 'col-md-3 col-sm-3' ); ?>
 				</div>
 			</div>
 		</div>
-		<div id="contentcol" class="<?= !(ctype_space($leftSidebar) && $leftSidebar == '') ? 'col-md-12 col-sm-12 col-sm-push-3' : 'col-md-15 col-sm-15' ?>">
+		<div id="contentcol" class="<?= $leftSidebar ? 'col-md-12 col-sm-12 col-sm-push-3' : 'col-md-15 col-sm-15' ?>">
 			<article role="main">
 				<?if(has_term('scholarship-category','event_groups')){?>
 					<div class="scholarship-single-table">
@@ -63,7 +67,7 @@
 			</article>
 		</div>
 		
-		<? if($leftSidebar !== strip_tags($leftSidebar)){?>
+		<? if($leftSidebar){?>
 			<div id="sidebar_left" class="col-sm-3 col-sm-pull-12" role="navigation">
 				<?=$leftSidebar?>
 			</div>
