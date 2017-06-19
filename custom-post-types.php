@@ -825,6 +825,16 @@ class Opportunity extends CustomPostType {
 	$use_excerpt	= True,	
 	$taxonomies     = array('event_groups');	
 	
+	public static function get_menus() {
+		$menus = get_terms( 'nav_menu', array( 'hide_empty' => false ) );
+		$menu_array = array();
+		foreach ($menus as $menu) {
+			$menu_array[$menu->name] = $menu->term_id;
+		}
+		return $menu_array;
+	}
+
+	
 	public function fields() {
 		$prefix = $this->options('name').'_';
 		return array(
@@ -981,6 +991,16 @@ class Spotlight extends CustomPostType {
 		$this->edit_item = 'Edit Scholarship';
 		$this->new_item = 'New Scholarship';
 	}
+	
+	public static function get_menus() {
+		$menus = get_terms( 'nav_menu', array( 'hide_empty' => false ) );
+		$menu_array = array();
+		foreach ($menus as $menu) {
+			$menu_array[$menu->name] = $menu->term_id;
+		}
+		return $menu_array;
+	}
+
 		
 	public function fields() {
 		$prefix = $this->options('name').'_';
