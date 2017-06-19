@@ -3,7 +3,6 @@
 <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Left Sidebar')):?>
 <?php endif;?>
 
-<!-- Hard-written sidebar components go here: -->
 
 <?php
 
