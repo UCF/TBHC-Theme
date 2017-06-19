@@ -828,26 +828,78 @@ class Opportunity extends CustomPostType {
 	public function fields() {
 		$prefix = $this->options('name').'_';
 		return array(
-		array(
-		'name' => 'Opportunity Position',
-		'desc' => 'Specify whether the opportunity should be positioned in the top slot of the opportunity section or the bottom.',
-		'id'   => $prefix.'position',
-		'type' => 'radio',
-		'options' => array('Top' => 'top', 'Bottom' => 'bottom'),
-		),
-		array(
-		'name' => 'URL Redirect',
-		'desc' => 'Specify a full url to use as a redirect when the opportunity is clicked.',
-		'id'   => $prefix.'url_redirect',
-		'type' => 'text'
-		),
-		array(
-		'name' => 'Post To Home',
-		'desc' => 'Indicate whether this opportunity should be visible from the home page spotlights feed.',
-		'id'   => $prefix.'post_to_home',
-		'type' => 'checkbox',
-		'std' => 'off'
-		)		
+			array(
+				'name' => 'Opportunity Position',
+				'desc' => 'Specify whether the opportunity should be positioned in the top slot of the opportunity section or the bottom.',
+				'id'   => $prefix.'position',
+				'type' => 'radio',
+				'options' => array('Top' => 'top', 'Bottom' => 'bottom'),
+			),
+			array(
+				'name' => 'URL Redirect',
+				'desc' => 'Specify a full url to use as a redirect when the opportunity is clicked.',
+				'id'   => $prefix.'url_redirect',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'Post To Home',
+				'desc' => 'Indicate whether this opportunity should be visible from the home page spotlights feed.',
+				'id'   => $prefix.'post_to_home',
+				'type' => 'checkbox',
+				'std' => 'off'
+			),
+			array(
+				'name' => '<strong>Left Sidebar:</strong> More Information Widget',
+				'desc' => '(Optional) Display a More Information widget in the <strong>left-hand sidebar</strong> that contains a given menu. Useful for adding links that are directly related to the page\'s content. Menus can be created in the <a href="'.get_admin_url().'nav-menus.php">menu editor</a>.',
+				'id' => $prefix.'widget_l_moreinfo',
+				'type' => 'select',
+				'options' => $this->get_menus(),
+			),
+			array(
+				'name' => '<strong>Left Sidebar:</strong> More Information Widget Title',
+				'desc' => '(Optional) Title for the More Information widget designated above.  Default is "More Information".',
+				'id' => $prefix.'widget_l_moreinfo_title',
+				'type' => 'text',
+			),
+			array(
+				'name' => '<strong>Left Sidebar:</strong> Secondary Information Widget',
+				'desc' => '(Optional) Display a Secondary Information widget in the <strong>left-hand sidebar</strong> that contains a given menu. Useful for adding extra relevant links, student-related services, etc. Menus can be created in the <a href="'.get_admin_url().'nav-menus.php">menu editor</a>.',
+				'id' => $prefix.'widget_l_secinfo',
+				'type' => 'select',
+				'options' => $this->get_menus(),
+			),
+			array(
+				'name' => '<strong>Left Sidebar:</strong> Secondary Information Widget Title',
+				'desc' => '(Optional) Title for the Secondary Information widget designated above.  Default is "Useful Links".',
+				'id' => $prefix.'widget_l_secinfo_title',
+				'type' => 'text',
+			),
+			array(
+				'name' => '<strong>Left Sidebar:</strong> Show list of Colleges',
+				'desc' => '(Optional) Check this box to display the UCF Colleges menu in the <strong>left-hand sidebar.</strong>',
+				'id' => $prefix.'widget_l_showcolleges',
+				'type' => 'checkbox',
+				'std' => 'on',
+			),
+			array(
+				'name' => '<strong>Left Sidebar:</strong> Show Connect with UCF Facebook Link',
+				'desc' => '(Optional) Check this box to display the UCF on Facebook information in the <strong>left-hand sidebar.</strong>',
+				'id' => $prefix.'widget_l_showfacebook',
+				'type' => 'checkbox',
+				'std' => 'on',
+			),
+			array(
+				'name' => '<strong>Left Sidebar:</strong> Embed Widget 1 Title',
+				'desc' => '(Optional) Title for the embed widget below. Can be left blank.',
+				'id' => $prefix.'widget_l_embed1_title',
+				'type' => 'text',
+			),
+			array(
+				'name' => '<strong>Left Sidebar:</strong> Embed Widget 1',
+				'desc' => '(Optional) Add a custom widget in the <strong>left-hand sidebar</strong>; useful for video and publication embeds.',
+				'id' => $prefix.'widget_l_embed1',
+				'type' => 'textarea',
+			),		
 		);
 	}
 	
@@ -958,12 +1010,64 @@ class Spotlight extends CustomPostType {
 					'type' => 'text'
 				),
 				array(
-				'name' => 'Post To Home',
-				'desc' => 'Indicate whether this spotlight should be visible from the home page spotlights feed.',
-				'id'   => $prefix.'post_to_home',
-				'type' => 'checkbox',
-				'std' => 'off'
-				)
+					'name' => 'Post To Home',
+					'desc' => 'Indicate whether this spotlight should be visible from the home page spotlights feed.',
+					'id'   => $prefix.'post_to_home',
+					'type' => 'checkbox',
+					'std' => 'off'
+				),
+				array(
+					'name' => '<strong>Left Sidebar:</strong> More Information Widget',
+					'desc' => '(Optional) Display a More Information widget in the <strong>left-hand sidebar</strong> that contains a given menu. Useful for adding links that are directly related to the page\'s content. Menus can be created in the <a href="'.get_admin_url().'nav-menus.php">menu editor</a>.',
+					'id' => $prefix.'widget_l_moreinfo',
+					'type' => 'select',
+					'options' => $this->get_menus(),
+				),
+				array(
+					'name' => '<strong>Left Sidebar:</strong> More Information Widget Title',
+					'desc' => '(Optional) Title for the More Information widget designated above.  Default is "More Information".',
+					'id' => $prefix.'widget_l_moreinfo_title',
+					'type' => 'text',
+				),
+				array(
+					'name' => '<strong>Left Sidebar:</strong> Secondary Information Widget',
+					'desc' => '(Optional) Display a Secondary Information widget in the <strong>left-hand sidebar</strong> that contains a given menu. Useful for adding extra relevant links, student-related services, etc. Menus can be created in the <a href="'.get_admin_url().'nav-menus.php">menu editor</a>.',
+					'id' => $prefix.'widget_l_secinfo',
+					'type' => 'select',
+					'options' => $this->get_menus(),
+				),
+				array(
+					'name' => '<strong>Left Sidebar:</strong> Secondary Information Widget Title',
+					'desc' => '(Optional) Title for the Secondary Information widget designated above.  Default is "Useful Links".',
+					'id' => $prefix.'widget_l_secinfo_title',
+					'type' => 'text',
+				),
+				array(
+					'name' => '<strong>Left Sidebar:</strong> Show list of Colleges',
+					'desc' => '(Optional) Check this box to display the UCF Colleges menu in the <strong>left-hand sidebar.</strong>',
+					'id' => $prefix.'widget_l_showcolleges',
+					'type' => 'checkbox',
+					'std' => 'on',
+				),
+				array(
+					'name' => '<strong>Left Sidebar:</strong> Show Connect with UCF Facebook Link',
+					'desc' => '(Optional) Check this box to display the UCF on Facebook information in the <strong>left-hand sidebar.</strong>',
+					'id' => $prefix.'widget_l_showfacebook',
+					'type' => 'checkbox',
+					'std' => 'on',
+				),
+				array(
+					'name' => '<strong>Left Sidebar:</strong> Embed Widget 1 Title',
+					'desc' => '(Optional) Title for the embed widget below. Can be left blank.',
+					'id' => $prefix.'widget_l_embed1_title',
+					'type' => 'text',
+				),
+				array(
+					'name' => '<strong>Left Sidebar:</strong> Embed Widget 1',
+					'desc' => '(Optional) Add a custom widget in the <strong>left-hand sidebar</strong>; useful for video and publication embeds.',
+					'id' => $prefix.'widget_l_embed1',
+					'type' => 'textarea',
+				),		
 			);
 		}
 	}
