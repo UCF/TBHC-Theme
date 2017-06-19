@@ -6,14 +6,14 @@
 		<div class="col-md-15 col-sm-15">
 			<div id="page-title">
 				<div class="row">
-					<div class="<?= ctype_space($leftSidebar) ? 'col-md-12 col-sm-12' : 'col-md-15 col-sm-15' ?>">
+					<div class="<?= !ctype_space($leftSidebar) ? 'col-md-12 col-sm-12' : 'col-md-15 col-sm-15' ?>">
 						<h1><?=has_term('scholarship-categories','event_groups') ? 'Scholarship' : 'Spotlight'?>: <?php the_title(); ?></h1>
 					</div>
 					<?php esi_include( 'output_weather_data', 'col-md-3 col-sm-3' ); ?>
 				</div>
 			</div>
 		</div>
-		<div id="contentcol" class="<?= ctype_space($leftSidebar) || $leftSidebar == '' ? 'col-md-12 col-sm-12 col-sm-push-3' : 'col-md-15 col-sm-15' ?>">
+		<div id="contentcol" class="<?= !(ctype_space($leftSidebar) && $leftSidebar == '') ? 'col-md-12 col-sm-12 col-sm-push-3' : 'col-md-15 col-sm-15' ?>">
 			<article role="main">
 				<?if(has_term('scholarship-category','event_groups')){?>
 					<div class="scholarship-single-table">
