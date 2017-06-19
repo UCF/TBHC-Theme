@@ -582,7 +582,7 @@ function sc_opportunity_grid($atts) {
 		?>	
 		<ul class="opportunity-list">
 			<?php
-				//rsort($opps);
+				rsort($opps);
 				$matches = "";
 				foreach ($opps as $opportunity) { 
 					$start_date; //= get_post_meta($opportunity->ID, 'opportunity_start', TRUE);
