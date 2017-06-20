@@ -914,7 +914,7 @@ function sc_doc_grid($atts) {
 			'limit' => $limit,
 			'join' => $join,
 			//'categories' => $categories,
-			'post_tag' => $doc_groups2 ? $doc_groups.' '.$doc_groups2 : $doc_groups,
+			'doc_groups' => $doc_groups2 ? $doc_groups.' '.$doc_groups2 : $doc_groups,
 			//'orderby' => 'meta_value_num',
 			//'order' => 'DESC',
 			//'meta_key'	=> 'opportunity_end',
@@ -926,7 +926,9 @@ function sc_doc_grid($atts) {
 	array(
 		'objects_only' => True,
 	));
-	
+	if(DEBUG){
+		print_r($docs);
+	}
 	ob_start();
 	?><div class="doc-grid" data-url="<?=admin_url( 'admin-ajax.php' )?>" data-group="<?=esc_attr($dd_doc_groups)?>" data-group2="<?=esc_attr($dd2_doc_groups)?>" data-jn="<?=esc_attr($join)?>" data-oprtr="<?=esc_attr($operator)?>" data-allopt="<?=esc_attr($show_option_all)?>" data-allopt2="<?=esc_attr($show_option_all2)?>">
 		<? if($dropdown){ 
