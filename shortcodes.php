@@ -973,7 +973,7 @@ function sc_doc_grid($atts) {
 				'child_of'	=>	$DGID2,
 			);
 			if(!empty($show_option_all2)){
-				$args2['show_option_all2'] = $show_option_all2;
+				$args2['show_option_all'] = $show_option_all2;
 			}			
 			echo str_replace(
 				'<select',
