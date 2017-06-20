@@ -957,7 +957,7 @@ function sc_doc_grid($atts) {
 			}
 			echo str_replace(
 				'<select',
-				'<select onchange="getDocForGrid(this.value'.($dropdown2 ? ', $(\'#dd2_doc_groups\').val()' : '').')"',
+				'<select onchange="getDocsForGrid(this.value'.($dropdown2 ? ', $(\'#dd2_doc_groups\').val()' : '').')"',
 				wp_dropdown_categories($args)
 			);
 		} 
