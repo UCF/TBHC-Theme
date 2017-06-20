@@ -385,6 +385,25 @@ function get_spots_from_event_group(){
 add_action( 'wp_ajax_get_spots_from_event_group', 'get_spots_from_event_group' );
 add_action( 'wp_ajax_nopriv_get_spots_from_event_group', 'get_spots_from_event_group' );
 
+function get_docs_from_doc_group(){
+	$p = array(
+		($_REQUEST['doc_groups'] ? $_REQUEST['doc_groups'] : $_REQUEST['dd_doc_groups']),
+		(!empty($_REQUEST['doc_groups2']) ? 'doc_groups2=\''.($_REQUEST['doc_groups2'] ? $_REQUEST['doc_groups2'] : $_REQUEST['dd2_doc_groups']).'\' ' : ''),
+		(!empty($_REQUEST['dd_doc_groups']) ? ' dd_doc_groups=\''.$_REQUEST['dd_doc_groups'].'\' dropdown=true '.(!empty($_REQUEST['dd2_doc_groups']) ? 'dd2_doc_groups=\''.$_REQUEST['dd2_doc_groups'].'\' dropdown2=true ' : ' ') : ' '),
+		(!empty($_REQUEST['join']) ? ' join=\''.$_REQUEST['join'].'\'' : ' '),
+		(!empty($_REQUEST['operator']) ? ' operator=\''.$_REQUEST['operator'].'\' ' : ' '),
+		(!empty($_REQUEST['show_option_all']) ? ' show_option_all=\''.$_REQUEST['show_option_all'].'\' ' : ' '),
+		(!empty($_REQUEST['show_option_all2']) ? ' show_option_all2=\''.$_REQUEST['show_option_all2'].'\' ' : ' '),
+	);
+	$p = array_map(function($a){ return htmlspecialchars($a); }, $p);
+	echo do_shortcode('[doc-grid doc_groups=\''.$p[0].'\' '.$p[1].$p[2].$p[3].$p[4].$p[5].$p[6].' ]');
+	die();
+}
+
+add_action( 'wp_ajax_get_docs_from_doc_group', 'get_docs_from_doc_group' );
+add_action( 'wp_ajax_nopriv_get_docs_from_doc_group', 'get_docs_from_doc_group' );
+
+
 function hex_and_opacity_to_rgba($color, $opacity){
 	/*
         Convert HEX Color to RGBA Color, opacity value support.
