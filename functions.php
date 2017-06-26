@@ -361,7 +361,7 @@ function manage_document_columns( $column, $post_id ) {
 		}
 		break;
 		case 'doc_group':
-			$theseTerms = get_the_terms($post, 'doc_groups');
+			$theseTerms = get_the_terms($post, 'doc_group');
 			if($theseTerms && (array)$theseTerms === $theseTerms){
 				$theseTerms = array_map('manage_columns_terms', $theseTerms);			
 				print implode(', ',$theseTerms);
