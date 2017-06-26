@@ -1103,7 +1103,7 @@ add_shortcode('doc-grid', 'sc_doc_grid');
 					// Image output:
 					if ($slide_content_type[$s] == 'image') {
 						//$output .= '<img class="centerpiece_single_img" src="'.$slide_image_url[0].'" title="'.$slide_title[$s].'" alt="'.$slide_title[$s].'"';
-						$output .= '<div class="centerpiece_single_img" style="background-image:url(\''.$slide_image_url[0].'\');background-size:cover;height:100%;background-position:'.$slide_bg_off_top[$s].' '.$slide_bg_off_left[$s].';"';
+						$output .= '<div class="centerpiece_single_img" style="background-image:url(\''.$slide_image_url[0].'\');background-size:cover;height:100%;background-position:'.$slide_bg_off_top[$s].' '.$slide_bg_off_left[$s].';" alt="'.$slide_title[$s].'"';
 						$output .= '/>';
 
 						if($slide_display_tit[$s] == 'on'){
