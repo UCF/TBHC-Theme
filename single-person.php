@@ -26,13 +26,13 @@
 				$office = get_post_meta($post->ID, 'person_office', True);
 				$showDateTimeLocal = false;
 				$showPhones = false;
-				if(has_term("distinguished") || has_term('workshop')){
+				if(has_term("distinguished-speaker") || has_term('how-to-workshops')){
 					$showDateTimeLocal = true;
 					if(count($phones)){
 						$showPhones = true;
 					}
 				}
-				if(has_term("distinguished","org_groups") || has_term('workshop',"org_groups")){
+				if(has_term("distinguished-speaker","org_groups") || has_term('how-to-workshops',"org_groups")){
 					$showDateTimeLocal = true;
 					if(count($phones)){
 						$showPhones = true;
