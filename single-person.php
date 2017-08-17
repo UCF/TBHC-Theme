@@ -24,28 +24,18 @@
 				$email = get_post_meta($post->ID, 'person_email', True);
 				$phones = Person::get_phones($post);
 				$office = get_post_meta($post->ID, 'person_office', True);
-				$categories = get_the_category();
-				$orgUnis = get_the_terms($post,"org_groups")
 				$showDateTimeLocal = false;
 				$showPhones = false;
-				if ( ! empty( $categories )) {
-					foreach($categories as $ctg){
-						if(stripos($ctg->name,"distinguished") > -1 || stripos($ctg->name,'workshop') > -1){
-							$showDateTimeLocal = true;
-							if(count($phones)){
-								$showPhones = true;
-							}
-							break;
-						}
+				if(has_term("distinguished") || has_term('workshop')){
+					$showDateTimeLocal = true;
+					if(count($phones)){
+						$showPhones = true;
 					}
-					foreach($orgUnis as $ctg){
-						if(stripos($ctg->name,"distinguished") > -1 || stripos($ctg->name,'workshop') > -1){
-							$showDateTimeLocal = true;
-							if(count($phones)){
-								$showPhones = true;
-							}
-							break;
-						}
+				}
+				if(has_term("distinguished","org_groups") || has_term('workshop',"org_groups")){
+					$showDateTimeLocal = true;
+					if(count($phones)){
+						$showPhones = true;
 					}
 				}
 				if(DEBUG){
