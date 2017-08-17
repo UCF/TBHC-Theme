@@ -25,7 +25,7 @@
 				$phones = Person::get_phones($post);
 				$office = get_post_meta($post->ID, 'person_office', True);
 				$categories = get_the_category();
-				$orgUnis = get_the_terms(the_post(),"org_groups")
+				$orgUnis = get_the_terms($post,"org_groups")
 				$showDateTimeLocal = false;
 				$showPhones = false;
 				if ( ! empty( $categories )) {
