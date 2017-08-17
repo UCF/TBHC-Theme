@@ -25,11 +25,25 @@
 				$phones = Person::get_phones($post);
 				$office = get_post_meta($post->ID, 'person_office', True);
 				$categories = get_the_category();
+				$orgUnis = get_the_terms(the_post(),"org_groups")
 				$showDateTimeLocal = false;
+				$showPhones = false;
 				if ( ! empty( $categories )) {
 					foreach($categories as $ctg){
 						if(stripos($ctg->name,"distinguished") > -1 || stripos($ctg->name,'workshop') > -1){
 							$showDateTimeLocal = true;
+							if(count($phones)){
+								$showPhones = true;
+							}
+							break;
+						}
+					}
+					foreach($orgUnis as $ctg){
+						if(stripos($ctg->name,"distinguished") > -1 || stripos($ctg->name,'workshop') > -1){
+							$showDateTimeLocal = true;
+							if(count($phones)){
+								$showPhones = true;
+							}
 							break;
 						}
 					}
@@ -44,7 +58,7 @@
 			<article role="main">
 				<h2><?=$post->post_title?><?=($title == '') ? '': ' - '.$title ?></h2>
 				<div class="contact">
-				<?if(strpos(wp_get_referer(), "distinguished-speaker") === false){ //and type = staff?>
+				<?if($showPhones){ //and type = staff?>
 					<ul class="list-unstyled">	
 					<?
 					if(count($phones)) {
