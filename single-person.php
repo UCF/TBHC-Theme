@@ -39,13 +39,13 @@
 					}
 				}
 				if(isEmpty($time) || $time == ''){ 
-					get_post_meta($post->ID,"time",True)
+					$time = get_post_meta($post->ID,"time",True);
 				}
 				if(isEmpty($date) || $date == ''){
-					get_post_meta($post->ID,"date",True)
+					$date = get_post_meta($post->ID,"date",True);
 				}
 				if(isEmpty($location) || $location == ''){
-					get_post_meta($post->ID,"location",True)
+					$location = get_post_meta($post->ID,"location",True);
 				}				
 				if(DEBUG){
 					print_r($date.' '.$time.' '.$location.'\r\n');
