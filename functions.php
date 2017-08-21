@@ -1128,7 +1128,7 @@ function frontpage_events(){
 			<div class="events_table_group first">
 			<?	$dateFormatted = new DateTime($levent[0]["starts"], new DateTimeZone('EST'));
 				?><div class="events_type">Up Next</div>
-				<div onclick="location.href='<?=$levent[0]['url']?>'" class="event_single_wrap" style="cursor: pointer;">
+				<div onclick="location.href='<?=$levent[0]['url']?>'" onkeypress="location.href='<?=$levent[0]['url']?>'" class="event_single_wrap" style="cursor: pointer;">
 					<div class="event_single">
 						<div class="event_datetime"><?=$dateFormatted ? $dateFormatted->format('M j - g:i A') : ''?></div>
 						<div class="event_title"><?=$levent[0]["title"]?></div>

@@ -24,14 +24,31 @@
 				$email = get_post_meta($post->ID, 'person_email', True);
 				$phones = Person::get_phones($post);
 				$office = get_post_meta($post->ID, 'person_office', True);
+				$showDateTimeLocal = false;
+				$showPhones = false;
+				if(has_term("distinguished-speaker") || has_term('how-to-workshops')){
+					$showDateTimeLocal = true;
+					if(count($phones)){
+						$showPhones = true;
+					}
+				}
+				if(has_term("distinguished-speaker","org_groups") || has_term('how-to-workshops',"org_groups")){
+					$showDateTimeLocal = true;
+					if(count($phones)){
+						$showPhones = true;
+					}
+				}
+				if(DEBUG){
+					print_r($categories);
+				}
 			?>
 			<img src="<?=$image_url ? $image_url : get_bloginfo('stylesheet_directory').'/static/img/no-photo.jpg'?>" />
 		</div>
 		<div class="col-md-12 col-sm-12">
 			<article role="main">
-				<h2><?=$post->post_title?><?=($title == '') ?: ' - '.$title ?></h2>
+				<h2><?=$post->post_title?><?=($title == '') ? '': ' - '.$title ?></h2>
 				<div class="contact">
-				<?if(strpos(wp_get_referer(), "distinguished-speaker") === false){ //and type = staff?>
+				<?if($showPhones){ //and type = staff?>
 					<ul class="list-unstyled">	
 					<?
 					if(count($phones)) {
@@ -47,7 +64,7 @@
 						<? } ?>
 					</ul>
 				<? }
-				if(strpos(wp_get_referer(), "distinguished-speaker") > 0){ //or type = dist speaker ?> 
+				if($showDateTimeLocal){ //or type = dist speaker ?> 
 					<ul class="list-unstyled">
 						<? if($time != '') { ?>
 							<li><i class="glyphicon glyphicon-time"></i><span class="time"><?=$time?></span></li>
