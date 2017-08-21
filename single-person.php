@@ -34,6 +34,9 @@
 				}
 				if(has_term("distinguished-speaker","org_groups") || has_term('how-to-workshops',"org_groups")){
 					$showDateTimeLocal = true;
+					$time = $time === NULL ? get_post_meta("Time") : $time;
+					$date = $date === NULL ? get_post_meta("Date") : $date;
+					$location = $location === NULL ? get_post_meta("Location") : $location;
 					if(count($phones)){
 						$showPhones = true;
 					}
