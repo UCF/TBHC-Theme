@@ -1693,6 +1693,39 @@ function getSpotsForGrid(inp1, inp2){
 		jQuery('.spotlight-grid').replaceWith(res);
 	});
 }
+function getDocsForGrid(inp1, inp2){
+	var ajaxUrl = $(".doc-grid").data("url");
+	var reqGrp = $(".doc-grid").data("group");
+	var reqGrp2 = $(".doc-grid").data("group2");
+	var shwOrgs = $(".doc-grid").data("shwgrp");
+	var oprtr = $(".doc-grid").data("oprtr");	
+	var jn = $(".doc-grid").data("jn");
+	var shwOptAll = $(".doc-grid").data("allopt");
+	var shwOptAll2 = $(".doc-grid").data("allopt2");	
+	var data = {
+		action : 'get_docs_from_doc_group',
+		join : jn,
+		doc_groups: inp1,
+		dd_doc_groups: reqGrp,
+	};
+	if(reqGrp2){
+		data.dd2_doc_groups = reqGrp2;
+		data.doc_groups2 = inp2;
+	}
+	if(oprtr){
+		data.operator = oprtr;
+	}
+	if(shwOptAll){
+		data.show_option_all = shwOptAll;
+	}
+	if(shwOptAll2){
+		data.show_option_all2 = shwOptAll2;
+	}
+	jQuery.post(ajaxUrl, data, function(res){
+		jQuery('.doc-grid').replaceWith(res);
+	});
+}
+
 var debounce = function (func, threshold, execAsap) {
     var timeout;
     return function debounced () {

@@ -184,4 +184,24 @@ class EventGroups extends CustomTaxonomy
 	
 	$hierarchical = True;
 } // END class
+
+// doc tax by erik
+class DocGroups extends CustomTaxonomy
+{
+	public
+	$name               = 'doc_groups',
+	$general_name       = 'Doc Groups',
+	$singular_name      = 'Doc Group',
+	$search_items       = 'Search Doc Groups',
+	$popular_items      = 'Popular Doc Groups',
+	$all_times          = 'All Doc Groups',
+	$parent_item        = 'Parent Doc Group',
+	$parent_item_colon  = 'Parent Doc Group:',
+	$edit_item          = 'Edit Doc Group',
+	$update_item        = 'Update Doc Group',
+	$add_new_item       = 'Add New Doc Group',
+	$new_item_name      = 'New Tag Doc Group',
+	
+	$hierarchical = True;
+}
 ?>

@@ -582,7 +582,7 @@ function sc_opportunity_grid($atts) {
 		?>	
 		<ul class="opportunity-list">
 			<?php
-				//rsort($opps);
+				rsort($opps);
 				$matches = "";
 				foreach ($opps as $opportunity) { 
 					$start_date; //= get_post_meta($opportunity->ID, 'opportunity_start', TRUE);
@@ -886,6 +886,138 @@ function sc_spotlight_grid($atts) {
 }
 add_shortcode('spotlight-grid', 'sc_spotlight_grid');
 
+/**
+ * Custom Nod List by Erik
+ **/
+function sc_doc_grid($atts) {
+	$atts = array_map('specCharEscCallback', $atts);	
+	//remove_filter('the_content','wpautop');
+	$atts['type']	= ($atts['type']) ? $atts['type'] : null;
+	$categories		= ($atts['categories']) ? $atts['categories'] : null;	
+	$doc_groups		= ($atts['doc_groups']) ? $atts['doc_groups'] : null;
+	$doc_groups2		= ($atts['doc_groups2']) ? $atts['doc_groups2'] : null;	
+	$limit			= ($atts['limit']) ? (intval($atts['limit'])) : -1;
+	$join			= ($atts['join']) ? $atts['join'] : 'or';
+	$dropdown		= ($atts['dropdown']) ? $atts['dropdown'] : false;
+	$dd_doc_groups	= ($atts['dd_doc_groups']) ? $atts['dd_doc_groups'] : $doc_groups;
+	$dropdown2		= ($atts['dropdown2']) ? $atts['dropdown2'] : false;
+	$dd2_doc_groups	= ($atts['dd2_doc_groups']) ? $atts['dd2_doc_groups'] : NULL;	
+	$show_option_all	= ($atts['show_option_all']) ? $atts['show_option_all'] : null;
+	$show_option_all2	= ($atts['show_option_all2']) ? $atts['show_option_all2'] : null;	
+	$DGID			= get_term_by('slug', $dd_doc_groups, 'doc_groups')->term_id;
+	$DGID2			= get_term_by('slug', $dd2_doc_groups, 'doc_groups');
+	$DGID2			= $DGID2 ? $DGID2->term_id : false;
+	$operator		= ($atts['operator']) ? $atts['operator'] : NULL;
+	$docs 		= sc_object_list(
+		array(
+			'type' => 'document',
+			'limit' => $limit,
+			'join' => $join,
+			//'categories' => $categories,
+			'doc_groups' => $doc_groups2 ? $doc_groups.' '.$doc_groups2 : $doc_groups,
+			//'orderby' => 'meta_value_num',
+			//'order' => 'DESC',
+			//'meta_key'	=> 'opportunity_end',
+			'operator' => $operator,
+			'meta_query'	=> array(
+				
+			),
+		),
+	array(
+		'objects_only' => True,
+	));
+	if(DEBUG){
+		print_r($docs);
+	}
+	ob_start();
+	?><div class="doc-grid" data-url="<?=admin_url( 'admin-ajax.php' )?>" data-group="<?=esc_attr($dd_doc_groups)?>" data-group2="<?=esc_attr($dd2_doc_groups)?>" data-jn="<?=esc_attr($join)?>" data-oprtr="<?=esc_attr($operator)?>" data-allopt="<?=esc_attr($show_option_all)?>" data-allopt2="<?=esc_attr($show_option_all2)?>">
+		<? if($dropdown){ 
+			$prntTrm = get_term_by('slug', 'semester-year','doc_groups');
+			$ids = array_map(function($blrp)use($prntTrm){ 
+				$trms = wp_get_post_terms($blrp->ID, 'doc_groups');
+				$otpt = "";
+				foreach($trms as $trm){
+					if($trm->parent && $trm->parent == $prntTrm->term_id){
+						$otpt .= $trm->term_id;
+					}
+				}
+				return $otpt; 
+			}, $docs);
+			$args = array(
+				'taxonomy'	=>	'doc_groups',
+				'value_field'	=>	'slug',
+				'class'	=>	'doc-grid-dropdown form-control',
+				'id'	=>	'dd_doc_groups',
+				'name'	=>	'dd_doc_groups',
+				'echo'	=> false,
+				'selected'	=>	$doc_groups,
+				'child_of'	=>	$DGID,
+				'include'	=>	implode(",", $ids),
+			);
+			if(!empty($show_option_all)){
+				$args['show_option_all'] = $show_option_all;
+			}
+			echo str_replace(
+				'<select',
+				'<select onchange="getDocsForGrid(this.value'.($dropdown2 ? ', $(\'#dd2_doc_groups\').val()' : '').')"',
+				wp_dropdown_categories($args)
+			);
+		} 
+		if($dropdown2 && $DGID2){ 
+			$args2 = array(
+				'taxonomy'	=>	'doc_groups',
+				'value_field'	=>	'slug',
+				'class'	=>	'doc-grid-dropdown form-control',
+				'id'	=>	'dd2_doc_groups',
+				'name'	=>	'dd2_doc_groups',			
+				'echo'	=> false,
+				'selected'	=>	$doc_groups2,
+				'child_of'	=>	$DGID2,
+			);
+			if(!empty($show_option_all2)){
+				$args2['show_option_all'] = $show_option_all2;
+			}			
+			echo str_replace(
+				'<select',
+				'<select onchange="getDocsForGrid($(\'#dd_doc_groups\').val(), this.value)"',
+				wp_dropdown_categories($args2)
+			);
+		} 
+		?>	
+		<ul class="doc-list">
+			<?php
+				//rsort($opps);
+				$matches = "";
+				foreach ($docs as $document) { 
+					$link = get_permalink($document->ID);					
+					$ext_link = get_post_meta($document->ID, 'document_url', TRUE);		
+					if($ext_link){
+						$link = $ext_link; 
+					}
+					// added these lines to retrieve taxonomy terms instead of using the meta field we had
+					$parntCat = get_term_by('slug', 'semester-year','doc_groups');
+					$postCats = wp_get_post_terms($document->ID, 'doc_groups');
+					$catTerms = '';
+					foreach($postCats as $cat){
+						$catTerms.= $cat->parent == $parntCat->term_id ? $cat->name : '';
+					}
+				?>
+				<li>
+					<a href="<?=$link?>">
+						<?=$document->post_title?>
+					</a>
+				</li>
+				<?php
+				}
+			?>
+		</ul>
+	</div>
+	
+	<?
+	return ob_get_clean();
+	//add_filter('the_content','wpautop');		
+}
+add_shortcode('doc-grid', 'sc_doc_grid');
 
 /**
  * Centerpiece Slider
@@ -971,7 +1103,7 @@ add_shortcode('spotlight-grid', 'sc_spotlight_grid');
 					// Image output:
 					if ($slide_content_type[$s] == 'image') {
 						//$output .= '<img class="centerpiece_single_img" src="'.$slide_image_url[0].'" title="'.$slide_title[$s].'" alt="'.$slide_title[$s].'"';
-						$output .= '<div class="centerpiece_single_img" style="background-image:url(\''.$slide_image_url[0].'\');background-size:cover;height:100%;background-position:'.$slide_bg_off_top[$s].' '.$slide_bg_off_left[$s].';"';
+						$output .= '<div class="centerpiece_single_img" style="background-image:url(\''.$slide_image_url[0].'\');background-size:cover;height:100%;background-position:'.$slide_bg_off_top[$s].' '.$slide_bg_off_left[$s].';" alt="'.$slide_title[$s].'"';
 						$output .= '/>';
 
 						if($slide_display_tit[$s] == 'on'){

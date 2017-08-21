@@ -138,7 +138,8 @@ Config::$custom_taxonomies = array(
 	'OrganizationalGroups',
 	'Keywords',
 	//'AudienceRoles',
-	'EventGroups'
+	'EventGroups',
+	'DocGroups'
 );
 
 
