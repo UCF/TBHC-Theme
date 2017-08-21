@@ -38,8 +38,20 @@
 						$showPhones = true;
 					}
 				}
+				if(empty($time) || $time == ''){ 
+					$time = get_post_meta($post->ID,"time",True);
+				}
+				if(empty($date) || $date == ''){
+					$date = get_post_meta($post->ID,"date",True);
+				}
+				if(empty($location) || $location == ''){
+					$location = get_post_meta($post->ID,"location",True);
+				}				
 				if(DEBUG){
-					print_r($categories);
+					print_r($date.' '.$time.' '.$location.'\r\n');
+					print_r(get_post_meta($post->ID,"time",True).' '.get_post_meta($post->ID,"date",True).' '.get_post_meta($post->ID,"location",True).'\r\n');
+					print_r(has_term("distinguished-speaker") || has_term('how-to-workshops').'\r\n');
+					print_r(has_term("distinguished-speaker","org_groups") || has_term('how-to-workshops',"org_groups").'\r\n');
 				}
 			?>
 			<img src="<?=$image_url ? $image_url : get_bloginfo('stylesheet_directory').'/static/img/no-photo.jpg'?>" />
