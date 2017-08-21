@@ -42,10 +42,8 @@
 					}
 				}
 				if(DEBUG){
-					print_r(has_term("distinguished-speaker"));
-					print_r(has_term('how-to-workshops'));
-					print_r(has_term("distinguished-speaker","org_groups"));
-					print_r(has_term('how-to-workshops',"org_groups"));
+					print_r($date.' '.$time.' '.$location);
+					print_r(get_post_meta($post->ID,"Time",True).' '.get_post_meta($post->ID,"Date",True).' '.get_post_meta($post->ID,"Location",True));
 				}
 			?>
 			<img src="<?=$image_url ? $image_url : get_bloginfo('stylesheet_directory').'/static/img/no-photo.jpg'?>" />
