@@ -38,13 +38,13 @@
 						$showPhones = true;
 					}
 				}
-				if(isEmpty($time) || $time == ''){ 
+				if(empty($time) || $time == ''){ 
 					$time = get_post_meta($post->ID,"time",True);
 				}
-				if(isEmpty($date) || $date == ''){
+				if(empty($date) || $date == ''){
 					$date = get_post_meta($post->ID,"date",True);
 				}
-				if(isEmpty($location) || $location == ''){
+				if(empty($location) || $location == ''){
 					$location = get_post_meta($post->ID,"location",True);
 				}				
 				if(DEBUG){
