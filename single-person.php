@@ -39,7 +39,10 @@
 					}
 				}
 				if(DEBUG){
-					print_r($categories);
+					print_r(has_term("distinguished-speaker"));
+					print_r(has_term('how-to-workshops'));
+					print_r(has_term("distinguished-speaker","org_groups"));
+					print_r(has_term('how-to-workshops',"org_groups"));
 				}
 			?>
 			<img src="<?=$image_url ? $image_url : get_bloginfo('stylesheet_directory').'/static/img/no-photo.jpg'?>" />
