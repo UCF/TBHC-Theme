@@ -44,9 +44,11 @@
 					$location = $location === NULL ? get_post_meta($post->ID,"location",True) : $location;					
 				}
 				if(DEBUG){
-					print_r($date.' '.$time.' '.$location);
-					print_r(get_post_meta($post->ID,"time",True).' '.get_post_meta($post->ID,"date",True).' '.get_post_meta($post->ID,"location",True));
-					print_r($showDateTimeLocal);
+					print_r('existing:'.$date.' '.$time.' '.$location);
+					print_r('in db'.get_post_meta($post->ID,"time",True).' '.get_post_meta($post->ID,"date",True).' '.get_post_meta($post->ID,"location",True));
+					print_r('display var'.$showDateTimeLocal);
+					print_r('cat check'.has_term("distinguished-speaker") || has_term('how-to-workshops'));
+					print_r('org check'.has_term("distinguished-speaker","org_groups") || has_term('how-to-workshops',"org_groups"));
 				}
 			?>
 			<img src="<?=$image_url ? $image_url : get_bloginfo('stylesheet_directory').'/static/img/no-photo.jpg'?>" />
