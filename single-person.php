@@ -34,9 +34,9 @@
 				}
 				if(has_term("distinguished-speaker","org_groups") || has_term('how-to-workshops',"org_groups")){
 					$showDateTimeLocal = true;
-					$time = $time === NULL ? get_post_meta($post->ID,"Time") : $time;
-					$date = $date === NULL ? get_post_meta($post->ID,"Date") : $date;
-					$location = $location === NULL ? get_post_meta($post->ID,"Location") : $location;
+					$time = $time === NULL ? get_post_meta($post->ID,"Time",True) : $time;
+					$date = $date === NULL ? get_post_meta($post->ID,"Date",True) : $date;
+					$location = $location === NULL ? get_post_meta($post->ID,"Location",True) : $location;
 					if(count($phones)){
 						$showPhones = true;
 					}
