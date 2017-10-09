@@ -2581,5 +2581,15 @@ function get_document_attatchment_permalink($results) {
 }
 add_filter( 'wp_link_query', 'get_document_attatchment_permalink', 10, 3 );
 
+// tinyCME font hooks
+add_filter('tiny_mce_before_init', 'add_tinymce_font'); 
+function add_tinymce_font($options) { 
+	if(DEBUG){
+		print_r($options);
+	}
+	//$options['content_css'] = get_template_directory_uri() . "/editor-style.css,http://fonts.googleapis.com/css?family=Sa‌​nchez"; 
+	//return $options; 
+}
+
 ?>
 
