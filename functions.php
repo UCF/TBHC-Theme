@@ -2587,7 +2587,7 @@ function add_tinymce_font($init) {
 		print_r($init);
 		print_r(get_template_directory_uri());
 	}
-	//$init['fontsize_formats'] = "8px 9px 10px 11px 12px 13px 14px 15px 16px 20px 24px 28px 32px 36px 48px 60px 72px 96px";
+	$init['fontsize_formats'] = "8px 9px 10px 11px 12px 13px 14px 15px 16px 20px 24px 28px 32px 36px 48px 60px 72px 96px";
     /*$stylesheet_url = get_template_directory_uri() . "/editor-style.css";
     if(empty($init['content_css'])) {
         $init['content_css'] = $stylesheet_url;
@@ -2599,7 +2599,7 @@ function add_tinymce_font($init) {
     $init['font_formats'] = $font_formats . $custom_fonts;
     return $init;*/
 }
-add_filter('tiny_mce_before_init', 'load_custom_fonts');
+add_filter('tiny_mce_before_init', 'add_tinymce_font');
 
 ?>
 
