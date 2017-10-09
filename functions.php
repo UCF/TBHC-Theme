@@ -2588,14 +2588,14 @@ function add_tinymce_font($init) {
 		print_r(get_template_directory_uri());
 	}
 	$init['fontsize_formats'] = "8px 9px 10px 11px 12px 13px 14px 15px 16px 20px 24px 28px 32px 36px 48px 60px 72px 96px";
-    $stylesheet_url = get_template_directory_uri() . "/tinyMceFont.css";
+    /*$stylesheet_url = get_template_directory_uri() . "/editor-style.css";
     if(empty($init['content_css'])) {
         $init['content_css'] = $stylesheet_url;
     } else {
         $init['content_css'] = $init['content_css'].','.$stylesheet_url;
     }
     $font_formats = isset($init['font_formats']) ? $init['font_formats'] : 'Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats';
-    $custom_fonts = ';'.'SegoeUI=segoe';
+    $custom_fonts = ';'.'SeaSide=seaside;Journal=journal';
     $init['font_formats'] = $font_formats . $custom_fonts;*/
     return $init;
 }
