@@ -277,7 +277,7 @@ function sc_person_profile_grid($atts) {
 	$join			= ($atts['join']) ? $atts['join'] : 'or';
 	$dropdown		= ($atts['dropdown']) ? $atts['dropdown'] : false;
 	$dd_org_groups	= ($atts['dd_org_groups']) ? $atts['dd_org_groups'] : $org_groups;
-	$dd_org_groups_order	= ($atts['dd_org_groups_order']) ? $atts['dd_org_groups_order'] : "ASC");
+	$dd_org_groups_order	= ($atts['dd_org_groups_order']) ? $atts['dd_org_groups_order'] : "ASC";
 	$dropdown2		= ($atts['dropdown2']) ? $atts['dropdown2'] : false;
 	$dd2_org_groups	= ($atts['dd2_org_groups']) ? $atts['dd2_org_groups'] : NULL;	
 	$show_org_groups	= ($atts['show_org_groups']) ? $atts['show_org_groups'] : false;
@@ -369,7 +369,7 @@ function sc_person_profile_grid($atts) {
 				'echo'	=> false,
 				'selected'	=>	$org_groups,
 				'child_of'	=>	$OGID,
-				//'order'	=> $dd_org_groups_order,
+				'order'	=> $dd_org_groups_order,
 			);
 			if(!empty($show_option_all)){
 				$args['show_option_all'] = $show_option_all;
