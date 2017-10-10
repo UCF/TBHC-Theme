@@ -1114,11 +1114,13 @@ function frontpage_interests(){
 
 function frontpage_events(){
 	$events = get_events(0, 5);
-	if(DEBUG){
-		print_r($events);
-	}
 	$levent = array_splice($events, 0, 1);
 	$revent = array_slice($events, 1);
+	if(DEBUG){
+		print_r($events);
+		print_r($levent);
+		print_r($revent);
+	}
 	ob_start();?>
 	<section id="events">
 	<div class="events_bg_overlay"></div>
