@@ -2590,14 +2590,14 @@ function add_tinymce_font($init) {
     } else {
         $init['content_css'] = $init['content_css'].','.$stylesheet_url;
     }
-	if(DEBUG){
-		print_r($init);
-		print_r($stylesheet_url);
-	}
     $font_formats = isset($init['font_formats']) ? $init['font_formats'] : 'Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats';
     $custom_fonts = ';'.'SegoeUI=segoe';
     $init['font_formats'] = $font_formats . $custom_fonts;
 	$init['content_style']='.mce-content-body {font-family:"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif,Georgia,serif}';
+	if(DEBUG){
+		print_r($init);
+		print_r($stylesheet_url);
+	}
     return $init;
 }
 add_filter('tiny_mce_before_init', 'add_tinymce_font');
