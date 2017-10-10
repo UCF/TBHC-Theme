@@ -1064,7 +1064,8 @@ add_shortcode('doc-grid', 'sc_doc_grid');
 			$slide_tit_font_col		= get_post_meta($post->ID, 'ss_title_font_color', TRUE);	
 			$slide_tit_bg_color		= get_post_meta($post->ID, 'ss_title_background_color', TRUE);	
 			$slide_tit_opacity		= get_post_meta($post->ID, 'ss_title_opacity', TRUE);	
-		
+			$slide_tit_padding		= get_post_meta($post->ID, 'ss_title_padding', TRUE);
+			
 			$slide_mob_height		= get_theme_option('centerpiece_mobile_height');
 			$slide_desk_height		= get_theme_option('centerpiece_desktop_height');
 			$slide_bg_off_top		= get_post_meta($post->ID, 'ss_background_top_offset', TRUE);	
@@ -1072,7 +1073,7 @@ add_shortcode('doc-grid', 'sc_doc_grid');
 			
 			// id have made a param array (literals in js), debug gets ezier
 			if(DEBUG){
-				$a = array($slide_display_tit,$slide_tit_off_top,$slide_tit_off_left,$slide_tit_font_sz,$slide_tit_font_col,$slide_tit_bg_color,$slide_tit_opacity);
+				$a = array($slide_display_tit,$slide_tit_off_top,$slide_tit_off_left,$slide_tit_font_sz,$slide_tit_font_col,$slide_tit_bg_color,$slide_tit_opacity,$slide_tit_padding);
 				print_r($a);
 			}
 		
@@ -1113,7 +1114,7 @@ add_shortcode('doc-grid', 'sc_doc_grid');
 
 						if($slide_display_tit[$s] == 'on'){
 							$rgba = hex_and_opacity_to_rgba($slide_tit_bg_color[$s], $slide_tit_opacity[$s]);
-							$output .= '<div class="hidden-xs hidden-sm" style="position:absolute;top:'.$slide_tit_off_top[$s].';left:'.$slide_tit_off_left[$s].';font-size:'.$slide_tit_font_sz[$s].';color:'.$slide_tit_font_col[$s].';background-color:rgba('.$rgba.');height:auto;">'.$slide_title[$s].'</div>';
+							$output .= '<div class="hidden-xs hidden-sm" style="position:absolute;top:'.$slide_tit_off_top[$s].';left:'.$slide_tit_off_left[$s].';font-size:'.$slide_tit_font_sz[$s].';color:'.$slide_tit_font_col[$s].';background-color:rgba('.$rgba.');height:auto;'.($slide_tit_padding ? 'padding:'.$slide_tit_padding.';' : '').'">'.$slide_title[$s].'</div>';
 						}
 						
 						if ($slide_links_to[$s] !== '' && $slide_content_type[$s] == 'image') {
