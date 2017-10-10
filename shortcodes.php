@@ -266,6 +266,9 @@ function specCharEscCallback($buffer){
  **/
 function sc_person_profile_grid($atts) {
 	$atts = array_map('specCharEscCallback', $atts);
+	if(DEBUG){
+		print_r($atts);
+	}
 	//remove_filter('the_content','wpautop');
 	$atts['type']	= ($atts['type']) ? $atts['type'] : null;
 	$row_size 		= ($atts['row_size']) ? (intval($atts['row_size'])) : 5;
