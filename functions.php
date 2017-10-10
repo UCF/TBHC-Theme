@@ -343,7 +343,7 @@ function get_people_from_org_group(){
 		(!empty($_REQUEST['dd_org_groups_order']) ? ' dd_org_groups_order=\''.$_REQUEST['dd_org_groups_order'].'\' ' : ' '),
 	);
 	$p = array_map(function($a){ return htmlspecialchars($a); }, $p);
-	echo do_shortcode('[person-profile-grid org_groups=\''.$p[0].'\''.$p[1].$p[2].$p[3].$p[4].$p[5].$p[6].$p[7].$p[8].']');
+	echo do_shortcode('[person-profile-grid org_groups=\''.$p[0].'\''.$p[1].$p[2].$p[3].$p[4].$p[5].$p[6].$p[7].$p[8].$p[9].']');
 	die();
 }
 
