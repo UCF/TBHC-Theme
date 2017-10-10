@@ -369,7 +369,7 @@ function sc_person_profile_grid($atts) {
 				'echo'	=> false,
 				'selected'	=>	$org_groups,
 				'child_of'	=>	$OGID,
-				'order'	=> $dd_org_groups_order,
+				//'order'	=> $dd_org_groups_order,
 			);
 			if(!empty($show_option_all)){
 				$args['show_option_all'] = $show_option_all;
