@@ -2603,5 +2603,16 @@ function add_tinymce_font($init) {
 }
 add_filter('tiny_mce_before_init', 'add_tinymce_font');
 
+// admin portal css colors
+add_action('admin_head', 'admin_area_bg_color_css');
+function admin_area_bg_color_css() {
+	if(get_theme_option('env_admin_bg_color')){
+		echo '<style>
+			#wpwrap {
+			  background:'.get_theme_option('env_admin_bg_color').';
+			} 
+		</style>';
+	}
+}
 ?>
 
