@@ -340,9 +340,10 @@ function get_people_from_org_group(){
 		(!empty($_REQUEST['show_option_all']) ? ' show_option_all=\''.$_REQUEST['show_option_all'].'\' ' : ' '),
 		(!empty($_REQUEST['show_option_all2']) ? ' show_option_all2=\''.$_REQUEST['show_option_all2'].'\' ' : ' '),
 		'row_size='.$_REQUEST['row_size'],
+		(!empty($_REQUEST['dd_org_groups_order']) ? ' dd_org_groups_order=\''.$_REQUEST['dd_org_groups_order'].'\' ' : ' '),
 	);
 	$p = array_map(function($a){ return htmlspecialchars($a); }, $p);
-	echo do_shortcode('[person-profile-grid org_groups=\''.$p[0].'\''.$p[1].$p[2].$p[3].$p[4].$p[5].$p[6].$p[7].$p[8].']');
+	echo do_shortcode('[person-profile-grid org_groups=\''.$p[0].'\''.$p[1].$p[2].$p[3].$p[4].$p[5].$p[6].$p[7].$p[8].$p[9].']');
 	die();
 }
 
@@ -2581,7 +2582,7 @@ function get_document_attatchment_permalink($results) {
 }
 add_filter( 'wp_link_query', 'get_document_attatchment_permalink', 10, 3 );
 
-// tinyCME font hooks
+// tinyMCE font hooks
 function add_tinymce_font($init) { 
 	$init['fontsize_formats'] = "8px 9px 10px 11px 12px 13px 14px 15px 16px 20px 24px 28px 32px 36px 48px 60px 72px 96px";
     $stylesheet_url = get_template_directory_uri() . "/static/css/tinyMceFont.css";
