@@ -340,9 +340,10 @@ function get_people_from_org_group(){
 		(!empty($_REQUEST['show_option_all']) ? ' show_option_all=\''.$_REQUEST['show_option_all'].'\' ' : ' '),
 		(!empty($_REQUEST['show_option_all2']) ? ' show_option_all2=\''.$_REQUEST['show_option_all2'].'\' ' : ' '),
 		'row_size='.$_REQUEST['row_size'],
+		(!empty($_REQUEST['dd_org_groups_order']) ? ' dd_org_groups_order=\''.$_REQUEST['dd_org_groups_order'].'\' ' : ' '),
 	);
 	$p = array_map(function($a){ return htmlspecialchars($a); }, $p);
-	echo do_shortcode('[person-profile-grid org_groups=\''.$p[0].'\''.$p[1].$p[2].$p[3].$p[4].$p[5].$p[6].$p[7].$p[8].']');
+	echo do_shortcode('[person-profile-grid org_groups=\''.$p[0].'\''.$p[1].$p[2].$p[3].$p[4].$p[5].$p[6].$p[7].$p[8].$p[9].']');
 	die();
 }
 
@@ -1113,11 +1114,13 @@ function frontpage_interests(){
 
 function frontpage_events(){
 	$events = get_events(0, 5);
+	$levent = array_splice($events, 0, 1);
+	//$revent = array_slice($events, 1);
 	if(DEBUG){
 		print_r($events);
+		print_r($levent);
+		//print_r($revent);
 	}
-	$levent = array_splice($events, 0, 1);
-	$revent = array_slice($events, 1);
 	ob_start();?>
 	<section id="events">
 	<div class="events_bg_overlay"></div>
@@ -1138,7 +1141,7 @@ function frontpage_events(){
 			</div>
 			<div class="events_table_group second">	
 				<div class="events_type">Looking Ahead</div>
-				<? foreach($revent as $element){
+				<? foreach($events as $element){
 					$dateFormatted = new DateTime($element["starts"], new DateTimeZone('EST'));
 					?><a href="<?=$element["url"]?>" class="event_single_wrap">
 						<div class="event_single">
@@ -2581,5 +2584,37 @@ function get_document_attatchment_permalink($results) {
 }
 add_filter( 'wp_link_query', 'get_document_attatchment_permalink', 10, 3 );
 
+// tinyMCE font hooks
+function add_tinymce_font($init) { 
+	$init['fontsize_formats'] = "8px 9px 10px 11px 12px 13px 14px 15px 16px 20px 24px 28px 32px 36px 48px 60px 72px 96px";
+    $stylesheet_url = get_template_directory_uri() . "/static/css/tinyMceFont.css";
+    if(empty($init['content_css'])) {
+        $init['content_css'] = $stylesheet_url;
+    } else {
+        $init['content_css'] = $init['content_css'].','.$stylesheet_url;
+    }
+    $font_formats = isset($init['font_formats']) ? $init['font_formats'] : 'Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats';
+    $custom_fonts = ';'.'Segoe UI=segoe';
+    $init['font_formats'] = $font_formats . $custom_fonts;
+	$init['content_style']='.mce-content-body {font-family:Segoe UI,Helvetica Neue,Helvetica,Arial,sans-serif,Georgia,serif}';
+	if(DEBUG){
+		print_r($init);
+		print_r($stylesheet_url);
+	}
+    return $init;
+}
+add_filter('tiny_mce_before_init', 'add_tinymce_font');
+
+// admin portal css colors
+add_action('admin_head', 'admin_area_bg_color_css');
+function admin_area_bg_color_css() {
+	if(get_theme_option('env_admin_bg_color')){
+		echo '<style>
+			#wpwrap {
+			  background:'.get_theme_option('env_admin_bg_color').';
+			} 
+		</style>';
+	}
+}
 ?>
 

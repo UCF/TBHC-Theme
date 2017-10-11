@@ -1362,6 +1362,13 @@ class Slider extends CustomPostType {
 							'default' => '.5',
 						),
 						array(
+							'name' => __('Title Padding'),
+							'id'   => $prefix . 'title_padding',
+							'type' => 'text',
+							'desc' => 'Title\'s padding. Requires \'Display Title\' to be checked. Use css padding property format.<br/>See examples at https://www.w3schools.com/cssref/pr_padding.asp.',
+							'default' => '',
+						),
+						array(
 							'name' => __('Type of Content'),
 							'id'   => $prefix . 'type_of_content',
 							'type' => 'radio',
