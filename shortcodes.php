@@ -913,8 +913,8 @@ function sc_doc_grid($atts) {
 	$DGID2			= get_term_by('slug', $dd2_doc_groups, 'doc_groups');
 	$DGID2			= $DGID2 ? $DGID2->term_id : false;
 	$operator		= ($atts['operator']) ? $atts['operator'] : NULL;
-	$docs 		= sc_object_list(
-		array(
+	
+	$qryArgs = array(
 			'type' => 'document',
 			'limit' => $limit,
 			'join' => $join,
@@ -927,11 +927,15 @@ function sc_doc_grid($atts) {
 			'meta_query'	=> array(
 				
 			),
-		),
+		)
+	
+	$docs 		= sc_object_list(
+		$qryArgs,
 	array(
 		'objects_only' => True,
 	));
 	if(DEBUG){
+		print_r($qryArgs);
 		print_r($docs);
 	}
 	ob_start();
