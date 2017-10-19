@@ -548,6 +548,13 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['footer_logo'],
 			'default'	  => 'http://tbhccmsdev.smca.ucf.edu/wp-content/themes/TBHC-Theme/static/img/WebsiteFooterShort.png'
 		)),
+		new TextField(array(
+			'name'        => 'Environment Background Color',
+			'id'          => THEME_OPTIONS_NAME.'[env_admin_bg_color]',
+			'description' => 'The color to use for the background of the admin pages. This should be different from other environment background colors. Used to help users in identifying which environment they\'re in.',
+			'value'       => $theme_options['env_admin_bg_color'],
+			'default'	  => ''
+		)),
 	),
 	'Web Fonts' => array(
 		/* This theme uses the webfonts published to ucf.edu/partnerships. The hosted font files are within that theme. */

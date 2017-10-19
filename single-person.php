@@ -24,14 +24,43 @@
 				$email = get_post_meta($post->ID, 'person_email', True);
 				$phones = Person::get_phones($post);
 				$office = get_post_meta($post->ID, 'person_office', True);
+				$showDateTimeLocal = false;
+				$showPhones = false;
+				if(has_term("distinguished-speaker") || has_term('how-to-workshops')){
+					$showDateTimeLocal = true;
+					if(count($phones)){
+						$showPhones = true;
+					}
+				}
+				if(has_term("distinguished-speaker","org_groups") || has_term('how-to-workshops',"org_groups")){
+					$showDateTimeLocal = true;
+					if(count($phones)){
+						$showPhones = true;
+					}
+				}
+				if(empty($time) || $time == ''){ 
+					$time = get_post_meta($post->ID,"time",True);
+				}
+				if(empty($date) || $date == ''){
+					$date = get_post_meta($post->ID,"date",True);
+				}
+				if(empty($location) || $location == ''){
+					$location = get_post_meta($post->ID,"location",True);
+				}				
+				if(DEBUG){
+					print_r($date.' '.$time.' '.$location.'\r\n');
+					print_r(get_post_meta($post->ID,"time",True).' '.get_post_meta($post->ID,"date",True).' '.get_post_meta($post->ID,"location",True).'\r\n');
+					print_r(has_term("distinguished-speaker") || has_term('how-to-workshops').'\r\n');
+					print_r(has_term("distinguished-speaker","org_groups") || has_term('how-to-workshops',"org_groups").'\r\n');
+				}
 			?>
 			<img src="<?=$image_url ? $image_url : get_bloginfo('stylesheet_directory').'/static/img/no-photo.jpg'?>" />
 		</div>
 		<div class="col-md-12 col-sm-12">
 			<article role="main">
-				<h2><?=$post->post_title?><?=($title == '') ?: ' - '.$title ?></h2>
+				<h2><?=$post->post_title?><?=($title == '') ? '': ' - '.$title ?></h2>
 				<div class="contact">
-				<?if(strpos(wp_get_referer(), "distinguished-speaker") === false){ //and type = staff?>
+				<?if($showPhones){ //and type = staff?>
 					<ul class="list-unstyled">	
 					<?
 					if(count($phones)) {
@@ -47,7 +76,7 @@
 						<? } ?>
 					</ul>
 				<? }
-				if(strpos(wp_get_referer(), "distinguished-speaker") > 0){ //or type = dist speaker ?> 
+				if($showDateTimeLocal){ //or type = dist speaker ?> 
 					<ul class="list-unstyled">
 						<? if($time != '') { ?>
 							<li><i class="glyphicon glyphicon-time"></i><span class="time"><?=$time?></span></li>

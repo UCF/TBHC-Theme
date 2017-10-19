@@ -217,7 +217,7 @@
 			<?}
 		}?>
 		<div class="container">
-			<div class="row status-alert" id="status-alert-template" data-alert-id="">
+			<!--<div class="row status-alert" id="status-alert-template" data-alert-id="">
 				<div class="col-md-12 col-sm-12 alert-wrap">
 					<div class="alert alert-danger alert-block">
 						<div class="row">
@@ -227,23 +227,23 @@
 							<div class="col-md-10 col-sm-10 alert-inner-wrap">
 								<button type="button" class="close" data-dismiss="alert">&times;</button>
 								<h2>
-									<a href="<?php echo get_theme_option('alert_more_information_url'); ?>">
+									<a href="<?php //echo get_theme_option('alert_more_information_url'); ?>">
 										<span class="title"></span>
 									</a>
 								</h2>
 								<p class="alert-body">
-									<a href="<?php echo get_theme_option('alert_more_information_url'); ?>">
+									<a href="<?php //echo get_theme_option('alert_more_information_url'); ?>">
 										<span class="content"></span>
 									</a>
 								</p>
 								<p class="alert-action">
-									<a class="more-information" href="<?php echo get_theme_option('alert_more_information_url'); ?>"></a>
+									<a class="more-information" href="<?php //echo get_theme_option('alert_more_information_url'); ?>"></a>
 								</p>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>-->
 			<?php if ( is_front_page() ): ?>
 			<div id="header" class="sr-only" role="banner">
 				<h1><?php echo bloginfo( 'name' ); ?></h1>

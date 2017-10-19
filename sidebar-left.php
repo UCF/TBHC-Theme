@@ -1,18 +1,15 @@
 <?php disallow_direct_load('sidebar-left.php');?>
-
 <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Left Sidebar')):?>
 <?php endif;?>
-
-<!-- Hard-written sidebar components go here: -->
-
 <?php
 
-	$show_facebook	 		= get_post_meta($post->ID, 'page_widget_l_showfacebook', TRUE);	
-	$more_info_nav_val 			= get_post_meta($post->ID, 'page_widget_l_moreinfo', TRUE);
-	$more_info_nav_val_title 	= get_post_meta($post->ID, 'page_widget_l_moreinfo_title', TRUE);
-	$secondary_nav_val 			= get_post_meta($post->ID, 'page_widget_l_secinfo', TRUE);
-	$secondary_nav_val_title 	= get_post_meta($post->ID, 'page_widget_l_secinfo_title', TRUE);
-	$show_colleges_val 			= get_post_meta($post->ID, 'page_widget_l_showcolleges', TRUE);
+	$pstTyp					= get_post_type($post->ID);
+	$show_facebook	 		= get_post_meta($post->ID, $pstTyp.'_widget_l_showfacebook', TRUE);	
+	$more_info_nav_val 			= get_post_meta($post->ID, $pstTyp.'_widget_l_moreinfo', TRUE);
+	$more_info_nav_val_title 	= get_post_meta($post->ID, $pstTyp.'_widget_l_moreinfo_title', TRUE);
+	$secondary_nav_val 			= get_post_meta($post->ID, $pstTyp.'_widget_l_secinfo', TRUE);
+	$secondary_nav_val_title 	= get_post_meta($post->ID, $pstTyp.'_widget_l_secinfo_title', TRUE);
+	$show_colleges_val 			= get_post_meta($post->ID, $pstTyp.'_widget_l_showcolleges', TRUE);
 	
 	if ($more_info_nav_val) {
 		$moreinfo_title = $more_info_nav_val_title !== '' ? $more_info_nav_val_title : 'More Information';
@@ -61,8 +58,8 @@
 		print '<iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FTheBurnettHonorsCollege%2F&width=151&layout=button_count&action=like&size=large&show_faces=false&share=true&height=46&appId=966428133474292" width="151" height="46" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>';
 	}	
 	// Embed Widget 1
-	$embed1_title	 		= get_post_meta($post->ID, 'page_widget_l_embed1_title', TRUE);
-	$embed1			 		= get_post_meta($post->ID, 'page_widget_l_embed1', TRUE);	
+	$embed1_title	 		= get_post_meta($post->ID, $pstTyp.'_widget_l_embed1_title', TRUE);
+	$embed1			 		= get_post_meta($post->ID, $pstTyp.'_widget_l_embed1', TRUE);	
 	$embed1					= do_shortcode($embed1);
 
 	if ($embed1) {	
