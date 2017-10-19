@@ -329,6 +329,52 @@ function sortable_people_columns( $columns ) {
 }
 add_action('manage_edit-person_sortable_columns', 'sortable_people_columns');
 
+/*
+ * Custom grid stuff for Documents
+ * */
+// Custom columns for 'documents' post type
+function edit_document_columns() {
+	$columns = array(
+	'title'       => 'Title',
+	'doc_group' => 'Document Group',
+	'publish_date'=> 'Date',
+	);
+	return $columns;
+}
+add_action('manage_edit-document_columns', 'edit_document_columns');
+
+function sortable_document_columns( $columns ) {
+	$columns['title'] = 'title';
+	$columns['doc_group'] = 'doc_group';
+	$columns['publish_date'] = 'publish_date';
+	return $columns;
+}
+add_action('manage_edit-document_sortable_columns', 'sortable_document_columns');
+
+// Custom columns content for 'document'
+function manage_document_columns( $column, $post_id ) {
+	global $post;
+	switch ( $column ) {
+		case 'publish_date':
+		if ($post->post_status == 'publish') {
+			print 'Published'.'<br/>'.get_post_time('Y/m/d', true, $post->ID);
+		}
+		break;
+		case 'doc_group':
+			$theseTerms = get_the_terms($post, 'doc_group');
+			if($theseTerms && (array)$theseTerms === $theseTerms){
+				$theseTerms = array_map('manage_columns_terms', $theseTerms);			
+				print implode(', ',$theseTerms);
+			}
+		break;
+		default:
+		break;
+	}
+}
+add_action('manage_document_posts_custom_column', 'manage_document_columns', 10, 2);
+
+
+// Code for shortcode calls from ajax requests
 function get_people_from_org_group(){ 
 	$p = array(
 		($_REQUEST['org_groups'] ? $_REQUEST['org_groups'] : $_REQUEST['dd_org_groups']),

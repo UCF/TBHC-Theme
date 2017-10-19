@@ -1164,7 +1164,12 @@ function sc_object_list($attrs, $options = array()){
 		'offset'         => $params['offset'],
 	);
 
-	$query = new WP_Query($query_array);	
+	$query = new WP_Query($query_array);
+	if(DEBUG){
+		print_r($query_array);
+		print_r($query->request);
+		print_r($tax_queries);
+	}
 	global $post;
 	$objects = array();
 	while($query->have_posts()){

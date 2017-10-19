@@ -913,8 +913,8 @@ function sc_doc_grid($atts) {
 	$DGID2			= get_term_by('slug', $dd2_doc_groups, 'doc_groups');
 	$DGID2			= $DGID2 ? $DGID2->term_id : false;
 	$operator		= ($atts['operator']) ? $atts['operator'] : NULL;
-	$docs 		= sc_object_list(
-		array(
+	
+	$qryArgs = array(
 			'type' => 'document',
 			'limit' => $limit,
 			'join' => $join,
@@ -924,14 +924,15 @@ function sc_doc_grid($atts) {
 			//'order' => 'DESC',
 			//'meta_key'	=> 'opportunity_end',
 			'operator' => $operator,
-			'meta_query'	=> array(
-				
-			),
-		),
-	array(
-		'objects_only' => True,
-	));
+		);
+	
+	$docs 		= sc_object_list(
+		$qryArgs,
+		array(
+			'objects_only' => True,
+		));
 	if(DEBUG){
+		print_r($qryArgs);
 		print_r($docs);
 	}
 	ob_start();
@@ -994,7 +995,7 @@ function sc_doc_grid($atts) {
 				//rsort($opps);
 				$matches = "";
 				foreach ($docs as $document) { 
-					$link = get_permalink($document->ID);					
+					$link = wp_get_attachment_url(get_post_meta($document->ID, 'document_file', TRUE));			
 					$ext_link = get_post_meta($document->ID, 'document_url', TRUE);		
 					if($ext_link){
 						$link = $ext_link; 
@@ -1008,7 +1009,7 @@ function sc_doc_grid($atts) {
 					}
 				?>
 				<li>
-					<a href="<?=$link?>">
+					<a href="<?=$link?>" target="_blank">
 						<?=$document->post_title?>
 					</a>
 				</li>
