@@ -922,11 +922,6 @@ function sc_doc_grid($atts) {
 			'doc_groups' => $doc_groups2 ? $doc_groups.' '.$doc_groups2 : $doc_groups,
 			//'orderby' => 'meta_value_num',
 			//'order' => 'DESC',
-			//'meta_key'	=> 'opportunity_end',
-			'operator' => $operator,
-			'meta_query'	=> array(
-				
-			),
 		);
 	
 	$docs 		= sc_object_list(
