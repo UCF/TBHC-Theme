@@ -1009,7 +1009,7 @@ function sc_doc_grid($atts) {
 					}
 				?>
 				<li>
-					<a href="<?=$link?>">
+					<a href="<?=$link?>" target="_blank">
 						<?=$document->post_title?>
 					</a>
 				</li>
