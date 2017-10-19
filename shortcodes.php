@@ -927,13 +927,13 @@ function sc_doc_grid($atts) {
 			'meta_query'	=> array(
 				
 			),
-		)
+		);
 	
 	$docs 		= sc_object_list(
 		$qryArgs,
-	array(
-		'objects_only' => True,
-	));
+		array(
+			'objects_only' => True,
+		));
 	if(DEBUG){
 		print_r($qryArgs);
 		print_r($docs);
