@@ -995,8 +995,7 @@ function sc_doc_grid($atts) {
 				//rsort($opps);
 				$matches = "";
 				foreach ($docs as $document) { 
-					print_r(wp_get_attachment_url(get_post_meta($document->ID, 'document_file', TRUE)));
-					$link = get_permalink($document->ID);					
+					$link = wp_get_attachment_url(get_post_meta($document->ID, 'document_file', TRUE));			
 					$ext_link = get_post_meta($document->ID, 'document_url', TRUE);		
 					if($ext_link){
 						$link = $ext_link; 
