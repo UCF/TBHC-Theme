@@ -1166,7 +1166,7 @@ function sc_object_list($attrs, $options = array()){
 
 	$query = new WP_Query($query_array);
 	if(DEBUG){
-		print_r($GLOBALS['wp_query']->request);
+		print_r($query->request);
 	}
 	global $post;
 	$objects = array();
