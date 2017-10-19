@@ -898,7 +898,6 @@ function sc_doc_grid($atts) {
 	$atts = array_map('specCharEscCallback', $atts);	
 	//remove_filter('the_content','wpautop');
 	$atts['type']	= ($atts['type']) ? $atts['type'] : null;
-	$categories		= ($atts['categories']) ? $atts['categories'] : null;	
 	$doc_groups		= ($atts['doc_groups']) ? $atts['doc_groups'] : null;
 	$doc_groups2		= ($atts['doc_groups2']) ? $atts['doc_groups2'] : null;	
 	$limit			= ($atts['limit']) ? (intval($atts['limit'])) : -1;
@@ -912,16 +911,12 @@ function sc_doc_grid($atts) {
 	$DGID			= get_term_by('slug', $dd_doc_groups, 'doc_groups')->term_id;
 	$DGID2			= get_term_by('slug', $dd2_doc_groups, 'doc_groups');
 	$DGID2			= $DGID2 ? $DGID2->term_id : false;
-	$operator		= ($atts['operator']) ? $atts['operator'] : NULL;
 	
 	$qryArgs = array(
 			'type' => 'document',
 			'limit' => $limit,
 			'join' => $join,
-			//'categories' => $categories,
 			'doc_groups' => $doc_groups2 ? $doc_groups.' '.$doc_groups2 : $doc_groups,
-			//'orderby' => 'meta_value_num',
-			//'order' => 'DESC',
 		);
 	
 	$docs 		= sc_object_list(

@@ -1166,6 +1166,7 @@ function sc_object_list($attrs, $options = array()){
 
 	$query = new WP_Query($query_array);
 	if(DEBUG){
+		print_r($query_array);
 		print_r($query->request);
 		print_r($tax_queries);
 	}
