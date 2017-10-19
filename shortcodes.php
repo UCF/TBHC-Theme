@@ -935,6 +935,7 @@ function sc_doc_grid($atts) {
 			'objects_only' => True,
 		));
 	if(DEBUG){
+		print_r($GLOBALS['wp_query']->request);
 		print_r($qryArgs);
 		print_r($docs);
 	}
