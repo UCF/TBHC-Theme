@@ -80,7 +80,7 @@
 								</div>
 							<?}?>
 							<a href="https://honors.ucf.edu" class="print-noexpand fn org url">
-								<span class="organization-name">The Burnett Honors College</span>
+								<span class="organization-name">Burnett Honors College</span>
 							</a>
 							<div class="adr">
 								<span class="street-address">P.O. Box 161800</span>
@@ -101,7 +101,7 @@
 							<!--<br/>
 								<a href="<?=site_url()?>/feedback/">Comments and Feedback</a> | &copy;
 								<a href="<?=site_url()?>" class="print-noexpand fn org url">
-								<span class="organization-name">The Burnett Honors College</span>
+								<span class="organization-name">Burnett Honors College</span>
 							</a>-->
 						</div>
 					</div>
