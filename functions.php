@@ -791,9 +791,9 @@ function frontpage_spotlights() {
 				</div>
 				<div id="spotlights_right">
 					<div class="spotlights_title_wrap">
-						<a href="<?=get_permalink(get_page_by_title('Students of TBHC'))?>">
+						<a href="<?=get_permalink(get_page_by_title('Students of BHC'))?>">
 							<h2 class="spotlights_title">
-								Students of TBHC
+								Students of BHC
 							</h2>
 						</a>
 					</div>
