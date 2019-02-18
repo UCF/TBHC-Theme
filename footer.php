@@ -60,10 +60,10 @@
 								</div>
 								<div class="adr">
 									<div class="tel">
-										<a href="tel:4078232076">p.  407.823.2076</a>
+										<a href="tel:4078234019">p.  407.823.4019</a>
 									</div>
 									<div class="tel">
-										<a href="tel:4078232076">f.  407.823.6583</a>
+										<a href="tel:4078236583">f.  407.823.6583</a>
 									</div>
 									<div class="email">
 										<a href="mailto:honors@ucf.edu">e.  honors@ucf.edu</a>
