@@ -83,7 +83,7 @@
 								<span class="organization-name">The Burnett Honors College</span>
 							</a>
 							<div class="adr">
-								<span class="street-address">P.O. Box 161800</span>
+								<span class="street-address">Trevor Colbourn Hall, Suite 248D</span>
 								<div>
 									<span class="locality">Orlando,</span>
 									<span class="region">FL</span>
