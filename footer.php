@@ -60,7 +60,7 @@
 								</div>
 								<div class="adr">
 									<div class="tel">
-										<a href="tel:4078232076">p.  407.823.2076</a>
+										<a href="tel:4078234019">p.  407.823.4019</a>
 									</div>
 									<div class="tel">
 										<a href="tel:4078232076">f.  407.823.6583</a>
@@ -78,26 +78,37 @@
 								<div class="location-title">
 									Location
 								</div>
+								<a href="https://honors.ucf.edu" class="print-noexpand fn org url">
+									<span class="organization-name">Trevor Colbourn Hall</span>
+								</a>
+								<div class="adr"> <!-- div.adr -->
+									<span class="street-address">Suite 248D</span>
+									<div>
+										<span class="locality">Orlando,</span>
+										<span class="region">FL</span>
+										<span class="postal-code">32816</span>
+									</div>
+							<?}else{?>
+								<a href="https://honors.ucf.edu" class="print-noexpand fn org url">
+									<span class="organization-name">Burnett Honors College</span>
+								</a>
+								<div class="adr"> <!-- div.adr -->
+									<span class="street-address">P.O. Box 161800</span>
+									<div>
+										<span class="locality">Orlando,</span>
+										<span class="region">FL</span>
+										<span class="postal-code">32816</span>
+									</div>
 							<?}?>
-							<a href="https://honors.ucf.edu" class="print-noexpand fn org url">
-								<span class="organization-name">Burnett Honors College</span>
-							</a>
-							<div class="adr">
-								<span class="street-address">P.O. Box 161800</span>
-								<div>
-									<span class="locality">Orlando,</span>
-									<span class="region">FL</span>
-									<span class="postal-code">32816</span>
+							<?if(get_theme_option('home_page_theme') != '2'){?>
+								<div class="tel">
+									<a href="tel:4078232076">407.823.2076</a>
 								</div>
-								<?if(get_theme_option('home_page_theme') != '2'){?>
-									<div class="tel">
-										<a href="tel:4078232076">407.823.2076</a>
-									</div>
-									<div class="email">
-										<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
-									</div>
-								<?}?>
-							</div>
+								<div class="email">
+									<a href="mailto:honors@ucf.edu">honors@ucf.edu</a>
+								</div>
+							<?}?>
+							</div> <!-- this is closing div.adr -->
 							<!--<br/>
 								<a href="<?=site_url()?>/feedback/">Comments and Feedback</a> | &copy;
 								<a href="<?=site_url()?>" class="print-noexpand fn org url">
