@@ -77,13 +77,17 @@
 							<?if(get_theme_option('home_page_theme') == '2'){?>
 								<div class="location-title">
 									Location
+									<span class="street-address">Trevor Colbourn Hall, Suite 248D</span>
+									<span class="locality">Orlando,</span>
+									<span class="region">FL</span>
+									<span class="postal-code">32816</span>
 								</div>
 							<?}?>
 							<a href="https://honors.ucf.edu" class="print-noexpand fn org url">
 								<span class="organization-name">The Burnett Honors College</span>
 							</a>
 							<div class="adr">
-								<span class="street-address">Trevor Colbourn Hall, Suite 248D</span>
+								<span class="street-address">P.O. Box 161800</span>
 								<div>
 									<span class="locality">Orlando,</span>
 									<span class="region">FL</span>
