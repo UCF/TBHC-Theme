@@ -66,7 +66,7 @@
 										<a href="tel:4078232076">f.  407.823.6583</a>
 									</div>
 									<div class="email">
-										<a href="mailto:honors@ucf.edu">e.  honors@ucf.edu</a>
+										<a href="mailto:opa@ucf.edu">e.  opa@ucf.edu</a>
 									</div>
 								</div>
 							</div>
