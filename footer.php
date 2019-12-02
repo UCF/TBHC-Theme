@@ -12,7 +12,7 @@
 							'depth' => 1,
 							'walker' => new Bootstrap_Walker_Nav_Menu()
 							));
-						?>				
+						?>
 					</div>
 					<div class="hidden-sm hidden-xs footerCol <?=get_theme_option('home_page_theme') == '2' ? 'hidden-md hidden-lg' : 'col-md-3'?>">
 						<?=wp_nav_menu(array(
@@ -42,7 +42,7 @@
 							'depth' => 1,
 							));
 						?>
-					</div>				
+					</div>
 					<div class="footerCol col-xs-half col-sm-5 col-sm-pull-5 <?=get_theme_option('home_page_theme') == '2' ? 'opaRight' : 'col-md-pull-0 col-md-3'?>">
 						<?=wp_nav_menu(array(
 							'theme_location' => 'footer-inner-right',
@@ -60,7 +60,7 @@
 								</div>
 								<div class="adr">
 									<div class="tel">
-										<a href="tel:4078234019">p.  407.823.4019</a>
+										<a href="tel:4078230851">p.  407.823.0851</a>
 									</div>
 									<div class="tel">
 										<a href="tel:4078236583">f.  407.823.6583</a>
@@ -71,7 +71,7 @@
 								</div>
 							</div>
 						<?}?>
-					</div>	
+					</div>
 					<div class="footerCol col-xs-half col-sm-5 <?=get_theme_option('home_page_theme') == '2' ? 'opaLeft' : 'col-md-3'?>">
 						<div id="contactInfo" role="contentinfo" class="vcard">
 							<?if(get_theme_option('home_page_theme') == '2'){?>
